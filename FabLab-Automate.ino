@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "Tools.h"
+#include "DayPlanning.h"
 
 
 void setup()
@@ -12,8 +13,12 @@ void setup()
 
 void loop()
 {
-    MainMenu menu;
-    menu.execute();
+/*    MainMenu menu;
+    menu.execute();*/
+    DayPlanning monday("Monday", "10h10", "10h10");
+    Serial.println("Starting time : " + monday.getStartingTime());
+    Serial.println("Ending time : " + monday.getEndingTime());
+    delay(1000);
     
 /*    if(getMesure() < 500)
         setRelais(false);
