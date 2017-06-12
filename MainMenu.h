@@ -3,12 +3,20 @@
 #include "Tools.h"
 
 
-void setupMainMenu();
+class MainMenu : public MenuCreator
+{
+    private:
+        // Nothing.
 
-void modeMainMenu(int choice);
-
-void modeNormal();
-void modeMesure();
-void modeTest();
-void modeSettings();
+    public:
+        MainMenu();
+        
+        void menuFunctions(int choice);
+        
+        void modeNormal();
+        void modeMesure();
+        void modeTest();
+        void modeSettings();
+  
+};
 

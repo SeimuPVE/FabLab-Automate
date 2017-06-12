@@ -1,5 +1,4 @@
-#include "MenuCreator.h"
-#include "ModesExecutor.h"
+#include "MainMenu.h"
 #include "Tools.h"
 
 
@@ -13,7 +12,8 @@ void setup()
 
 void loop()
 {
-    setupMainMenu();
+    MainMenu menu;
+    menu.execute();
     
 /*    if(getMesure() < 500)
         setRelais(false);

@@ -10,24 +10,27 @@ class MenuCreator
         char **titleList;
         int listSize;
         int currentChoice;
-        void (*functions)(int);
 
         bool buttonUpState;
         bool buttonDownState;
         bool buttonOkState;
         
     public:
-        MenuCreator(String newTitleList[], int newListSize, void (*newFunctions)(int));
-        void launchMenu();
-        
-        void printLaunchMode();
-        void printChoice();
+        MenuCreator();
 
+        void setTitles(String newTitleList[], int newListSize);
+        void execute();
+
+        virtual void menuFunctions(int choice) = 0;
+        
         void checkButtons();
         bool buttonUp();
         bool buttonDown();
         bool buttonOk();
-  
+
+        void printLaunchMode();
+        void printChoice();
+
 };
 
 #endif

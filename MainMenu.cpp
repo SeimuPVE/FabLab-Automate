@@ -1,17 +1,16 @@
-#include "ModesExecutor.h"
+#include "MainMenu.h"
 
 
-void setupMainMenu()
+MainMenu::MainMenu() : MenuCreator()
 {
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
             
-    MenuCreator *menu = new MenuCreator(titleList, listSize, modeMainMenu);
-    menu->launchMenu();
+    setTitles(titleList, listSize);
   
 }
 
-void modeMainMenu(int choice)
+void MainMenu::menuFunctions(int choice)
 {
     if(choice == 0)
         modeNormal();
@@ -26,25 +25,25 @@ void modeMainMenu(int choice)
   
 }
 
-void modeNormal(void)
+void MainMenu::modeNormal(void)
 {
     Serial.println("Execute normal mode");
     
 }
 
-void modeMesure()
+void MainMenu::modeMesure()
 {
     Serial.println("Execute mesure mode");
   
 }
 
-void modeTest()
+void MainMenu::modeTest()
 {
     Serial.println("Execute mode test");
   
 }
 
-void modeSettings()
+void MainMenu::modeSettings()
 {
     Serial.println("Execute settings");
   

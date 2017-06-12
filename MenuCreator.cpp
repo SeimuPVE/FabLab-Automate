@@ -1,7 +1,13 @@
 #include "MenuCreator.h"
 
 
-MenuCreator::MenuCreator(String newTitleList[], int newListSize, void (*newFunctions)(int))
+MenuCreator::MenuCreator()
+{
+    currentChoice = 0;
+
+}
+
+void MenuCreator::setTitles(String newTitleList[], int newListSize)
 {
     if((titleList = (char **) malloc(newListSize * sizeof(char *))) == NULL)
         Serial.println("Malloc error");
@@ -18,16 +24,14 @@ MenuCreator::MenuCreator(String newTitleList[], int newListSize, void (*newFunct
     }
 
     listSize = newListSize;
-    currentChoice = 0;
-    functions = newFunctions;
 
     buttonUpState = false;
     buttonDownState = false;
     buttonOkState = false;
-
+  
 }
 
-void MenuCreator::launchMenu()
+void MenuCreator::execute()
 {
     while(1)
     {        
@@ -44,23 +48,11 @@ void MenuCreator::launchMenu()
           
         }
         else if(buttonOk())
-            functions(currentChoice);
+            menuFunctions(currentChoice);
     
         printChoice();
       
     }
-  
-}
-
-void MenuCreator::printLaunchMode()
-{
-    Serial.println("Launch mode");
-  
-}
-
-void MenuCreator::printChoice()
-{
-    Serial.println(titleList[currentChoice]);
   
 }
 
@@ -105,5 +97,17 @@ bool MenuCreator::buttonOk()
 {
     return buttonOkState;
 
+}
+
+void MenuCreator::printLaunchMode()
+{
+    Serial.println("Launch mode");
+  
+}
+
+void MenuCreator::printChoice()
+{
+    Serial.println(titleList[currentChoice]);
+  
 }
 
