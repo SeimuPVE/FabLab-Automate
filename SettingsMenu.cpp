@@ -5,10 +5,8 @@ SettingsMenu::SettingsMenu() : MenuCreator()
 {
     int listSize = 13;
     String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Ponctual/Continue", "Frequency", "Borns", "NO", "Exit"};
-    String labelList[] = {"Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to exit"};
             
     setTitles(titleList, listSize);
-    setLabels(labelList, listSize);
 
 }
 
@@ -134,6 +132,25 @@ void SettingsMenu::setSettings(Settings newSettings)
 Settings SettingsMenu::getSettings()
 {
     return settings;
+  
+}
+
+void SettingsMenu::printLabel()
+{
+    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
+        settings.printDay(currentChoice);
+    else
+        switch(currentChoice)
+        {
+            case 7 : settings.printCurrentDate(); break;
+            case 8 : settings.printPonctuality(); break;
+            case 9 : settings.printFrequency(); break;
+            case 10 : settings.printBorns(); break;
+            case 11 : settings.printNO(); break;
+            case 12 : Serial.println("Click to return on main menu"); break;
+            default : Serial.println("Error : menu functions error."); break;
+            
+        }
   
 }
 

@@ -6,7 +6,7 @@
 
 class MenuCreator
 {
-    private:
+    protected:
         char **titleList;
         char **labelList;
         int titleSize;
@@ -37,6 +37,7 @@ class MenuCreator
         bool buttonOk();
 
         void printLaunchMode();
+        virtual void printLabel() = 0;
         void printChoice();
 
 };

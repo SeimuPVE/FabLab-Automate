@@ -36,6 +36,8 @@ class SettingsMenu : public MenuCreator
 
         void setSettings(Settings newSettings);
         Settings getSettings();
+
+        void printLabel();
           
 };
 

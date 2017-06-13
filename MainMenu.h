@@ -22,6 +22,8 @@ class MainMenu : public MenuCreator
         void modeMesure();
         void modeTest();
         void modeSettings();
+
+        void printLabel();
   
 };
 

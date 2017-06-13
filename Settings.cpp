@@ -125,3 +125,43 @@ void Settings::setAll(String startingHour, String endingHour)
   
 }
 
+void Settings::printDay(int dayTag)
+{
+    Serial.print("S:");
+    Serial.print(getPlanning().getDay(MONDAY).getStartingTime());
+    Serial.print("  ");
+    Serial.print("E:");
+    Serial.println(getPlanning().getDay(MONDAY).getStartingTime());
+ 
+}
+
+void Settings::printCurrentDate()
+{
+    Serial.println("Print current date");
+    
+}
+
+void Settings::printPonctuality()
+{
+    Serial.println("Print of continue or not");
+  
+}
+
+void Settings::printFrequency()
+{
+    Serial.println("Print frequency or not");
+  
+}
+
+void Settings::printBorns()
+{
+    Serial.println("Print borns");
+  
+}
+
+void Settings::printNO()
+{
+    Serial.println("Print if NO or not");
+  
+}
+
