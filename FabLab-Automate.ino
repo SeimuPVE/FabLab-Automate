@@ -1,6 +1,7 @@
 #include "MainMenu.h"
 #include "Sensors.h"
 #include "WeekPlanning.h"
+#include "Settings.h"
 
 
 void setup()
@@ -20,8 +21,9 @@ void loop()
     Serial.println("Starting time : " + monday.getStartingTime());
     Serial.println("Ending time : " + monday.getEndingTime());
     delay(1000);*/
-    WeekPlanning week;
-    week.printPlanning();
+    Settings settings;
+    settings.setDay(MONDAY, "10h00", "18h00");
+    settings.getPlanning().printPlanning();
     delay(10000);
     
 /*    if(Sensors::getMesure() < 500)
