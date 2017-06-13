@@ -2,6 +2,7 @@
 #define SENSORS
 
 #include "Arduino.h"
+#include "Settings.h"
 
 #define PORT_SENSOR 0
 #define PORT_RELAIS 6
@@ -9,9 +10,14 @@
 
 class Sensors
 {
+    private:
+        Settings settings;
+        
     public:
-        static int getMesure();
-        static void setRelais(bool state);
+        Settings getSettings();
+        
+        int getMesure();
+        void setRelais(bool state);
   
 };
 

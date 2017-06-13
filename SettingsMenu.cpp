@@ -3,13 +3,13 @@
 
 SettingsMenu::SettingsMenu() : MenuCreator()
 {
-    int listSize = 11;
-    String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Ponctual/Continue", "Frequency", "Borns", "NO"};
-    String labelList[] = {"Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter"};
+    int listSize = 13;
+    String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Ponctual/Continue", "Frequency", "Borns", "NO", "Exit"};
+    String labelList[] = {"Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to enter", "Click to exit"};
             
     setTitles(titleList, listSize);
     setLabels(labelList, listSize);
-  
+
 }
 
 void SettingsMenu::menuFunctions(int choice)
@@ -28,6 +28,7 @@ void SettingsMenu::menuFunctions(int choice)
         case 9 : setFrequency(); break;
         case 10 : setBorns(); break;
         case 11 : setNO(); break;
+        case 12 : setExitFlag(true); break;
         default : Serial.println("Error : menu functions error."); break;
         
     }
@@ -41,7 +42,7 @@ void SettingsMenu::updateLabels()
 
 void SettingsMenu::setDay(int dayTag)
 {
-    Serial.print("Set day : ");
+    Serial.print("Set day ");
 
 }
 
@@ -121,6 +122,18 @@ void SettingsMenu::setBorns()
 void SettingsMenu::setNO()
 {
     Serial.println("Set NO");
+  
+}
+
+void SettingsMenu::setSettings(Settings newSettings)
+{
+    settings = newSettings;
+  
+}
+
+Settings SettingsMenu::getSettings()
+{
+    return settings;
   
 }
 

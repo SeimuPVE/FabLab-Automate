@@ -1,6 +1,12 @@
 #include "Sensors.h"
 
 
+Settings Sensors::getSettings()
+{
+    return settings;
+  
+}
+
 int Sensors::getMesure()
 {
     return analogRead(PORT_SENSOR);

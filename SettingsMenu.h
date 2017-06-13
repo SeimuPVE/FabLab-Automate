@@ -3,15 +3,15 @@
 
 #include "Arduino.h"
 #include "MenuCreator.h"
-#include "Sensors.h"
-#include "WeekPlanning.h"
+#include "Settings.h"
+#include "WeekPlanning.h" // For defines. TODO : find a solution.
 
 
 class SettingsMenu : public MenuCreator
 {
     private:
-        // Nothing.
-
+        Settings settings;
+      
     public:
         SettingsMenu();
 
@@ -33,6 +33,9 @@ class SettingsMenu : public MenuCreator
         void setFrequency();
         void setBorns();
         void setNO();
+
+        void setSettings(Settings newSettings);
+        Settings getSettings();
           
 };
 

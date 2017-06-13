@@ -15,23 +15,14 @@ void setup()
 
 void loop()
 {
-    SettingsMenu menu;
+    MainMenu menu;
     menu.execute();
 
-/*    DayPlanning monday("Monday", "10h10", "10h10");
-    Serial.println("Starting time : " + monday.getStartingTime());
-    Serial.println("Ending time : " + monday.getEndingTime());
-    delay(1000);*/
-
-/*    Settings settings;
-    settings.setDay(MONDAY, "10h00", "18h00");
-    settings.getPlanning().printPlanning();
-    delay(10000);*/
-    
-/*    if(Sensors::getMesure() < 500)
-        Sensors::setRelais(false);
+    Sensors sensors;
+    if(sensors.getMesure() < 500)
+        sensors.setRelais(false);
     else
-        Sensors::setRelais(true);*/
+        sensors.setRelais(true);
 
 }
 

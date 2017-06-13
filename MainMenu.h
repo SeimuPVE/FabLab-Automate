@@ -4,12 +4,14 @@
 #include "Arduino.h"
 #include "MenuCreator.h"
 #include "Sensors.h"
+#include "SettingsMenu.h"
 
 
 class MainMenu : public MenuCreator
 {
     private:
-        // Nothing.
+        Sensors sensors;
+        SettingsMenu settingsMenu;
 
     public:
         MainMenu();

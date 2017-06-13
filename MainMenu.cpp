@@ -3,6 +3,8 @@
 
 MainMenu::MainMenu() : MenuCreator()
 {
+//    settingsMenu.setSettings(sensors.getSettings());
+    
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
     String labelList[] = {"Click to enter", "Click to enter", "Click to enter", "Click to enter"};
@@ -48,6 +50,7 @@ void MainMenu::modeTest()
 void MainMenu::modeSettings()
 {
     Serial.println("Execute settings");
+    settingsMenu.execute();
   
 }
 

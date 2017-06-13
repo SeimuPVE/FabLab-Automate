@@ -13,6 +13,8 @@ class MenuCreator
         int labelSize;
         int currentChoice;
 
+        bool exitFlag;
+
         bool buttonUpState;
         bool buttonDownState;
         bool buttonOkState;
@@ -20,6 +22,9 @@ class MenuCreator
     public:
         MenuCreator();
 
+        bool getExitFlag();
+        void setExitFlag(bool newExitFlag);
+        
         void setTitles(String newTitleList[], int newTitleSize);
         void setLabels(String newLabelList[], int newLabelSize);
         void execute();
