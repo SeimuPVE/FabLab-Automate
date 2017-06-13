@@ -13,6 +13,7 @@ class DayPlanning
         int endingMinute;
 
     public:
+        DayPlanning();
         DayPlanning(String newDayName, String newStartingTime, String newEndingTime);
 
         String getDayName();
@@ -36,6 +37,8 @@ class DayPlanning
 
         void setStartingTime(String timer);
         void setEndingTime(String timer);
+
+        void printDay();
   
 };
 

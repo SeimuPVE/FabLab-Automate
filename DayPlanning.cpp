@@ -1,6 +1,14 @@
 #include "DayPlanning.h"
 
 
+DayPlanning::DayPlanning()
+{
+    setDayName("Unknown");
+    setStartingTime("00h00");
+    setEndingTime("00h00");
+  
+}
+
 DayPlanning::DayPlanning(String newDayName, String newStartingTime, String newEndingTime)
 {
     setDayName(newDayName);
@@ -82,7 +90,11 @@ String DayPlanning::getStartingTime()
     String startingTime = "";
 
     if(getStartingHour() < 10)
+    {
         startingTime += '0';
+        startingTime += (char)(getStartingHour() + '0');
+      
+    }
     else
     {
         startingTime += (char)(getStartingHour()/10 + '0');
@@ -93,7 +105,11 @@ String DayPlanning::getStartingTime()
     startingTime += "h";
 
     if(getStartingMinute() < 10)
+    {
         startingTime += '0';
+        startingTime += (char)(getStartingMinute() + '0');
+      
+    }
     else
     {
         startingTime += (char)(getStartingMinute()/10 + '0');
@@ -110,7 +126,11 @@ String DayPlanning::getEndingTime()
     String endingTime = "";
 
     if(getEndingHour() < 10)
+    {
         endingTime += '0';
+        endingTime += (char)(getEndingHour() + '0');
+      
+    }
     else
     {
         endingTime += (char)(getEndingHour()/10 + '0');
@@ -121,7 +141,11 @@ String DayPlanning::getEndingTime()
     endingTime += "h";
 
     if(getEndingMinute() < 10)
+    {
         endingTime += '0';
+        endingTime += (char)(getEndingMinute() + '0');
+      
+    }
     else
     {
         endingTime += (char)(getEndingMinute()/10 + '0');
@@ -183,5 +207,13 @@ void DayPlanning::setEndingTime(String timer)
     setEndingHour(getHours(timer));
     setEndingMinute(getMinutes(timer));
 
+}
+
+void DayPlanning::printDay()
+{
+    Serial.println(dayName + " :");
+    Serial.println("Starting time : " + getStartingTime());
+    Serial.println("Ending time : " + getEndingTime());
+  
 }
 
