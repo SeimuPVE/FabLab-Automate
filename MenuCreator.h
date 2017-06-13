@@ -8,7 +8,9 @@ class MenuCreator
 {
     private:
         char **titleList;
-        int listSize;
+        char **labelList;
+        int titleSize;
+        int labelSize;
         int currentChoice;
 
         bool buttonUpState;
@@ -18,7 +20,8 @@ class MenuCreator
     public:
         MenuCreator();
 
-        void setTitles(String newTitleList[], int newListSize);
+        void setTitles(String newTitleList[], int newTitleSize);
+        void setLabels(String newLabelList[], int newLabelSize);
         void execute();
 
         virtual void menuFunctions(int choice) = 0;

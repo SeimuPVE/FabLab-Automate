@@ -5,8 +5,10 @@ MainMenu::MainMenu() : MenuCreator()
 {
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
+    String labelList[] = {"Click to enter", "Click to enter", "Click to enter", "Click to enter"};
             
     setTitles(titleList, listSize);
+    setLabels(labelList, listSize);
   
 }
 

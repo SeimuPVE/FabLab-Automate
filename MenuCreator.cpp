@@ -5,29 +5,45 @@ MenuCreator::MenuCreator()
 {
     currentChoice = 0;
 
+    buttonUpState = false;
+    buttonDownState = false;
+    buttonOkState = false;
+
 }
 
-void MenuCreator::setTitles(String newTitleList[], int newListSize)
+void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
 {
-    if((titleList = (char **) malloc(newListSize * sizeof(char *))) == NULL)
+    if((titleList = (char **) malloc(newTitleSize * sizeof(char *))) == NULL)
         Serial.println("Malloc error");
     
-    for(int i = 0; i < newListSize; i++)
+    for(int i = 0; i < newTitleSize; i++)
     {
         if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1 ) * sizeof(char))) == NULL)
             Serial.println("Malloc error");
         
         newTitleList[i].toCharArray(titleList[i], newTitleList[i].length() + 1);
 
-        Serial.println(titleList[i]);
+    }
+
+    titleSize = newTitleSize;
+  
+}
+
+void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
+{
+    if((labelList = (char **) malloc(newLabelSize * sizeof(char *))) == NULL)
+        Serial.println("Malloc error");
+    
+    for(int i = 0; i < newLabelSize; i++)
+    {
+        if((labelList[i] = (char *) malloc((newLabelList[i].length() + 1 ) * sizeof(char))) == NULL)
+            Serial.println("Malloc error");
+        
+        newLabelList[i].toCharArray(labelList[i], newLabelList[i].length() + 1);
       
     }
 
-    listSize = newListSize;
-
-    buttonUpState = false;
-    buttonDownState = false;
-    buttonOkState = false;
+    labelSize = newLabelSize;
   
 }
 
@@ -38,13 +54,13 @@ void MenuCreator::execute()
         checkButtons();
       
         if(buttonUp())
-            currentChoice = (currentChoice + 1) % listSize;
+            currentChoice = (currentChoice + 1) % titleSize;
         else if(buttonDown())
         {
             currentChoice--;
 
             if(currentChoice < 0)
-                currentChoice = listSize - 1;
+                currentChoice = titleSize - 1;
           
         }
         else if(buttonOk())
@@ -107,7 +123,9 @@ void MenuCreator::printLaunchMode()
 
 void MenuCreator::printChoice()
 {
-    Serial.println(titleList[currentChoice]);
+    Serial.print(titleList[currentChoice]);
+    Serial.print(" - ");
+    Serial.println(labelList[currentChoice]);
   
 }
 
