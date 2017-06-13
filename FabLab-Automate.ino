@@ -1,5 +1,5 @@
 #include "MainMenu.h"
-#include "Tools.h"
+#include "Sensors.h"
 #include "DayPlanning.h"
 
 
@@ -15,15 +15,16 @@ void loop()
 {
 /*    MainMenu menu;
     menu.execute();*/
-    DayPlanning monday("Monday", "10h10", "10h10");
+
+/*    DayPlanning monday("Monday", "10h10", "10h10");
     Serial.println("Starting time : " + monday.getStartingTime());
     Serial.println("Ending time : " + monday.getEndingTime());
-    delay(1000);
+    delay(1000);*/
     
-/*    if(getMesure() < 500)
-        setRelais(false);
+    if(Sensors::getMesure() < 500)
+        Sensors::setRelais(false);
     else
-        setRelais(true);*/
+        Sensors::setRelais(true);
 
 }
 

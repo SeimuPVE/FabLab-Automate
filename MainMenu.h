@@ -1,6 +1,9 @@
+#ifndef MAINMENU
+#define MAINMENU
+
 #include "Arduino.h"
 #include "MenuCreator.h"
-#include "Tools.h"
+#include "Sensors.h"
 
 
 class MainMenu : public MenuCreator
@@ -19,4 +22,6 @@ class MainMenu : public MenuCreator
         void modeSettings();
   
 };
+
+#endif
 

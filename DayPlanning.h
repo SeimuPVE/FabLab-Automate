@@ -1,3 +1,6 @@
+#ifndef DAYPLANNING
+#define DAYPLANNING
+
 #include "Arduino.h"
 
 class DayPlanning
@@ -35,4 +38,6 @@ class DayPlanning
         void setEndingTime(String timer);
   
 };
+
+#endif
 

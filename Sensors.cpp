@@ -1,13 +1,13 @@
-#include "Tools.h"
+#include "Sensors.h"
 
 
-int getMesure()
+int Sensors::getMesure()
 {
     return analogRead(PORT_SENSOR);
   
 }
 
-void setRelais(bool state)
+void Sensors::setRelais(bool state)
 {
     if(state == false)
         digitalWrite(PORT_RELAIS, LOW);
