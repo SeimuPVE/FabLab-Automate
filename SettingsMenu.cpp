@@ -48,6 +48,7 @@ void SettingsMenu::setMonday()
 {
     setDay(MONDAY);
     Printer::Write("monday");
+    Printer::ReturnLine();
 
 }
 
@@ -55,6 +56,7 @@ void SettingsMenu::setTuesday()
 {
     setDay(TUESDAY);
     Printer::Write("tuesday");
+    Printer::ReturnLine();
   
 }
 
@@ -62,6 +64,7 @@ void SettingsMenu::setWednesday()
 {
     setDay(WEDNESDAY);
     Printer::Write("wednesday");
+    Printer::ReturnLine();
   
 }
 
@@ -69,6 +72,7 @@ void SettingsMenu::setThursday()
 {
     setDay(THURSDAY);
     Printer::Write("thursday");
+    Printer::ReturnLine();
   
 }
 
@@ -76,6 +80,7 @@ void SettingsMenu::setFriday()
 {
     setDay(FRIDAY);
     Printer::Write("friday");
+    Printer::ReturnLine();
   
 }
 
@@ -83,6 +88,7 @@ void SettingsMenu::setSaturday()
 {
     setDay(SATURDAY);
     Printer::Write("saturday");
+    Printer::ReturnLine();
   
 }
 
@@ -90,36 +96,42 @@ void SettingsMenu::setSunday()
 {
     setDay(SUNDAY);
     Printer::Write("sunday");
+    Printer::ReturnLine();
   
 }
 
 void SettingsMenu::setDate()
 {
     Printer::Write("Set date");
+    Printer::ReturnLine();
   
 }
 
 void SettingsMenu::setPonctual()
 {
     Printer::Write("Set ponctual");
+    Printer::ReturnLine();
   
 }
 
 void SettingsMenu::setFrequency()
 {
     Printer::Write("Set frequency");
+    Printer::ReturnLine();
   
 }
 
 void SettingsMenu::setBorns()
 {
     Printer::Write("Set borns");
+    Printer::ReturnLine();
   
 }
 
 void SettingsMenu::setNO()
 {
     Printer::Write("Set NO");
+    Printer::ReturnLine();
   
 }
 
@@ -147,7 +159,7 @@ void SettingsMenu::printLabel()
             case 9 : settings.printFrequency(); break;
             case 10 : settings.printBorns(); break;
             case 11 : settings.printNO(); break;
-            case 12 : Serial.println("Click to return on main menu"); break;
+            case 12 : Serial.print("Click to return on main menu"); break;
             default : Serial.println("Error : menu functions error."); break;
             
         }

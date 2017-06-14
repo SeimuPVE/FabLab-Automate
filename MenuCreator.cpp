@@ -63,6 +63,10 @@ void MenuCreator::execute()
 {
     exitFlag = false;
     
+    printChoice();
+    Printer::ReturnLine();
+    printLabel();
+
     while(!exitFlag)
     {        
         checkButtons();
@@ -98,7 +102,7 @@ void MenuCreator::checkButtons()
     while(Serial.available() <= 0);
 
     input = Serial.read();
-//    Serial.println(input);
+    Serial.println(input);
 
     buttonUpState = false;
     buttonDownState = false;

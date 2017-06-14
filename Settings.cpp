@@ -131,8 +131,8 @@ void Settings::printDay(int dayTag)
     Printer::Write(getPlanning().getDay(MONDAY).getStartingTime());
     Printer::Write("  ");
     Printer::Write("E:");
-    Printer::Write(getPlanning().getDay(MONDAY).getStartingTime());
-     
+    Printer::Write(getPlanning().getDay(MONDAY).getEndingTime());
+    
 }
 
 void Settings::printCurrentDate()

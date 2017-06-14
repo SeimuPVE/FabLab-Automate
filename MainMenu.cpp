@@ -31,18 +31,21 @@ void MainMenu::menuFunctions(int choice)
 void MainMenu::modeNormal(void)
 {
     Printer::Write("Execute normal mode");
+    Printer::ReturnLine();
     
 }
 
 void MainMenu::modeMesure()
 {
     Printer::Write("Execute mesure mode");
+    Printer::ReturnLine();
   
 }
 
 void MainMenu::modeTest()
 {
     Printer::Write("Execute mode test");
+    Printer::ReturnLine();
   
 }
 
