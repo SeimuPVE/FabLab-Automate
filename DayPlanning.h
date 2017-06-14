@@ -2,6 +2,7 @@
 #define DAYPLANNING
 
 #include "Arduino.h"
+#include "Printer.h"
 
 class DayPlanning
 {
@@ -37,8 +38,6 @@ class DayPlanning
 
         void setStartingTime(String timer);
         void setEndingTime(String timer);
-
-        void printDay();
   
 };
 

@@ -26,12 +26,12 @@ void MenuCreator::setExitFlag(bool newExitFlag)
 void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
 {
     if((titleList = (char **) malloc(newTitleSize * sizeof(char *))) == NULL)
-        Serial.println("Malloc error : can't create title list in the menu creator.");
+        Printer::Write("Malloc error : can't create title list in the menu creator.");
     
     for(int i = 0; i < newTitleSize; i++)
     {
         if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1 ) * sizeof(char))) == NULL)
-            Serial.println("Malloc error : can't add title to the list in the menu creator.");
+            Printer::Write("Malloc error : can't add title to the list in the menu creator.");
         
         newTitleList[i].toCharArray(titleList[i], newTitleList[i].length() + 1);
 
@@ -44,12 +44,12 @@ void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
 void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
 {
     if((labelList = (char **) malloc(newLabelSize * sizeof(char *))) == NULL)
-        Serial.println("Malloc error : can't create label list in the menu creator.");
+        Printer::Write("Malloc error : can't create label list in the menu creator.");
     
     for(int i = 0; i < newLabelSize; i++)
     {
         if((labelList[i] = (char *) malloc((newLabelList[i].length() + 1 ) * sizeof(char))) == NULL)
-            Serial.println("Malloc error : can't add label to the list in the menu creator.");
+            Printer::Write("Malloc error : can't add label to the list in the menu creator.");
         
         newLabelList[i].toCharArray(labelList[i], newLabelList[i].length() + 1);
       
@@ -81,6 +81,7 @@ void MenuCreator::execute()
             menuFunctions(currentChoice);
     
         printChoice();
+        Printer::ReturnLine();
         printLabel();
       
     }
@@ -92,11 +93,12 @@ void MenuCreator::checkButtons()
 {
     char input;
 
+    Serial.println();
     Serial.print("> ");
     while(Serial.available() <= 0);
 
     input = Serial.read();
-    Serial.println(input);
+//    Serial.println(input);
 
     buttonUpState = false;
     buttonDownState = false;
@@ -132,13 +134,13 @@ bool MenuCreator::buttonOk()
 
 void MenuCreator::printLaunchMode()
 {
-    Serial.println("Launch mode");
+    Printer::Write("Launch mode");
   
 }
 void MenuCreator::printChoice()
 {
-    Serial.print("-> ");
-    Serial.println(titleList[currentChoice]);
+    Printer::Write("-> ");
+    Printer::Write(titleList[currentChoice]);
   
 }
 

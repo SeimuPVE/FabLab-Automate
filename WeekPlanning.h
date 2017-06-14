@@ -35,8 +35,6 @@ class WeekPlanning
         void setAll(String startingHour, String endingHour);
 
         DayPlanning getDay(int dayTag);
-
-        void printPlanning();
   
 };
 

@@ -127,41 +127,41 @@ void Settings::setAll(String startingHour, String endingHour)
 
 void Settings::printDay(int dayTag)
 {
-    Serial.print("S:");
-    Serial.print(getPlanning().getDay(MONDAY).getStartingTime());
-    Serial.print("  ");
-    Serial.print("E:");
-    Serial.println(getPlanning().getDay(MONDAY).getStartingTime());
- 
+    Printer::Write("S:");
+    Printer::Write(getPlanning().getDay(MONDAY).getStartingTime());
+    Printer::Write("  ");
+    Printer::Write("E:");
+    Printer::Write(getPlanning().getDay(MONDAY).getStartingTime());
+     
 }
 
 void Settings::printCurrentDate()
 {
-    Serial.println("Print current date");
+    Printer::Write("Print current date");
     
 }
 
 void Settings::printPonctuality()
 {
-    Serial.println("Print of continue or not");
+    Printer::Write("Print of continue or not");
   
 }
 
 void Settings::printFrequency()
 {
-    Serial.println("Print frequency or not");
+    Printer::Write("Print frequency or not");
   
 }
 
 void Settings::printBorns()
 {
-    Serial.println("Print borns");
+    Printer::Write("Print borns");
   
 }
 
 void Settings::printNO()
 {
-    Serial.println("Print if NO or not");
+    Printer::Write("Print if NO or not");
   
 }
 

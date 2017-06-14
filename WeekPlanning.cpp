@@ -112,27 +112,3 @@ DayPlanning WeekPlanning::getDay(int dayTag)
   
 }
 
-void WeekPlanning::printPlanning()
-{
-    monday.printDay();
-    Serial.println();
-
-    tuesday.printDay();
-    Serial.println();
-
-    wednesday.printDay();
-    Serial.println();
-
-    thursday.printDay();
-    Serial.println();
-
-    friday.printDay();
-    Serial.println();
-
-    saturday.printDay();
-    Serial.println();
-
-    sunday.printDay();
-
-}
-

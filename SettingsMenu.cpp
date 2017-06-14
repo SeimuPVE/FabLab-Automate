@@ -40,86 +40,86 @@ void SettingsMenu::updateLabels()
 
 void SettingsMenu::setDay(int dayTag)
 {
-    Serial.print("Set day ");
+    Printer::Write("Set day ");
 
 }
 
 void SettingsMenu::setMonday()
 {
     setDay(MONDAY);
-    Serial.println("monday");
+    Printer::Write("monday");
 
 }
 
 void SettingsMenu::setTuesday()
 {
     setDay(TUESDAY);
-    Serial.println("tuesday");
+    Printer::Write("tuesday");
   
 }
 
 void SettingsMenu::setWednesday()
 {
     setDay(WEDNESDAY);
-    Serial.println("wednesday");
+    Printer::Write("wednesday");
   
 }
 
 void SettingsMenu::setThursday()
 {
     setDay(THURSDAY);
-    Serial.println("thursday");
+    Printer::Write("thursday");
   
 }
 
 void SettingsMenu::setFriday()
 {
     setDay(FRIDAY);
-    Serial.println("friday");
+    Printer::Write("friday");
   
 }
 
 void SettingsMenu::setSaturday()
 {
     setDay(SATURDAY);
-    Serial.println("saturday");
+    Printer::Write("saturday");
   
 }
 
 void SettingsMenu::setSunday()
 {
     setDay(SUNDAY);
-    Serial.println("sunday");
+    Printer::Write("sunday");
   
 }
 
 void SettingsMenu::setDate()
 {
-    Serial.println("Set date");
+    Printer::Write("Set date");
   
 }
 
 void SettingsMenu::setPonctual()
 {
-    Serial.println("Set ponctual");
+    Printer::Write("Set ponctual");
   
 }
 
 void SettingsMenu::setFrequency()
 {
-    Serial.println("Set frequency");
+    Printer::Write("Set frequency");
   
 }
 
 void SettingsMenu::setBorns()
 {
-    Serial.println("Set borns");
+    Printer::Write("Set borns");
   
 }
 
 void SettingsMenu::setNO()
 {
-    Serial.println("Set NO");
+    Printer::Write("Set NO");
   
 }
 

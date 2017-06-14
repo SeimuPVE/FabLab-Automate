@@ -7,7 +7,7 @@
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(9600); // For errors.
     pinMode(PORT_SENSOR, INPUT);
     pinMode(PORT_RELAIS, OUTPUT);
     

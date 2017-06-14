@@ -3,6 +3,7 @@
 
 MainMenu::MainMenu() : MenuCreator()
 {
+    Printer::Begin();
     settingsMenu.setSettings(sensors.getSettings());
     
     int listSize = 4;
@@ -29,33 +30,32 @@ void MainMenu::menuFunctions(int choice)
 
 void MainMenu::modeNormal(void)
 {
-    Serial.println("Execute normal mode");
+    Printer::Write("Execute normal mode");
     
 }
 
 void MainMenu::modeMesure()
 {
-    Serial.println("Execute mesure mode");
+    Printer::Write("Execute mesure mode");
   
 }
 
 void MainMenu::modeTest()
 {
-    Serial.println("Execute mode test");
+    Printer::Write("Execute mode test");
   
 }
 
 void MainMenu::modeSettings()
 {
-    Serial.println("Execute settings");
     settingsMenu.execute();
   
 }
 
 void MainMenu::printLabel()
 {
-    Serial.print("   ");
-    Serial.println(titleList[(currentChoice + 1) % titleSize]);
+    Printer::Write("   ");
+    Printer::Write(titleList[(currentChoice + 1) % titleSize]);
   
 }
 

@@ -209,11 +209,3 @@ void DayPlanning::setEndingTime(String timer)
 
 }
 
-void DayPlanning::printDay()
-{
-    Serial.println(dayName + " :");
-    Serial.println("Starting time : " + getStartingTime());
-    Serial.println("Ending time : " + getEndingTime());
-  
-}
-

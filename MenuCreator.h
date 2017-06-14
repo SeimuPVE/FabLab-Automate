@@ -2,6 +2,7 @@
 #define MENUCREATOR
 
 #include "Arduino.h"
+#include "Printer.h"
 
 
 class MenuCreator
@@ -37,8 +38,8 @@ class MenuCreator
         bool buttonOk();
 
         void printLaunchMode();
-        virtual void printLabel() = 0;
         void printChoice();
+        virtual void printLabel() = 0;
 
 };
 

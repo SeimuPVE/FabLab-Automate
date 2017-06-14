@@ -5,6 +5,7 @@
 #include "MenuCreator.h"
 #include "Sensors.h"
 #include "SettingsMenu.h"
+#include "Printer.h"
 
 
 class MainMenu : public MenuCreator
