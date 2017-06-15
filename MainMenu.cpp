@@ -1,10 +1,10 @@
 #include "MainMenu.h"
 
 
-MainMenu::MainMenu() : MenuCreator()
+MainMenu::MainMenu(Printer *printer) : MenuCreator(printer)
 {
-    Printer::Begin();
-    settingsMenu.setSettings(sensors.getSettings());
+    sensors = new Sensors();
+    settingsMenu = new SettingsMenu(printer, &(sensors->getSettings()));
     
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
@@ -30,35 +30,60 @@ void MainMenu::menuFunctions(int choice)
 
 void MainMenu::modeNormal(void)
 {
-    Printer::Write("Execute normal mode");
-    Printer::ReturnLine();
+    printer->Clear();
+    printer->WriteL1("Normal mode");
+    printer->WriteL2("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
     
 }
 
 void MainMenu::modeMesure()
 {
-    Printer::Write("Execute mesure mode");
-    Printer::ReturnLine();
+    printer->Clear();
+    printer->WriteL1("Mesure mode");
+    printer->WriteL2("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
   
 }
 
 void MainMenu::modeTest()
 {
-    Printer::Write("Execute mode test");
-    Printer::ReturnLine();
+    printer->Clear();
+    printer->WriteL1("Mode test");
+    printer->WriteL2("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
   
 }
 
 void MainMenu::modeSettings()
 {
-    settingsMenu.execute();
+    printer->Clear();
+    settingsMenu->execute();
   
 }
 
 void MainMenu::printLabel()
 {
-    Printer::Write("   ");
-    Printer::Write(titleList[(currentChoice + 1) % titleSize]);
+    printer->WriteL2("   ");
+    printer->WriteL2(titleList[(currentChoice + 1) % titleSize], 3);
   
 }
 

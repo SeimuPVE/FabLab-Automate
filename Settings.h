@@ -42,12 +42,12 @@ class Settings
         void setDay(int dayTag, String startingHour, String endingHour);
         void setAll(String startingHour, String endingHour);
 
-        void printDay(int dayTag);
-        void printCurrentDate();
-        void printPonctuality();
-        void printFrequency();
-        void printBorns();
-        void printNO();
+        String getStrDay(int dayTag);
+        String getStrCurrentDate();
+        String getStrPonctuality();
+        String getStrFrequency();
+        String getStrBorns();
+        String getStrNO();
   
 };
 

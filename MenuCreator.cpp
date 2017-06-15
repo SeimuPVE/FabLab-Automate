@@ -1,8 +1,10 @@
 #include "MenuCreator.h"
 
 
-MenuCreator::MenuCreator()
+MenuCreator::MenuCreator(Printer *newPrinter)
 {
+    printer = newPrinter;
+    
     currentChoice = 0;
 
     buttonUpState = false;
@@ -26,12 +28,12 @@ void MenuCreator::setExitFlag(bool newExitFlag)
 void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
 {
     if((titleList = (char **) malloc(newTitleSize * sizeof(char *))) == NULL)
-        Printer::Write("Malloc error : can't create title list in the menu creator.");
+        Serial.println("Malloc error : can't create title list in the menu creator.");
     
     for(int i = 0; i < newTitleSize; i++)
     {
         if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1 ) * sizeof(char))) == NULL)
-            Printer::Write("Malloc error : can't add title to the list in the menu creator.");
+            Serial.println("Malloc error : can't add title to the list in the menu creator.");
         
         newTitleList[i].toCharArray(titleList[i], newTitleList[i].length() + 1);
 
@@ -44,12 +46,12 @@ void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
 void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
 {
     if((labelList = (char **) malloc(newLabelSize * sizeof(char *))) == NULL)
-        Printer::Write("Malloc error : can't create label list in the menu creator.");
+        Serial.println("Malloc error : can't create label list in the menu creator.");
     
     for(int i = 0; i < newLabelSize; i++)
     {
         if((labelList[i] = (char *) malloc((newLabelList[i].length() + 1 ) * sizeof(char))) == NULL)
-            Printer::Write("Malloc error : can't add label to the list in the menu creator.");
+            Serial.println("Malloc error : can't add label to the list in the menu creator.");
         
         newLabelList[i].toCharArray(labelList[i], newLabelList[i].length() + 1);
       
@@ -62,9 +64,8 @@ void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
 void MenuCreator::execute()
 {
     exitFlag = false;
-    
+
     printChoice();
-    Printer::ReturnLine();
     printLabel();
 
     while(!exitFlag)
@@ -85,7 +86,6 @@ void MenuCreator::execute()
             menuFunctions(currentChoice);
     
         printChoice();
-        Printer::ReturnLine();
         printLabel();
       
     }
@@ -138,13 +138,15 @@ bool MenuCreator::buttonOk()
 
 void MenuCreator::printLaunchMode()
 {
-    Printer::Write("Launch mode");
+    printer->Clear();
+    printer->WriteL1("Launch mode");
   
 }
 void MenuCreator::printChoice()
 {
-    Printer::Write("-> ");
-    Printer::Write(titleList[currentChoice]);
+    printer->Clear();
+    printer->WriteL1("-> ");
+    printer->WriteL1(titleList[currentChoice], 3);
   
 }
 

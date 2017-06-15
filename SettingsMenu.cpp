@@ -1,8 +1,10 @@
 #include "SettingsMenu.h"
 
 
-SettingsMenu::SettingsMenu() : MenuCreator()
+SettingsMenu::SettingsMenu(Printer *printer, Settings *newSettings) : MenuCreator(printer)
 {
+    setSettings(newSettings);
+    
     int listSize = 13;
     String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Ponctual/Continue", "Frequency", "Borns", "NO", "Exit"};
             
@@ -40,108 +42,202 @@ void SettingsMenu::updateLabels()
 
 void SettingsMenu::setDay(int dayTag)
 {
-    Printer::Write("Set day ");
+    printer->Clear();
+    printer->WriteL1("Set day :");
 
 }
 
 void SettingsMenu::setMonday()
 {
     setDay(MONDAY);
-    Printer::Write("monday");
-    Printer::ReturnLine();
+    printer->WriteL2("monday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 6);
+        delay(1000);
+        
+    }
 
 }
 
 void SettingsMenu::setTuesday()
 {
     setDay(TUESDAY);
-    Printer::Write("tuesday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("tuesday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 7);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setWednesday()
 {
     setDay(WEDNESDAY);
-    Printer::Write("wednesday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("wednesday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 9);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setThursday()
 {
     setDay(THURSDAY);
-    Printer::Write("thursday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("thursday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 8);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setFriday()
 {
     setDay(FRIDAY);
-    Printer::Write("friday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("friday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 6);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setSaturday()
 {
     setDay(SATURDAY);
-    Printer::Write("saturday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("saturday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 8);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setSunday()
 {
     setDay(SUNDAY);
-    Printer::Write("sunday");
-    Printer::ReturnLine();
-  
+    printer->WriteL2("sunday");
+    printer->WriteL1("(to add)", 8);
+
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i + 6);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setDate()
 {
-    Printer::Write("Set date");
-    Printer::ReturnLine();
-  
+    printer->Clear();
+    printer->WriteL1("Set date");
+    printer->WriteL2("(to add)", 8);
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setPonctual()
 {
-    Printer::Write("Set ponctual");
-    Printer::ReturnLine();
-  
+    printer->Clear();
+    printer->WriteL1("Set ponctual");
+
+    printer->WriteL2("(to add)", 8);
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setFrequency()
 {
-    Printer::Write("Set frequency");
-    Printer::ReturnLine();
-  
+    printer->Clear();
+    printer->WriteL2("Set frequency");
+
+    printer->WriteL2("(to add)", 8);
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setBorns()
 {
-    Printer::Write("Set borns");
-    Printer::ReturnLine();
-  
+    printer->Clear();
+    printer->WriteL2("Set borns");
+
+    printer->WriteL2("(to add)", 8);
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
+
 }
 
 void SettingsMenu::setNO()
 {
-    Printer::Write("Set NO");
-    Printer::ReturnLine();
-  
+    printer->Clear();
+    printer->WriteL2("Set NO");
+
+    printer->WriteL2("(to add)", 8);
+    
+    for(int i = 0; i < 3; i++)
+    {
+        printer->WriteL2(".", i);
+        delay(1000);
+        
+    }
+
 }
 
-void SettingsMenu::setSettings(Settings newSettings)
+void SettingsMenu::setSettings(Settings *newSettings)
 {
     settings = newSettings;
   
 }
 
-Settings SettingsMenu::getSettings()
+Settings *SettingsMenu::getSettings()
 {
     return settings;
   
@@ -149,20 +245,37 @@ Settings SettingsMenu::getSettings()
 
 void SettingsMenu::printLabel()
 {
-    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
-        settings.printDay(currentChoice);
+/*    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
+        printer->WriteL2(settings->getStrDay(currentChoice));
     else
         switch(currentChoice)
         {
-            case 7 : settings.printCurrentDate(); break;
-            case 8 : settings.printPonctuality(); break;
-            case 9 : settings.printFrequency(); break;
-            case 10 : settings.printBorns(); break;
-            case 11 : settings.printNO(); break;
-            case 12 : Serial.print("Click to return on main menu"); break;
+            case 7 : printer->WriteL2(settings->getStrCurrentDate()); break;
+            case 8 : printer->WriteL2(settings->getStrPonctuality()); break;
+            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
+            case 10 : printer->WriteL2(settings->getStrBorns()); break;
+            case 11 : printer->WriteL2(settings->getStrNO()); break;
+            case 12 : printer->WriteL2("Go on main menu"); break;
+            default : Serial.println("Error : menu functions error."); break;
+            
+        }*/
+
+    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
+        printer->WriteL2("");
+    else
+        switch(currentChoice)
+        {
+            case 7 : printer->WriteL2(""); break;
+            case 8 : printer->WriteL2(""); break;
+            case 9 : printer->WriteL2(""); break;
+            case 10 : printer->WriteL2(""); break;
+            case 11 : printer->WriteL2(""); break;
+            case 12 : printer->WriteL2("Go on main menu"); break;
             default : Serial.println("Error : menu functions error."); break;
             
         }
+  
+
   
 }
 

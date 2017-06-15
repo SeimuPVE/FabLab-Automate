@@ -11,11 +11,11 @@
 class MainMenu : public MenuCreator
 {
     private:
-        Sensors sensors;
-        SettingsMenu settingsMenu;
+        Sensors *sensors;
+        SettingsMenu *settingsMenu;
 
     public:
-        MainMenu();
+        MainMenu(Printer *printer);
         
         void menuFunctions(int choice);
         

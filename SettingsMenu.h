@@ -10,10 +10,10 @@
 class SettingsMenu : public MenuCreator
 {
     private:
-        Settings settings;
+        Settings *settings;
       
     public:
-        SettingsMenu();
+        SettingsMenu(Printer *printer, Settings *settings);
 
         void menuFunctions(int choice);
         void updateLabels();
@@ -34,8 +34,8 @@ class SettingsMenu : public MenuCreator
         void setBorns();
         void setNO();
 
-        void setSettings(Settings newSettings);
-        Settings getSettings();
+        void setSettings(Settings *newSettings);
+        Settings *getSettings();
 
         void printLabel();
           

@@ -125,43 +125,47 @@ void Settings::setAll(String startingHour, String endingHour)
   
 }
 
-void Settings::printDay(int dayTag)
+String Settings::getStrDay(int dayTag)
 {
-    Printer::Write("S:");
-    Printer::Write(getPlanning().getDay(MONDAY).getStartingTime());
-    Printer::Write("  ");
-    Printer::Write("E:");
-    Printer::Write(getPlanning().getDay(MONDAY).getEndingTime());
+    String str;
+    
+    str += "S:";
+    str += getPlanning().getDay(MONDAY).getStartingTime();
+
+    str += "  E:";
+    str += getPlanning().getDay(MONDAY).getEndingTime();
+
+    return str;
     
 }
 
-void Settings::printCurrentDate()
+String Settings::getStrCurrentDate()
 {
-    Printer::Write("Print current date");
+    return "Print current date";
     
 }
 
-void Settings::printPonctuality()
+String Settings::getStrPonctuality()
 {
-    Printer::Write("Print of continue or not");
+    return "Print of continue or not";
   
 }
 
-void Settings::printFrequency()
+String Settings::getStrFrequency()
 {
-    Printer::Write("Print frequency or not");
+    return "Print frequency or not";
   
 }
 
-void Settings::printBorns()
+String Settings::getStrBorns()
 {
-    Printer::Write("Print borns");
+    return "Print borns";
   
 }
 
-void Settings::printNO()
+String Settings::getStrNO()
 {
-    Printer::Write("Print if NO or not");
+    return "Print if NO or not";
   
 }
 

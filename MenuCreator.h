@@ -8,6 +8,8 @@
 class MenuCreator
 {
     protected:
+        Printer *printer;
+        
         char **titleList;
         char **labelList;
         int titleSize;
@@ -21,7 +23,7 @@ class MenuCreator
         bool buttonOkState;
         
     public:
-        MenuCreator();
+        MenuCreator(Printer *newPrinter);
 
         bool getExitFlag();
         void setExitFlag(bool newExitFlag);
