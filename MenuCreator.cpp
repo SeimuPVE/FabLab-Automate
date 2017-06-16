@@ -32,7 +32,7 @@ void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
     
     for(int i = 0; i < newTitleSize; i++)
     {
-        if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1 ) * sizeof(char))) == NULL)
+        if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1) * sizeof(char))) == NULL)
             Serial.println("Malloc error : can't add title to the list in the menu creator.");
         
         newTitleList[i].toCharArray(titleList[i], newTitleList[i].length() + 1);
@@ -54,6 +54,7 @@ void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
             Serial.println("Malloc error : can't add label to the list in the menu creator.");
         
         newLabelList[i].toCharArray(labelList[i], newLabelList[i].length());
+        labelList[newLabelList[i].length()] = '\0';
       
     }
 

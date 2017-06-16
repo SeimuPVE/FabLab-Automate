@@ -6,7 +6,7 @@ SettingsMenu::SettingsMenu(Printer *printer, Settings *newSettings) : MenuCreato
     setSettings(newSettings);
     
     int listSize = 13;
-    String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Continue", "Frequency", "Borns", "NO", "Exit"};
+    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO", "Exit"};
             
     setTitles(titleList, listSize);
 
