@@ -6,7 +6,7 @@ SettingsMenu::SettingsMenu(Printer *printer, Settings *newSettings) : MenuCreato
     setSettings(newSettings);
     
     int listSize = 13;
-    String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Ponctual/Continue", "Frequency", "Borns", "NO", "Exit"};
+    String titleList[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Current date", "Continue", "Frequency", "Borns", "NO", "Exit"};
             
     setTitles(titleList, listSize);
 
@@ -245,7 +245,7 @@ Settings *SettingsMenu::getSettings()
 
 void SettingsMenu::printLabel()
 {
-/*    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
+    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
         printer->WriteL2(settings->getStrDay(currentChoice));
     else
         switch(currentChoice)
@@ -258,24 +258,7 @@ void SettingsMenu::printLabel()
             case 12 : printer->WriteL2("Go on main menu"); break;
             default : Serial.println("Error : menu functions error."); break;
             
-        }*/
-
-    if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
-        printer->WriteL2("");
-    else
-        switch(currentChoice)
-        {
-            case 7 : printer->WriteL2(""); break;
-            case 8 : printer->WriteL2(""); break;
-            case 9 : printer->WriteL2(""); break;
-            case 10 : printer->WriteL2(""); break;
-            case 11 : printer->WriteL2(""); break;
-            case 12 : printer->WriteL2("Go on main menu"); break;
-            default : Serial.println("Error : menu functions error."); break;
-            
         }
-  
-
   
 }
 

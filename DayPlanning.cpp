@@ -88,32 +88,32 @@ void DayPlanning::setEndingMinute(int newEndingMinute)
 String DayPlanning::getStartingTime()
 {
     String startingTime = "";
-
+    
     if(getStartingHour() < 10)
     {
-        startingTime += '0';
-        startingTime += (char)(getStartingHour() + '0');
-      
+        startingTime.concat('0');
+        startingTime.concat(getStartingHour());
+
     }
     else
     {
-        startingTime += (char)(getStartingHour()/10 + '0');
-        startingTime += getStartingHour()%10;
+        startingTime.concat(getStartingHour()/10);
+        startingTime.concat(getStartingHour()%10);
       
     }
 
-    startingTime += "h";
+    startingTime += 'h';
 
     if(getStartingMinute() < 10)
     {
-        startingTime += '0';
-        startingTime += (char)(getStartingMinute() + '0');
+        startingTime.concat('0');
+        startingTime.concat((char)(getStartingMinute() + '0'));
       
     }
     else
     {
-        startingTime += (char)(getStartingMinute()/10 + '0');
-        startingTime += getStartingMinute()%10;
+        startingTime.concat((char)(getStartingMinute()/10 + '0'));
+        startingTime.concat((char)(getStartingMinute()%10 + '0'));
       
     }
 
@@ -177,8 +177,8 @@ int DayPlanning::getHours(String timer)
 {
     int hours = 0;
 
-    hours += (timer[0] - '0') * 10;
-    hours += (timer[1] - '0');
+    hours += (timer.charAt(0) - '0') * 10;
+    hours += (timer.charAt(1) - '0') + 0;
 
     return hours;
   
@@ -188,8 +188,8 @@ int DayPlanning::getMinutes(String timer)
 {
     int minutes = 0;
 
-    minutes += (timer[3] - '0') * 10;
-    minutes += (timer[4] - '0');
+    minutes += (timer.charAt(3) - '0') * 10;
+    minutes += (timer.charAt(4) - '0') + 0;
 
     return minutes;
   

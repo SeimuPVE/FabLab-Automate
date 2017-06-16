@@ -130,10 +130,10 @@ String Settings::getStrDay(int dayTag)
     String str;
     
     str += "S:";
-    str += getPlanning().getDay(MONDAY).getStartingTime();
+    str += getPlanning().getDay(dayTag).getStartingTime();
 
     str += "  E:";
-    str += getPlanning().getDay(MONDAY).getEndingTime();
+    str += getPlanning().getDay(dayTag).getEndingTime();
 
     return str;
     
@@ -141,31 +141,31 @@ String Settings::getStrDay(int dayTag)
 
 String Settings::getStrCurrentDate()
 {
-    return "Print current date";
+    return "Current date...";
     
 }
 
 String Settings::getStrPonctuality()
 {
-    return "Print of continue or not";
+    return "Continue ?...";
   
 }
 
 String Settings::getStrFrequency()
 {
-    return "Print frequency or not";
+    return "Frequency...";
   
 }
 
 String Settings::getStrBorns()
 {
-    return "Print borns";
+    return "Borns...";
   
 }
 
 String Settings::getStrNO()
 {
-    return "Print if NO or not";
+    return "NO/NC...";
   
 }
 

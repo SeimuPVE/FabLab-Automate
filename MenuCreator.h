@@ -3,12 +3,14 @@
 
 #include "Arduino.h"
 #include "Printer.h"
+#include "Button.h"
 
 
 class MenuCreator
 {
     protected:
         Printer *printer;
+        Button button;
         
         char **titleList;
         char **labelList;
@@ -34,11 +36,6 @@ class MenuCreator
 
         virtual void menuFunctions(int choice) = 0;
         
-        void checkButtons();
-        bool buttonUp();
-        bool buttonDown();
-        bool buttonOk();
-
         void printLaunchMode();
         void printChoice();
         virtual void printLabel() = 0;

@@ -50,10 +50,10 @@ void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
     
     for(int i = 0; i < newLabelSize; i++)
     {
-        if((labelList[i] = (char *) malloc((newLabelList[i].length() + 1 ) * sizeof(char))) == NULL)
+        if((labelList[i] = (char *) malloc((newLabelList[i].length()) * sizeof(char))) == NULL)
             Serial.println("Malloc error : can't add label to the list in the menu creator.");
         
-        newLabelList[i].toCharArray(labelList[i], newLabelList[i].length() + 1);
+        newLabelList[i].toCharArray(labelList[i], newLabelList[i].length());
       
     }
 
@@ -70,11 +70,11 @@ void MenuCreator::execute()
 
     while(!exitFlag)
     {        
-        checkButtons();
+        button.checkButtons();
       
-        if(buttonUp())
+        if(button.buttonUp())
             currentChoice = (currentChoice + 1) % titleSize;
-        else if(buttonDown())
+        else if(button.buttonDown())
         {
             currentChoice--;
 
@@ -82,7 +82,7 @@ void MenuCreator::execute()
                 currentChoice = titleSize - 1;
           
         }
-        else if(buttonOk())
+        else if(button.buttonOk())
             menuFunctions(currentChoice);
     
         printChoice();
@@ -92,56 +92,13 @@ void MenuCreator::execute()
   
 }
 
-// TODO : for tests, please change it.
-void MenuCreator::checkButtons()
-{
-    char input;
-
-    Serial.println();
-    Serial.print("> ");
-    while(Serial.available() <= 0);
-
-    input = Serial.read();
-    Serial.println(input);
-
-    buttonUpState = false;
-    buttonDownState = false;
-    buttonOkState = false;
-
-    switch(input)
-    {
-      case 'U': buttonUpState = true; break;
-      case 'D': buttonDownState = true;  break;
-      case 'O': buttonOkState = true;  break;
-    
-    }
-
-}
-
-bool MenuCreator::buttonUp()
-{
-    return buttonUpState;
-  
-}
-
-bool MenuCreator::buttonDown()
-{
-    return buttonDownState;
-        
-}
-
-bool MenuCreator::buttonOk()
-{
-    return buttonOkState;
-
-}
-
 void MenuCreator::printLaunchMode()
 {
     printer->Clear();
     printer->WriteL1("Launch mode");
   
 }
+
 void MenuCreator::printChoice()
 {
     printer->Clear();
