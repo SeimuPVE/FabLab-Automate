@@ -14,7 +14,7 @@ class Sensors
         Settings settings;
         
     public:
-        Settings getSettings();
+        Settings *getSettings();
         
         int getMesure();
         void setRelais(bool state);

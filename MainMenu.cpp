@@ -4,7 +4,7 @@
 MainMenu::MainMenu(Printer *printer) : MenuCreator(printer)
 {
     sensors = new Sensors();
-    settingsMenu = new SettingsMenu(printer, &(sensors->getSettings()));
+    settingsMenu = new SettingsMenu(printer, sensors->getSettings());
     
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};

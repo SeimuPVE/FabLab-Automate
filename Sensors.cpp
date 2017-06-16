@@ -1,9 +1,9 @@
 #include "Sensors.h"
 
 
-Settings Sensors::getSettings()
+Settings *Sensors::getSettings()
 {
-    return settings;
+    return &settings;
   
 }
 
