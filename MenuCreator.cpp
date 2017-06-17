@@ -1,9 +1,10 @@
 #include "MenuCreator.h"
 
 
-MenuCreator::MenuCreator(Printer *newPrinter)
+MenuCreator::MenuCreator(Printer *newPrinter, Button *newButton)
 {
     printer = newPrinter;
+    button = newButton;
     
     currentChoice = 0;
 
@@ -71,11 +72,11 @@ void MenuCreator::execute()
 
     while(!exitFlag)
     {        
-        button.checkButtons();
+        button->checkButtons();
       
-        if(button.buttonUp())
+        if(button->buttonUp())
             currentChoice = (currentChoice + 1) % titleSize;
-        else if(button.buttonDown())
+        else if(button->buttonDown())
         {
             currentChoice--;
 
@@ -83,7 +84,7 @@ void MenuCreator::execute()
                 currentChoice = titleSize - 1;
           
         }
-        else if(button.buttonOk())
+        else if(button->buttonOk())
             menuFunctions(currentChoice);
     
         printChoice();

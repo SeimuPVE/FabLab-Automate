@@ -13,7 +13,7 @@ class SettingsMenu : public MenuCreator
         Settings *settings;
       
     public:
-        SettingsMenu(Printer *printer, Settings *settings);
+        SettingsMenu(Printer *printer, Button *newButton, Settings *settings);
 
         void menuFunctions(int choice);
         void updateLabels();

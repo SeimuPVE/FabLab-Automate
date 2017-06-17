@@ -10,7 +10,7 @@ class MenuCreator
 {
     protected:
         Printer *printer;
-        Button button;
+        Button *button;
         
         char **titleList;
         char **labelList;
@@ -25,7 +25,7 @@ class MenuCreator
         bool buttonOkState;
         
     public:
-        MenuCreator(Printer *newPrinter);
+        MenuCreator(Printer *newPrinter, Button *newButton);
 
         bool getExitFlag();
         void setExitFlag(bool newExitFlag);

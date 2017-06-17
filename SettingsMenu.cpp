@@ -1,7 +1,7 @@
 #include "SettingsMenu.h"
 
 
-SettingsMenu::SettingsMenu(Printer *printer, Settings *newSettings) : MenuCreator(printer)
+SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSettings) : MenuCreator(printer, newButton)
 {
     setSettings(newSettings);
     
@@ -169,16 +169,21 @@ void SettingsMenu::setDate()
 
 void SettingsMenu::setPonctual()
 {
-    printer->Clear();
-    printer->WriteL1("Set ponctual");
-
-    printer->WriteL2("(to add)", 8);
-    
-    for(int i = 0; i < 3; i++)
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        printer->Clear();
+        printer->WriteL1("Set ponctuality");
+
+        if(settings->isPonctual())
+            printer->WriteL2("Ponctual");
+        else
+            printer->WriteL2("Continue", 8);
+
+        if(button->buttonUp() || button->buttonDown())
+            settings->setPonctual(!settings->isPonctual());
+               
+        button->checkButtons();
+
     }
 
 }

@@ -1,10 +1,10 @@
 #include "MainMenu.h"
 
 
-MainMenu::MainMenu(Printer *printer) : MenuCreator(printer)
+MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, newButton)
 {
     sensors = new Sensors();
-    settingsMenu = new SettingsMenu(printer, sensors->getSettings());
+    settingsMenu = new SettingsMenu(printer, newButton, sensors->getSettings());
     
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};

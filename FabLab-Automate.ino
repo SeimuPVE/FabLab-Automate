@@ -18,8 +18,9 @@ void setup()
 void loop()
 {
     Printer lcd;
+    Button b;
     
-    MainMenu menu(&lcd);
+    MainMenu menu(&lcd, &b);
     menu.execute();
 
 /*    Sensors sensors;

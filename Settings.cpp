@@ -147,7 +147,9 @@ String Settings::getStrCurrentDate()
 
 String Settings::getStrPonctuality()
 {
-    return "Continue ?...";
+    if(ponctual)
+        return "        Ponctual";
+    return "        Continue";
   
 }
 
