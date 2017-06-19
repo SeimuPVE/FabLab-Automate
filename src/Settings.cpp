@@ -2,9 +2,8 @@
 
 Settings::Settings()
 {
-    setPonctual(true);
-    setNumberCounts(10);
-    setAverageTime(10);
+    setContinue(true);
+    setFrequency(10);
     setBornSup(500.0);
     setBornInf(400.0);
     setNO(false);
@@ -17,21 +16,15 @@ WeekPlanning Settings::getPlanning()
   
 }
 
-bool Settings::isPonctual()
+bool Settings::isContinue()
 {
-    return ponctual;
+    return iContinue;
   
 }
 
-int Settings::getNumberCounts()
+int Settings::getFrequency()
 {
-    return numberCounts;
-  
-}
-
-int Settings::getAverageTime()
-{
-    return averageTime;
+    return frequency;
   
 }
 
@@ -47,27 +40,21 @@ double Settings::getBornInf()
   
 }
 
-bool Settings::getNO()
+bool Settings::isNO()
 {
-    return NO;
+    return NormalyOpen;
   
 }
 
-void Settings::setPonctual(bool newPonctual)
+void Settings::setContinue(bool newPonctual)
 {
-    ponctual = newPonctual;
+    iContinue = newPonctual;
   
 }
 
-void Settings::setNumberCounts(int newNumberCounts)
+void Settings::setFrequency(int newNumberCounts)
 {
-    numberCounts = newNumberCounts;
-  
-}
-
-void Settings::setAverageTime(int newAverageTime)
-{
-    averageTime = newAverageTime;
+    frequency = newNumberCounts;
   
 }
 
@@ -85,7 +72,7 @@ void Settings::setBornInf(double newBornInf)
 
 void Settings::setNO(bool newNO)
 {
-    NO = newNO;
+    NormalyOpen = newNO;
 
 }
 
@@ -145,29 +132,30 @@ String Settings::getStrCurrentDate()
     
 }
 
-String Settings::getStrPonctuality()
+String Settings::getStrIsContinue()
 {
-    if(ponctual)
+    if(iContinue)
         return "        Ponctual";
     return "        Continue";
   
 }
 
-String Settings::getStrFrequency()
+String Settings::writeFrequency()
 {
-    return "Frequency...";
-  
+    return "Change this label";
+
 }
 
 String Settings::getStrBorns()
 {
-    return "Borns...";
-  
+    return "Change this label";
+
 }
 
-String Settings::getStrNO()
+String Settings::getStrNormalyOpen()
 {
-    return "NO/NC...";
-  
-}
+    if(isNO())
+        return "    Normaly open";
+    return "   Normaly close";
 
+}

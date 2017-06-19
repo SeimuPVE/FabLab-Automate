@@ -1,6 +1,8 @@
 #ifndef SETTINGS
 #define SETTINGS
 
+#include <Time.h>
+
 #include "WeekPlanning.h"
 
 
@@ -8,28 +10,25 @@ class Settings
 {
     private:
         WeekPlanning planning;
-        // DateTime dateTime; // Add it later with RTC module.
-        bool ponctual;
-        int numberCounts;
-        int averageTime;
+        time_t dateTime;
+        bool iContinue; // TODO : rename it.
+        int frequency;
         double bornSup;
         double bornInf;
-        bool NO;
+        bool NormalyOpen;
 
     public:
         Settings();
 
         WeekPlanning getPlanning();
-        bool isPonctual();
-        int getNumberCounts();
-        int getAverageTime();
+        bool isContinue();
+        int getFrequency();
         double getBornSup();
         double getBornInf();
-        bool getNO();
+        bool isNO();
 
-        void setPonctual(bool newPonctual);
-        void setNumberCounts(int newNumberCounts);
-        void setAverageTime(int newAverageTime);
+        void setContinue(bool newPonctual);
+        void setFrequency(int newNumberCounts);
         void setBornSup(double newBornSup);
         void setBornInf(double newBornInf);
         void setNO(bool newNO);
@@ -44,12 +43,11 @@ class Settings
 
         String getStrDay(int dayTag);
         String getStrCurrentDate();
-        String getStrPonctuality();
-        String getStrFrequency();
+        String getStrIsContinue();
+        String writeFrequency();
         String getStrBorns();
-        String getStrNO();
-  
+        String getStrNormalyOpen();
+
 };
 
 #endif
-

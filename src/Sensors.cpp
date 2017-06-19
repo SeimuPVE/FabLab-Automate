@@ -3,7 +3,7 @@
 
 Settings *Sensors::getSettings()
 {
-    return &settings;
+    return settings;
   
 }
 

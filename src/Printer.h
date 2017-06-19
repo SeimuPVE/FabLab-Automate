@@ -4,11 +4,11 @@
 #include "Arduino.h"
 
 #include <Wire.h>
-#include <LCD.h>
+//#include <LCD.h>
 #include <LiquidCrystal_I2C.h>
 
-/*#define I2C_ADDR 0x27
-#define BACKLIGHT_PIN 3
+#define I2C_ADDR 0x27
+/*#define BACKLIGHT_PIN 3
 #define En_pin 2
 #define Rw_pin 1
 #define Rs_pin 0
@@ -20,8 +20,8 @@
 
 class Printer
 {
-/*    private:
-        LiquidCrystal_I2C lcd;*/
+    private:
+        LiquidCrystal_I2C lcd;
 
     public:
         Printer();
@@ -29,9 +29,14 @@ class Printer
         void WriteL1(String str, int pos);
         void WriteL2(String str);
         void WriteL2(String str, int pos);
+
+        void WriteL1(int i);
+        void WriteL1(int i, int pos);
+        void WriteL2(int i);
+        void WriteL2(int i, int pos);
+
         void Clear();
 
 };
 
 #endif
-

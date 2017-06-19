@@ -6,7 +6,7 @@ SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSet
     setSettings(newSettings);
     
     int listSize = 13;
-    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO", "Exit"};
+    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO/NC", "Exit"};
             
     setTitles(titleList, listSize);
 
@@ -169,20 +169,24 @@ void SettingsMenu::setDate()
 
 void SettingsMenu::setPonctual()
 {
+    printer->Clear();
+    printer->WriteL1("Set ponctuality");
+    printer->WriteL2(settings->getStrIsContinue());
+
     while(!button->buttonOk())
     {
-        printer->Clear();
-        printer->WriteL1("Set ponctuality");
-
-        if(settings->isPonctual())
-            printer->WriteL2("Ponctual");
-        else
-            printer->WriteL2("Continue", 8);
+        button->checkButtons();
 
         if(button->buttonUp() || button->buttonDown())
-            settings->setPonctual(!settings->isPonctual());
-               
-        button->checkButtons();
+        {
+            settings->setContinue(!settings->isContinue());
+
+            printer->Clear();
+            printer->WriteL1("Set ponctuality");
+            printer->WriteL2(settings->getStrIsContinue());
+
+
+        }
 
     }
 
@@ -191,15 +195,32 @@ void SettingsMenu::setPonctual()
 void SettingsMenu::setFrequency()
 {
     printer->Clear();
-    printer->WriteL2("Set frequency");
+    printer->WriteL1("Set frequency");
+    printer->WriteL2(settings->getFrequency());
 
-    printer->WriteL2("(to add)", 8);
-    
-    for(int i = 0; i < 3; i++)
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            settings->setFrequency(settings->getFrequency() + 1);
+
+            printer->Clear();
+            printer->WriteL1("Set frequency");
+            printer->WriteL2(settings->getFrequency());
+
+        }
+        else if(button->buttonDown())
+        {
+            settings->setFrequency(settings->getFrequency() - 1);
+
+            printer->Clear();
+            printer->WriteL1("Set frequency");
+            printer->WriteL2(settings->getFrequency());
+
+        }
+
     }
 
 }
@@ -207,15 +228,58 @@ void SettingsMenu::setFrequency()
 void SettingsMenu::setBorns()
 {
     printer->Clear();
-    printer->WriteL2("Set borns");
+    printer->WriteL1("Set born sup");
+    printer->WriteL2(settings->getBornSup());
 
-    printer->WriteL2("(to add)", 8);
-    
-    for(int i = 0; i < 3; i++)
+    while(!button->buttonOk()) {
+        button->checkButtons();
+
+        if (button->buttonUp()) {
+            settings->setBornSup(settings->getBornSup() + 1);
+
+            printer->Clear();
+            printer->WriteL1("Set born sup");
+            printer->WriteL2(settings->getBornSup());
+
+        } else if (button->buttonDown()) {
+            settings->setBornSup(settings->getBornSup() - 1);
+
+            printer->Clear();
+            printer->WriteL1("Set born sup");
+            printer->WriteL2(settings->getBornSup());
+
+        }
+
+    }
+
+
+    printer->Clear();
+    printer->WriteL1("Set born inf");
+    printer->WriteL2(settings->getBornInf());
+
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            settings->setBornInf(settings->getBornInf()+1);
+
+            printer->Clear();
+            printer->WriteL1("Set born inf");
+            printer->WriteL2(settings->getBornInf());
+
+        }
+        else if(button->buttonDown())
+        {
+            settings->setBornInf(settings->getBornInf()-1);
+
+            printer->Clear();
+            printer->WriteL1("Set born inf");
+            printer->WriteL2(settings->getBornInf());
+
+        }
+
     }
 
 }
@@ -223,15 +287,23 @@ void SettingsMenu::setBorns()
 void SettingsMenu::setNO()
 {
     printer->Clear();
-    printer->WriteL2("Set NO");
+    printer->WriteL1("Set NO/NC");
+    printer->WriteL2(settings->getStrNormalyOpen());
 
-    printer->WriteL2("(to add)", 8);
-    
-    for(int i = 0; i < 3; i++)
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        button->checkButtons();
+
+        if(button->buttonUp() || button->buttonDown())
+        {
+            settings->setNO(!settings->isNO());
+
+            printer->Clear();
+            printer->WriteL1("Set NO/NC");
+            printer->WriteL2(settings->getStrNormalyOpen());
+
+        }
+
     }
 
 }
@@ -255,15 +327,14 @@ void SettingsMenu::printLabel()
     else
         switch(currentChoice)
         {
-            case 7 : printer->WriteL2(settings->getStrCurrentDate()); break;
-            case 8 : printer->WriteL2(settings->getStrPonctuality()); break;
-            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
+            case 7 :printer->WriteL2(settings->getStrCurrentDate()); break;
+            case 8 : printer->WriteL2(settings->getStrIsContinue()); break;
+            case 9 : printer->WriteL2(settings->getFrequency()); break;
             case 10 : printer->WriteL2(settings->getStrBorns()); break;
-            case 11 : printer->WriteL2(settings->getStrNO()); break;
+            case 11 : printer->WriteL2(settings->getStrNormalyOpen()); break;
             case 12 : printer->WriteL2("Go on main menu"); break;
             default : Serial.println("Error : menu functions error."); break;
             
         }
-  
-}
 
+}

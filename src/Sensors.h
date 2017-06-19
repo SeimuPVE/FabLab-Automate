@@ -11,7 +11,7 @@
 class Sensors
 {
     private:
-        Settings settings;
+        Settings *settings = new Settings;
         
     public:
         Settings *getSettings();
@@ -22,4 +22,3 @@ class Sensors
 };
 
 #endif
-
