@@ -7,7 +7,7 @@ MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, n
     settingsMenu = new SettingsMenu(printer, newButton, sensors->getSettings());
 
     int listSize = 4;
-    String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
+    String titleList[] = {"Start", "Mesure", "Test", "Settings"};
             
     setTitles(titleList, listSize);
 
@@ -45,17 +45,16 @@ void MainMenu::modeNormal(void)
 
 void MainMenu::modeMesure()
 {
-    printer->Clear();
-    printer->WriteL1("Mesure mode");
-    printer->WriteL2("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        delay(1000 - sensors->getSettings()->getFrequency());
+
+        printer->Clear();
+        printer->WriteL1("Current mesure :");
+        printer->WriteL2(sensors->getMesure());
+
     }
-  
+
 }
 
 void MainMenu::modeTest()
