@@ -24,7 +24,7 @@ void SettingsMenu::menuFunctions(int choice)
         case 5 : setSaturday(); break;
         case 6 : setSunday(); break;
         case 7 : setDate(); break;
-        case 8 : setPonctual(); break;
+        case 8 : setContinue(); break;
         case 9 : setFrequency(); break;
         case 10 : setBorns(); break;
         case 11 : setNO(); break;
@@ -32,11 +32,6 @@ void SettingsMenu::menuFunctions(int choice)
         default : Serial.println("Error : menu functions error."); break;
         
     }
-  
-}
-
-void SettingsMenu::updateLabels()
-{
   
 }
 
@@ -154,20 +149,113 @@ void SettingsMenu::setSunday()
 
 void SettingsMenu::setDate()
 {
+    int day = 0, hour = 0, minute = 0;
+
     printer->Clear();
-    printer->WriteL1("Set date");
-    printer->WriteL2("(to add)", 8);
-    
-    for(int i = 0; i < 3; i++)
+    printer->WriteL1("Set day");
+    printer->WriteL2(day);
+
+    while(!button->buttonOk())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            day++;
+            if(day == 7)
+                day = 0;
+
+            printer->Clear();
+            printer->WriteL1("Set day");
+            printer->WriteL2(day);
+
+        }
+        else if(button->buttonDown())
+        {
+            day--;
+            if(day < 0)
+                day = 6;
+
+            printer->Clear();
+            printer->WriteL1("Set day");
+            printer->WriteL2(day);
+
+        }
+
     }
+
+
+    printer->Clear();
+    printer->WriteL1("Set hour");
+    printer->WriteL2(hour);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            hour++;
+            if(hour == 24)
+                hour = 0;
+
+            printer->Clear();
+            printer->WriteL1("Set hour");
+            printer->WriteL2(hour);
+
+        }
+        else if(button->buttonDown())
+        {
+            hour--;
+            if(hour < 0)
+                hour = 23;
+
+            printer->Clear();
+            printer->WriteL1("Set hour");
+            printer->WriteL2(hour);
+
+        }
+
+    }
+
+    printer->Clear();
+    printer->WriteL1("Set minute");
+    printer->WriteL2(minute);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            minute++;
+            if(minute == 60)
+                minute = 0;
+
+            printer->Clear();
+            printer->WriteL1("Set minute");
+            printer->WriteL2(minute);
+
+        }
+        else if(button->buttonDown())
+        {
+            minute--;
+            if(minute < 0)
+                minute = 59;
+
+            printer->Clear();
+            printer->WriteL1("Set minute");
+            printer->WriteL2(minute);
+
+        }
+
+    }
+
+    settings->setDateTime(day, hour, minute);
 
 }
 
-void SettingsMenu::setPonctual()
+void SettingsMenu::setContinue()
 {
     printer->Clear();
     printer->WriteL1("Set ponctuality");
@@ -314,12 +402,6 @@ void SettingsMenu::setSettings(Settings *newSettings)
   
 }
 
-Settings *SettingsMenu::getSettings()
-{
-    return settings;
-  
-}
-
 void SettingsMenu::printLabel()
 {
     if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
@@ -329,7 +411,7 @@ void SettingsMenu::printLabel()
         {
             case 7 :printer->WriteL2(settings->getStrCurrentDate()); break;
             case 8 : printer->WriteL2(settings->getStrIsContinue()); break;
-            case 9 : printer->WriteL2(settings->getFrequency()); break;
+            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
             case 10 : printer->WriteL2(settings->getStrBorns()); break;
             case 11 : printer->WriteL2(settings->getStrNormalyOpen()); break;
             case 12 : printer->WriteL2("Go on main menu"); break;

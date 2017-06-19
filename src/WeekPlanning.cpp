@@ -3,47 +3,27 @@
 
 WeekPlanning::WeekPlanning()
 {
-    monday.setDayName("Monday");
-    monday.setStartingTime("08h00");
-    monday.setEndingTime("18h00");
-    
-    tuesday.setDayName("Tuesday");
-    tuesday.setStartingTime("08h00");
-    tuesday.setEndingTime("18h00");
-    
-    wednesday.setDayName("Wednesday");
-    wednesday.setStartingTime("08h00");
-    wednesday.setEndingTime("18h00");
-    
-    thursday.setDayName("Thursday");
-    thursday.setStartingTime("08h00");
-    thursday.setEndingTime("18h00");
-    
-    friday.setDayName("Friday");
-    friday.setStartingTime("08h00");
-    friday.setEndingTime("18h00");
-    
-    saturday.setDayName("Saturday");
-    saturday.setStartingTime("08h00");
-    saturday.setEndingTime("18h00");
-    
-    sunday.setDayName("Sunday");
-    sunday.setStartingTime("08h00");
-    sunday.setEndingTime("18h00");
-    
+    monday = new DayPlanning("Monday", "08h00", "18h00");
+    tuesday = new DayPlanning("Tuesday", "08h00", "18h00");
+    wednesday = new DayPlanning("Wednesday", "08h00", "18h00");
+    thursday = new DayPlanning("Thursday", "08h00", "18h00");
+    friday = new DayPlanning("Friday", "08h00", "18h00");
+    saturday = new DayPlanning("Saturday", "08h00", "18h00");
+    sunday = new DayPlanning("Sunday", "08h00", "18h00");
+
 }
 
-void WeekPlanning::setDayStartingTime(int dayTag, String startingTime)
+/*void WeekPlanning::setDayStartingTime(int dayTag, String startingTime)
 {
     switch(dayTag)
     {
-        case MONDAY     : monday.setStartingTime(startingTime); break;
-        case TUESDAY    : tuesday.setStartingTime(startingTime); break;
-        case WEDNESDAY  : wednesday.setStartingTime(startingTime); break;
-        case THURSDAY   : thursday.setStartingTime(startingTime); break;
-        case FRIDAY     : friday.setStartingTime(startingTime); break;
-        case SATURDAY   : saturday.setStartingTime(startingTime); break;
-        case SUNDAY     : sunday.setStartingTime(startingTime); break;
+        case MONDAY     : monday->setStartingTime(startingTime); break;
+        case TUESDAY    : tuesday->setStartingTime(startingTime); break;
+        case WEDNESDAY  : wednesday->setStartingTime(startingTime); break;
+        case THURSDAY   : thursday->setStartingTime(startingTime); break;
+        case FRIDAY     : friday->setStartingTime(startingTime); break;
+        case SATURDAY   : saturday->setStartingTime(startingTime); break;
+        case SUNDAY     : sunday->setStartingTime(startingTime); break;
         default         : Serial.println("Error : day not found."); break;
       
     }
@@ -54,13 +34,13 @@ void WeekPlanning::setDayEndingTime(int dayTag, String endingTime)
 {
     switch(dayTag)
     {
-        case MONDAY     : monday.setEndingTime(endingTime); break;
-        case TUESDAY    : tuesday.setEndingTime(endingTime); break;
-        case WEDNESDAY  : wednesday.setEndingTime(endingTime); break;
-        case THURSDAY   : thursday.setEndingTime(endingTime); break;
-        case FRIDAY     : friday.setEndingTime(endingTime); break;
-        case SATURDAY   : saturday.setEndingTime(endingTime); break;
-        case SUNDAY     : sunday.setEndingTime(endingTime); break;
+        case MONDAY     : monday->setEndingTime(endingTime); break;
+        case TUESDAY    : tuesday->setEndingTime(endingTime); break;
+        case WEDNESDAY  : wednesday->setEndingTime(endingTime); break;
+        case THURSDAY   : thursday->setEndingTime(endingTime); break;
+        case FRIDAY     : friday->setEndingTime(endingTime); break;
+        case SATURDAY   : saturday->setEndingTime(endingTime); break;
+        case SUNDAY     : sunday->setEndingTime(endingTime); break;
         default         : Serial.println("Error : day not found."); break;
       
     }
@@ -93,9 +73,9 @@ void WeekPlanning::setAll(String startingHour, String endingHour)
     for(int i = MONDAY; i <= SUNDAY; i++)
         setDay(i, startingHour, endingHour);
   
-}
+}*/
 
-DayPlanning WeekPlanning::getDay(int dayTag)
+DayPlanning *WeekPlanning::getDay(int dayTag)
 {
     switch(dayTag)
     {
@@ -111,4 +91,3 @@ DayPlanning WeekPlanning::getDay(int dayTag)
     }    
   
 }
-

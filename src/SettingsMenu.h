@@ -11,13 +11,12 @@ class SettingsMenu : public MenuCreator
 {
     private:
         Settings *settings;
-      
+
     public:
         SettingsMenu(Printer *printer, Button *newButton, Settings *settings);
 
         void menuFunctions(int choice);
-        void updateLabels();
-        
+
         void setDay(int dayTag);
 
         void setMonday();
@@ -29,16 +28,15 @@ class SettingsMenu : public MenuCreator
         void setSunday();
 
         void setDate();
-        void setPonctual();
+        void setContinue();
         void setFrequency();
         void setBorns();
         void setNO();
 
         void setSettings(Settings *newSettings);
-        Settings *getSettings();
 
         void printLabel();
-          
+
 };
 
 #endif

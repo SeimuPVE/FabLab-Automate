@@ -1,6 +1,12 @@
 #include "Sensors.h"
 
 
+Sensors::Sensors()
+{
+    settings = new Settings;
+
+}
+
 Settings *Sensors::getSettings()
 {
     return settings;

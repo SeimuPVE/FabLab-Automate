@@ -8,16 +8,6 @@ MenuCreator::MenuCreator(Printer *newPrinter, Button *newButton)
     
     currentChoice = 0;
 
-    buttonUpState = false;
-    buttonDownState = false;
-    buttonOkState = false;
-
-}
-
-bool MenuCreator::getExitFlag()
-{
-    return exitFlag;
-  
 }
 
 void MenuCreator::setExitFlag(bool newExitFlag)
@@ -41,25 +31,6 @@ void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
     }
 
     titleSize = newTitleSize;
-  
-}
-
-void MenuCreator::setLabels(String newLabelList[], int newLabelSize)
-{
-    if((labelList = (char **) malloc(newLabelSize * sizeof(char *))) == NULL)
-        Serial.println("Malloc error : can't create label list in the menu creator.");
-    
-    for(int i = 0; i < newLabelSize; i++)
-    {
-        if((labelList[i] = (char *) malloc((newLabelList[i].length()) * sizeof(char))) == NULL)
-            Serial.println("Malloc error : can't add label to the list in the menu creator.");
-        
-        newLabelList[i].toCharArray(labelList[i], newLabelList[i].length());
-        labelList[newLabelList[i].length()] = '\0';
-      
-    }
-
-    labelSize = newLabelSize;
   
 }
 
@@ -91,13 +62,6 @@ void MenuCreator::execute()
         printLabel();
       
     }
-  
-}
-
-void MenuCreator::printLaunchMode()
-{
-    printer->Clear();
-    printer->WriteL1("Launch mode");
   
 }
 

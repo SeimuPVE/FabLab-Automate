@@ -1,36 +1,18 @@
 #include "Printer.h"
 
 
-Printer::Printer() : lcd(I2C_ADDR, 20, 4) //: lcd(I2C_ADDR, En_pin, Rw_pin, Rs_pin, D4_pin, D5_pin, D6_pin, D7_pin)
+Printer::Printer() : lcd(I2C_ADDR, 20, 4)
 {
-/*    lcd.begin(16, 2);
-
-    lcd.setBacklightPin(BACKLIGHT_PIN, POSITIVE);
-    lcd.setBacklight(HIGH);
-
-    lcd.home();*/
     lcd.init();
     lcd.backlight();
     lcd.home();
     
 }
 
-void Printer::WriteL1(String str)
-{
-    WriteL1(str, 0);
-      
-}
-
 void Printer::WriteL1(String str, int pos)
 {
     lcd.setCursor(pos, 0);
     lcd.print(str);
-    
-}
-
-void Printer::WriteL2(String str)
-{
-    WriteL2(str, 0);
     
 }
 
@@ -41,22 +23,10 @@ void Printer::WriteL2(String str, int pos)
   
 }
 
-void Printer::WriteL1(int i)
-{
-    WriteL1(i, 0);
-
-}
-
 void Printer::WriteL1(int i, int pos)
 {
     lcd.setCursor(pos, 0);
     lcd.print(i);
-
-}
-
-void Printer::WriteL2(int i)
-{
-    WriteL2(i, 0);
 
 }
 

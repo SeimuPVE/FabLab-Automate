@@ -6,7 +6,6 @@
 #define encoder0PinA 2
 #define encoder0PinB 4
 #define encoder0PinC 3
-#define encoder0Pos 0
 
 
 class Button
@@ -33,4 +32,3 @@ class Button
 };
 
 #endif
-

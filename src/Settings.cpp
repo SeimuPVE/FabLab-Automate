@@ -2,18 +2,35 @@
 
 Settings::Settings()
 {
+    if(timeStatus() == timeNotSet)
+        setTime(0, 0, 0, 0, 0, 0);
+    dateTime = now();
+
     setContinue(true);
     setFrequency(10);
     setBornSup(500.0);
     setBornInf(400.0);
     setNO(false);
-  
+
 }
 
-WeekPlanning Settings::getPlanning()
+WeekPlanning *Settings::getPlanning()
 {
     return planning;
   
+}
+
+void Settings::setDateTime(int dayTag, int hour, int minute)
+{
+/*    Serial.print(dayTag);
+    Serial.print(" ");
+    Serial.print(hour);
+    Serial.print(":");
+    Serial.println(minute);*/
+
+//    setTime(hour, minute, 0, dayTag, 0, 0);
+    dateTime = now();
+
 }
 
 bool Settings::isContinue()
@@ -28,13 +45,13 @@ int Settings::getFrequency()
   
 }
 
-double Settings::getBornSup()
+int Settings::getBornSup()
 {
     return bornSup;
   
 }
 
-double Settings::getBornInf()
+int Settings::getBornInf()
 {
     return bornInf;
   
@@ -42,13 +59,13 @@ double Settings::getBornInf()
 
 bool Settings::isNO()
 {
-    return NormalyOpen;
+    return normalyOpen;
   
 }
 
-void Settings::setContinue(bool newPonctual)
+void Settings::setContinue(bool newContinue)
 {
-    iContinue = newPonctual;
+    iContinue = newContinue;
   
 }
 
@@ -72,55 +89,55 @@ void Settings::setBornInf(double newBornInf)
 
 void Settings::setNO(bool newNO)
 {
-    NormalyOpen = newNO;
+    normalyOpen = newNO;
 
 }
 
-void Settings::setDayStartingTime(int dayTag, String startingTime)
+/*void Settings::setDayStartingTime(int dayTag, String startingTime)
 {
-    planning.setDayStartingTime(dayTag, startingTime);
+    planning->setDayStartingTime(dayTag, startingTime);
   
 }
 
 void Settings::setDayEndingTime(int dayTag, String endingTime)
 {
-    planning.setDayEndingTime(dayTag, endingTime);
+    planning->setDayEndingTime(dayTag, endingTime);
   
 }
 
 void Settings::setAllStartingTime(String startingTime)
 {
-    planning.setAllStartingTime(startingTime);
+    planning->setAllStartingTime(startingTime);
 
 }
 
 void Settings::setAllEndingTime(String endingTime)
 {
-    planning.setAllEndingTime(endingTime);
+    planning->setAllEndingTime(endingTime);
   
 }
 
 void Settings::setDay(int dayTag, String startingHour, String endingHour)
 {
-    planning.setDay(dayTag, startingHour, endingHour);
+    planning->setDay(dayTag, startingHour, endingHour);
   
 }
 
 void Settings::setAll(String startingHour, String endingHour)
 {
-    planning.setAll(startingHour, endingHour);
+    planning->setAll(startingHour, endingHour);
   
-}
+}*/
 
 String Settings::getStrDay(int dayTag)
 {
     String str;
     
     str += "S:";
-    str += getPlanning().getDay(dayTag).getStartingTime();
+    str += getPlanning()->getDay(dayTag)->getStartingTime();
 
     str += "  E:";
-    str += getPlanning().getDay(dayTag).getEndingTime();
+    str += getPlanning()->getDay(dayTag)->getEndingTime();
 
     return str;
     
@@ -128,8 +145,18 @@ String Settings::getStrDay(int dayTag)
 
 String Settings::getStrCurrentDate()
 {
-    return "Current date...";
-    
+    // TODO : correct printing.
+    String result;
+    dateTime = now();
+
+    result += dayStr(dateTime);
+    result += " ";
+    result += hour(dateTime);
+    result += ":";
+    result += minute(dateTime);
+
+    return result;
+
 }
 
 String Settings::getStrIsContinue()
@@ -140,15 +167,28 @@ String Settings::getStrIsContinue()
   
 }
 
-String Settings::writeFrequency()
+String Settings::getStrFrequency()
 {
-    return "Change this label";
+    String result = "";
+
+    result += frequency;
+    result += " calculs by H";
+
+    return result;
 
 }
 
 String Settings::getStrBorns()
 {
-    return "Change this label";
+    String result = "";
+
+    result += "Inf:";
+    result += bornInf;
+
+    result += " Sup:";
+    result += bornSup;
+
+    return result;
 
 }
 

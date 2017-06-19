@@ -11,9 +11,11 @@
 class Sensors
 {
     private:
-        Settings *settings = new Settings;
+        Settings *settings;
         
     public:
+        Sensors();
+
         Settings *getSettings();
         
         int getMesure();

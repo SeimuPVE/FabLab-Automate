@@ -5,12 +5,12 @@ MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, n
 {
     sensors = new Sensors();
     settingsMenu = new SettingsMenu(printer, newButton, sensors->getSettings());
-    
+
     int listSize = 4;
     String titleList[] = {"Start", "Mesure mode", "Test mode", "Settings"};
             
     setTitles(titleList, listSize);
-  
+
 }
 
 void MainMenu::menuFunctions(int choice)
@@ -25,7 +25,7 @@ void MainMenu::menuFunctions(int choice)
         modeSettings();
     else
         Serial.println("Error");
-  
+
 }
 
 void MainMenu::modeNormal(void)
@@ -82,7 +82,6 @@ void MainMenu::modeSettings()
 
 void MainMenu::printLabel()
 {
-    printer->WriteL2("   ");
     printer->WriteL2(titleList[(currentChoice + 1) % titleSize], 3);
   
 }

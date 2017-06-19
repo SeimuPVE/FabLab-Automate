@@ -17,7 +17,8 @@ class DayPlanning
         DayPlanning();
         DayPlanning(String newDayName, String newStartingTime, String newEndingTime);
 
-        String getDayName();
+        // TODO : Check that.
+//        String getDayName();
         int getStartingHour();
         int getStartingMinute();
         int getEndingHour();

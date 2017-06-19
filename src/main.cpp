@@ -1,14 +1,9 @@
 #include "MainMenu.h"
-#include "Sensors.h"
-#include "WeekPlanning.h"
-#include "Settings.h"
-#include "SettingsMenu.h"
-#include "Printer.h"
 
 
 void setup()
 {
-    Serial.begin(9600); // To print errors.
+    Serial.begin(9600);
     
     pinMode(PORT_SENSOR, INPUT);
     pinMode(PORT_RELAIS, OUTPUT);
@@ -17,16 +12,10 @@ void setup()
 
 void loop()
 {
-    Printer lcd;
-    Button b;
+    Printer *lcd = new Printer;
+    Button *b = new Button;
     
-    MainMenu menu(&lcd, &b);
+    MainMenu menu(lcd, b);
     menu.execute();
-
-/*    Sensors sensors;
-    if(sensors.getMesure() < 500)
-        sensors.setRelais(false);
-    else
-        sensors.setRelais(true);*/
 
 }

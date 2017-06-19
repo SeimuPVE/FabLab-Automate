@@ -24,6 +24,7 @@ Button::Button()
 
 void Button::checkButtons()
 {
+    // TODO : verify this function.
     bool pushed = false;
 
     while(!pushed)

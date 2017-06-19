@@ -15,26 +15,27 @@
 class WeekPlanning
 {
     private:
-        DayPlanning monday;
-        DayPlanning tuesday;
-        DayPlanning wednesday;
-        DayPlanning thursday;
-        DayPlanning friday;
-        DayPlanning saturday;
-        DayPlanning sunday;
+        DayPlanning *monday;
+        DayPlanning *tuesday;
+        DayPlanning *wednesday;
+        DayPlanning *thursday;
+        DayPlanning *friday;
+        DayPlanning *saturday;
+        DayPlanning *sunday;
 
     public:
         WeekPlanning();
 
-        void setDayStartingTime(int dayTag, String startingTime);
+    // TODO : check that.
+/*        void setDayStartingTime(int dayTag, String startingTime);
         void setDayEndingTime(int dayTag, String endingTime);
         void setAllStartingTime(String startingTime);
         void setAllEndingTime(String endingTime);
-        
-        void setDay(int dayTag, String startingHour, String endingHour);
-        void setAll(String startingHour, String endingHour);
 
-        DayPlanning getDay(int dayTag);
+        void setDay(int dayTag, String startingHour, String endingHour);
+        void setAll(String startingHour, String endingHour);*/
+
+        DayPlanning *getDay(int dayTag);
   
 };
 

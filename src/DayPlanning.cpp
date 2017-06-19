@@ -25,11 +25,11 @@ DayPlanning::DayPlanning(String newDayName, String newStartingTime, String newEn
 
 }
 
-String DayPlanning::getDayName()
+/*String DayPlanning::getDayName()
 {
     return dayName;
     
-}
+}*/
 
 int DayPlanning::getStartingHour()
 {
@@ -52,6 +52,7 @@ int DayPlanning::getEndingHour()
 int DayPlanning::getEndingMinute()
 {
     return endingMinute;
+
 }
 
 
