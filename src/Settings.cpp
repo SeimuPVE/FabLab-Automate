@@ -123,6 +123,15 @@ void Settings::setAll(String startingHour, String endingHour)
   
 }*/
 
+void Settings::setDay(int dayTag, int startingHour, int startingMinute, int endingHour, int endingMinute)
+{
+    planning->getDay(dayTag)->setStartingHour(startingHour);
+    planning->getDay(dayTag)->setStartingMinute(startingMinute);
+    planning->getDay(dayTag)->setEndingHour(endingHour);
+    planning->getDay(dayTag)->setEndingMinute(endingMinute);
+
+}
+
 String Settings::getStrDay(int dayTag)
 {
     String str;

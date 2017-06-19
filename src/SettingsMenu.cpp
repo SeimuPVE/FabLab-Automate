@@ -37,113 +37,57 @@ void SettingsMenu::menuFunctions(int choice)
 
 void SettingsMenu::setDay(int dayTag)
 {
-    printer->Clear();
-    printer->WriteL1("Set day :");
+    //DAY_NAME[dayTag]
+    int startingHour, startingMinute, endingHour, endingMinute;
+
+    startingHour = selectBetweenInterval("Starting hour", 8, 0, 23);
+    startingMinute = selectBetweenInterval("Starting minute", 0, 0, 59);
+    endingHour = selectBetweenInterval("Ending hour", 18, 0, 23);
+    endingMinute = selectBetweenInterval("Ending minute", 0, 0, 59);
+
+    settings->setDay(dayTag, startingHour, startingMinute, endingHour, endingMinute);
 
 }
 
 void SettingsMenu::setMonday()
 {
     setDay(MONDAY);
-    printer->WriteL2("monday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 6);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setTuesday()
 {
     setDay(TUESDAY);
-    printer->WriteL2("tuesday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 7);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setWednesday()
 {
     setDay(WEDNESDAY);
-    printer->WriteL2("wednesday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 9);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setThursday()
 {
     setDay(THURSDAY);
-    printer->WriteL2("thursday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 8);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setFriday()
 {
     setDay(FRIDAY);
-    printer->WriteL2("friday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 6);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setSaturday()
 {
     setDay(SATURDAY);
-    printer->WriteL2("saturday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 8);
-        delay(1000);
-        
-    }
 
 }
 
 void SettingsMenu::setSunday()
 {
     setDay(SUNDAY);
-    printer->WriteL2("sunday");
-    printer->WriteL1("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
-    {
-        printer->WriteL2(".", i + 6);
-        delay(1000);
-        
-    }
 
 }
 

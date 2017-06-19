@@ -39,9 +39,11 @@ class Settings
         void setDayEndingTime(int dayTag, String endingTime);
         void setAllStartingTime(String startingTime);
         void setAllEndingTime(String endingTime);
-        
+
         void setDay(int dayTag, String startingHour, String endingHour);
         void setAll(String startingHour, String endingHour);*/
+
+        void setDay(int dayTag, int startingHour, int startingMinute, int endingHour, int endingMinute);
 
         String getStrDay(int dayTag);
         String getStrCurrentDate();

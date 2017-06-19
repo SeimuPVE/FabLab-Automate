@@ -6,6 +6,7 @@
 #include "Settings.h"
 #include "WeekPlanning.h" // For defines. TODO : find a solution.
 
+//#define DAY_NAME[7] = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 
 class SettingsMenu : public MenuCreator
 {
