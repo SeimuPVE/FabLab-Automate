@@ -27,7 +27,7 @@ class Settings
         int getBornInf();
         bool isNO();
 
-        void setDateTime(int dayTag, int hour, int minute);
+        void setDateTime(int hour, int minute, int day, int month, int year);
         void setContinue(bool newContinue);
         void setFrequency(int newNumberCounts);
         void setBornSup(double newBornSup);

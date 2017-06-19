@@ -20,15 +20,9 @@ WeekPlanning *Settings::getPlanning()
   
 }
 
-void Settings::setDateTime(int dayTag, int hour, int minute)
+void Settings::setDateTime(int hour, int minute, int day, int month, int year)
 {
-/*    Serial.print(dayTag);
-    Serial.print(" ");
-    Serial.print(hour);
-    Serial.print(":");
-    Serial.println(minute);*/
-
-    setTime(hour, minute, 0, dayTag, 0, 0);
+    setTime(hour, minute, 0, day, month, year);
     dateTime = now();
 
 }
@@ -145,11 +139,21 @@ String Settings::getStrDay(int dayTag)
 
 String Settings::getStrCurrentDate()
 {
-    // TODO : correct printing.
     String result;
     dateTime = now();
 
-    result += dayStr(dateTime);
+    switch(dayOfWeek(dateTime) - 1)
+    {
+        case 0 : result += "Sunday"; break;
+        case 1 : result += "Monday"; break;
+        case 2 : result += "Tuesday"; break;
+        case 3 : result += "Wednesday"; break;
+        case 4 : result += "Thursday"; break;
+        case 5 : result += "Friday"; break;
+        case 6 : result += "Saturday"; break;
+
+    }
+
     result += " ";
     result += hour(dateTime);
     result += ":";

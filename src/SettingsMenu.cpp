@@ -149,14 +149,22 @@ void SettingsMenu::setSunday()
 
 void SettingsMenu::setDate()
 {
-    int day = 0, hour = 0, minute = 0;
+    int hour, minute, day, month, year;
 
-    // TODO : change initial value.
-    day = selectBetweenInterval("Select day", 0, 0, 6);
-    hour = selectBetweenInterval("Select hour", 0, 0, 23);
-    minute = selectBetweenInterval("Select minute", 0, 0, 59);
+    hour = 15;
+    minute = 5;
+    day = 18;
+    month = 6;
+    year = 2017;
 
-    settings->setDateTime(day, hour, minute);
+    // TODO : change initial values.
+    hour = selectBetweenInterval("Select hour", hour, 0, 23);
+    minute = selectBetweenInterval("Select minute", minute, 0, 59);
+    day = selectBetweenInterval("Select day", day, 0, 31);
+    month = selectBetweenInterval("Select month", month , 0, 11); // TODO : select label.
+    year = selectBetweenInterval("Select year", year, 2000, 3000);
+
+    settings->setDateTime(hour, minute, day, month, year);
 
 }
 
