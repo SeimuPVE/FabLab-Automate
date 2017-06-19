@@ -35,6 +35,9 @@ class SettingsMenu : public MenuCreator
 
         void setSettings(Settings *newSettings);
 
+        int selectBetweenInterval(String label, int initialValue, int inf = 0, int sup = 999);
+        bool selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue);
+
         void printLabel();
 
 };

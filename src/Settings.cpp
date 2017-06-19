@@ -28,7 +28,7 @@ void Settings::setDateTime(int dayTag, int hour, int minute)
     Serial.print(":");
     Serial.println(minute);*/
 
-//    setTime(hour, minute, 0, dayTag, 0, 0);
+    setTime(hour, minute, 0, dayTag, 0, 0);
     dateTime = now();
 
 }
@@ -162,9 +162,9 @@ String Settings::getStrCurrentDate()
 String Settings::getStrIsContinue()
 {
     if(iContinue)
-        return "        Ponctual";
-    return "        Continue";
-  
+        return "        Continue";
+    return "        Ponctual";
+
 }
 
 String Settings::getStrFrequency()

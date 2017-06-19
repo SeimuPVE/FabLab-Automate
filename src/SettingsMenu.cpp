@@ -151,105 +151,10 @@ void SettingsMenu::setDate()
 {
     int day = 0, hour = 0, minute = 0;
 
-    printer->Clear();
-    printer->WriteL1("Set day");
-    printer->WriteL2(day);
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp())
-        {
-            day++;
-            if(day == 7)
-                day = 0;
-
-            printer->Clear();
-            printer->WriteL1("Set day");
-            printer->WriteL2(day);
-
-        }
-        else if(button->buttonDown())
-        {
-            day--;
-            if(day < 0)
-                day = 6;
-
-            printer->Clear();
-            printer->WriteL1("Set day");
-            printer->WriteL2(day);
-
-        }
-
-    }
-
-
-    printer->Clear();
-    printer->WriteL1("Set hour");
-    printer->WriteL2(hour);
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp())
-        {
-            hour++;
-            if(hour == 24)
-                hour = 0;
-
-            printer->Clear();
-            printer->WriteL1("Set hour");
-            printer->WriteL2(hour);
-
-        }
-        else if(button->buttonDown())
-        {
-            hour--;
-            if(hour < 0)
-                hour = 23;
-
-            printer->Clear();
-            printer->WriteL1("Set hour");
-            printer->WriteL2(hour);
-
-        }
-
-    }
-
-    printer->Clear();
-    printer->WriteL1("Set minute");
-    printer->WriteL2(minute);
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp())
-        {
-            minute++;
-            if(minute == 60)
-                minute = 0;
-
-            printer->Clear();
-            printer->WriteL1("Set minute");
-            printer->WriteL2(minute);
-
-        }
-        else if(button->buttonDown())
-        {
-            minute--;
-            if(minute < 0)
-                minute = 59;
-
-            printer->Clear();
-            printer->WriteL1("Set minute");
-            printer->WriteL2(minute);
-
-        }
-
-    }
+    // TODO : change initial value.
+    day = selectBetweenInterval("Select day", 0, 0, 6);
+    hour = selectBetweenInterval("Select hour", 0, 0, 23);
+    minute = selectBetweenInterval("Select minute", 0, 0, 59);
 
     settings->setDateTime(day, hour, minute);
 
@@ -257,142 +162,26 @@ void SettingsMenu::setDate()
 
 void SettingsMenu::setContinue()
 {
-    printer->Clear();
-    printer->WriteL1("Set ponctuality");
-    printer->WriteL2(settings->getStrIsContinue());
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp() || button->buttonDown())
-        {
-            settings->setContinue(!settings->isContinue());
-
-            printer->Clear();
-            printer->WriteL1("Set ponctuality");
-            printer->WriteL2(settings->getStrIsContinue());
-
-
-        }
-
-    }
+    settings->setContinue(selectBoolean("Set continue", "Continue", "Ponctual", settings->isContinue()));
 
 }
 
 void SettingsMenu::setFrequency()
 {
-    printer->Clear();
-    printer->WriteL1("Set frequency");
-    printer->WriteL2(settings->getFrequency());
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp())
-        {
-            settings->setFrequency(settings->getFrequency() + 1);
-
-            printer->Clear();
-            printer->WriteL1("Set frequency");
-            printer->WriteL2(settings->getFrequency());
-
-        }
-        else if(button->buttonDown())
-        {
-            settings->setFrequency(settings->getFrequency() - 1);
-
-            printer->Clear();
-            printer->WriteL1("Set frequency");
-            printer->WriteL2(settings->getFrequency());
-
-        }
-
-    }
+    settings->setFrequency(selectBetweenInterval("Select frequency", settings->getFrequency()));
 
 }
 
 void SettingsMenu::setBorns()
 {
-    printer->Clear();
-    printer->WriteL1("Set born sup");
-    printer->WriteL2(settings->getBornSup());
-
-    while(!button->buttonOk()) {
-        button->checkButtons();
-
-        if (button->buttonUp()) {
-            settings->setBornSup(settings->getBornSup() + 1);
-
-            printer->Clear();
-            printer->WriteL1("Set born sup");
-            printer->WriteL2(settings->getBornSup());
-
-        } else if (button->buttonDown()) {
-            settings->setBornSup(settings->getBornSup() - 1);
-
-            printer->Clear();
-            printer->WriteL1("Set born sup");
-            printer->WriteL2(settings->getBornSup());
-
-        }
-
-    }
-
-
-    printer->Clear();
-    printer->WriteL1("Set born inf");
-    printer->WriteL2(settings->getBornInf());
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp())
-        {
-            settings->setBornInf(settings->getBornInf()+1);
-
-            printer->Clear();
-            printer->WriteL1("Set born inf");
-            printer->WriteL2(settings->getBornInf());
-
-        }
-        else if(button->buttonDown())
-        {
-            settings->setBornInf(settings->getBornInf()-1);
-
-            printer->Clear();
-            printer->WriteL1("Set born inf");
-            printer->WriteL2(settings->getBornInf());
-
-        }
-
-    }
+    settings->setBornInf(selectBetweenInterval("Set born inf", settings->getBornInf()));
+    settings->setBornSup(selectBetweenInterval("Set born sup", settings->getBornSup()));
 
 }
 
 void SettingsMenu::setNO()
 {
-    printer->Clear();
-    printer->WriteL1("Set NO/NC");
-    printer->WriteL2(settings->getStrNormalyOpen());
-
-    while(!button->buttonOk())
-    {
-        button->checkButtons();
-
-        if(button->buttonUp() || button->buttonDown())
-        {
-            settings->setNO(!settings->isNO());
-
-            printer->Clear();
-            printer->WriteL1("Set NO/NC");
-            printer->WriteL2(settings->getStrNormalyOpen());
-
-        }
-
-    }
+    settings->setNO(selectBoolean("Set NO/NC", "Normaly open", "Normaly close", settings->isNO()));
 
 }
 
@@ -418,5 +207,80 @@ void SettingsMenu::printLabel()
             default : Serial.println("Error : menu functions error."); break;
             
         }
+
+}
+
+int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf, int sup)
+{
+    int result = initialValue;
+
+    printer->Clear();
+    printer->WriteL1(label);
+    printer->WriteL2(result);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            result++;
+            if(result > sup)
+                result = inf;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            printer->WriteL2(result);
+
+        }
+        else if(button->buttonDown())
+        {
+            result--;
+            if(result < inf)
+                result = sup;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            printer->WriteL2(result);
+
+        }
+
+    }
+
+    return result;
+
+}
+
+bool SettingsMenu::selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue)
+{
+    bool result = initialValue;
+
+    printer->Clear();
+    printer->WriteL1(label);
+    if(result)
+        printer->WriteL2(trueLabel);
+    else
+        printer->WriteL2(falseLabel);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp() || button->buttonDown())
+        {
+            result = !result;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            if(result)
+                printer->WriteL2(trueLabel);
+            else
+                printer->WriteL2(falseLabel);
+
+        }
+
+    }
+
+    return result;
 
 }

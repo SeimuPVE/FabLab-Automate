@@ -42,9 +42,9 @@ void Button::checkButtons()
         else if((encoder0PinALast == LOW) && (nA == HIGH))
         {
             if (digitalRead(encoder0PinB) == LOW)
-                buttonDownState = true;
-            else
                 buttonUpState = true;
+            else
+                buttonDownState = true;
 
             pushed = true;
     
