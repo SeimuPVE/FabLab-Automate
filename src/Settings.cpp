@@ -15,8 +15,8 @@ Settings::Settings()
     setNO(false);*/
 
     setContinue(true);
-    setFrequency(9); // Continue.
-    setInterval(4); // Ponctual.
+    setFrequency(480); // Continue.
+    setInterval(1); // Ponctual.
     setSample_size(10);
     setBornSup(200.0);
     setBornInf(0.0);

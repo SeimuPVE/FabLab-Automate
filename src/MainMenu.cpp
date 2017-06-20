@@ -63,7 +63,7 @@ void MainMenu::modeTest()
 {
     int i = 0, j, average, sample_size, born_inf, born_sup;
     bool off = false;
-    time_t t1, t1_printer, t2;
+    time_t t1, t2;
 
     sample_size = sensors->getSettings()->getSample_size();
     born_inf = sensors->getSettings()->getBornInf();
@@ -78,30 +78,54 @@ void MainMenu::modeTest()
     if(sensors->getSettings()->isContinue())
     {
         int sample[sample_size];
+        average = 0;
 
         printer->Clear();
         printer->WriteL1("Testing...");
         printer->WriteL2(sensors->getMesure());
 
+        for(i = 0; i < sample_size; i++)
+        {
+            sample[i] = sensors->getMesure();
+            average += sample[i];
+            delay(60 * 60 / sensors->getSettings()->getFrequency());
+
+        }
+        average /= sample_size;
+
+        printer->Clear();
+        printer->WriteL1("Testing...");
+        printer->WriteL2(average);
+
+        if(average < born_inf || average > born_sup)
+        {
+            sensors->setRelais(!sensors->getRelais());
+            off = true;
+
+        }
+
         t1 = now();
-        t1_printer = t1;
         t2 = t1;
 
         while(!button->buttonOk() && !off)
         {
-            sample[i] = sensors->getMesure();
-
-            i++;
-            if(i > sample_size)
-                i = 0;
-
-            average = 0;
-            for(j = 0; j < sample_size; j++)
-                average += sample[j];
-            average /= sample_size;
-
             if(second(t2 - t1) + 1 > (60 * 60 / sensors->getSettings()->getFrequency()))
             {
+                sample[i] = sensors->getMesure();
+
+                i++;
+                if(i > sample_size)
+                    i = 0;
+
+                average = 0;
+                for(j = 0; j < sample_size; j++)
+                    average += sample[j];
+                average /= sample_size;
+
+                printer->Clear();
+                printer->WriteL1("Testing...");
+                printer->WriteL2(average);
+
                 if(average < born_inf || average > born_sup)
                 {
                     sensors->setRelais(!sensors->getRelais());
@@ -110,15 +134,6 @@ void MainMenu::modeTest()
                 }
 
                 t1 = t2;
-
-            }
-            else if(second(t2 - t1_printer) > 1)
-            {
-                printer->Clear();
-                printer->WriteL1("Testing...");
-                printer->WriteL2(sensors->getMesure());
-
-                t1_printer = t2;
 
             }
 
@@ -155,7 +170,7 @@ void MainMenu::modeTest()
 
                 printer->Clear();
                 printer->WriteL1("Testing...");
-                printer->WriteL2(sensors->getMesure());
+                printer->WriteL2(average);
 
                 t1 = t2;
 
