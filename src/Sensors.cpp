@@ -21,6 +21,8 @@ int Sensors::getMesure()
 
 void Sensors::setRelais(bool state)
 {
+    relais = state;
+
     if(state == false)
         digitalWrite(PORT_RELAIS, LOW);
     else
@@ -28,3 +30,8 @@ void Sensors::setRelais(bool state)
   
 }
 
+bool Sensors::getRelais() const
+{
+    return relais;
+
+}

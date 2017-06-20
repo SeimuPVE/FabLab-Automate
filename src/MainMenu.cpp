@@ -61,17 +61,113 @@ void MainMenu::modeMesure()
 
 void MainMenu::modeTest()
 {
-    printer->Clear();
-    printer->WriteL1("Mode test");
-    printer->WriteL2("(to add)", 8);
+    int i = 0, j, average, sample_size, born_inf, born_sup;
+    bool off = false;
+    time_t t1, t1_printer, t2;
 
-    for(int i = 0; i < 3; i++)
+    sample_size = sensors->getSettings()->getSample_size();
+    born_inf = sensors->getSettings()->getBornInf();
+    born_sup = sensors->getSettings()->getBornSup();
+
+    if(sensors->getSettings()->isNO())
+        sensors->setRelais(true);
+    else
+        sensors->setRelais(false);
+
+
+    if(sensors->getSettings()->isContinue())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        int sample[sample_size];
+
+        printer->Clear();
+        printer->WriteL1("Testing...");
+        printer->WriteL2(sensors->getMesure());
+
+        t1 = now();
+        t1_printer = t1;
+        t2 = t1;
+
+        while(!button->buttonOk() && !off)
+        {
+            sample[i] = sensors->getMesure();
+
+            i++;
+            if(i > sample_size)
+                i = 0;
+
+            average = 0;
+            for(j = 0; j < sample_size; j++)
+                average += sample[j];
+            average /= sample_size;
+
+            if(second(t2 - t1) + 1 > (60 * 60 / sensors->getSettings()->getFrequency()))
+            {
+                if(average < born_inf || average > born_sup)
+                {
+                    sensors->setRelais(!sensors->getRelais());
+                    off = true;
+
+                }
+
+                t1 = t2;
+
+            }
+            else if(second(t2 - t1_printer) > 1)
+            {
+                printer->Clear();
+                printer->WriteL1("Testing...");
+                printer->WriteL2(sensors->getMesure());
+
+                t1_printer = t2;
+
+            }
+
+            t2 = now();
+            button->checkButtonsUnblocking();
+
+        }
+
     }
-  
+    else
+    {
+        t1 = now();
+        t2 = t1;
+
+        printer->Clear();
+        printer->WriteL1("Testing...");
+        printer->WriteL2(sensors->getMesure());
+
+        while(!button->buttonOk() && !off)
+        {
+            if(second(t2 - t1) + 1 > sensors->getSettings()->getInterval())
+            {
+                average = 0;
+                for(i = 0; i < sample_size; i++)
+                    average += sensors->getMesure();
+                average /= sample_size;
+
+                if(average < born_inf || average > born_sup)
+                {
+                    sensors->setRelais(!sensors->getRelais());
+                    off = true;
+
+                }
+
+                printer->Clear();
+                printer->WriteL1("Testing...");
+                printer->WriteL2(sensors->getMesure());
+
+                t1 = t2;
+
+            }
+
+            t2 = now();
+            button->checkButtonsUnblocking();
+
+        }
+
+    }
+
 }
 
 void MainMenu::modeSettings()

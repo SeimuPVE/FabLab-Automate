@@ -6,12 +6,20 @@ Settings::Settings()
         setTime(0, 0, 0, 0, 0, 0);
     dateTime = now();
 
-    setContinue(true);
+/*    setContinue(true);
     setFrequency(10);
     setInterval(60);
     setSample_size(10);
     setBornSup(500.0);
     setBornInf(400.0);
+    setNO(false);*/
+
+    setContinue(true);
+    setFrequency(9); // Continue.
+    setInterval(4); // Ponctual.
+    setSample_size(10);
+    setBornSup(200.0);
+    setBornInf(0.0);
     setNO(false);
 
 }

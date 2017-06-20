@@ -12,6 +12,7 @@ class Sensors
 {
     private:
         Settings *settings;
+        bool relais;
         
     public:
         Sensors();
@@ -20,6 +21,7 @@ class Sensors
         
         int getMesure();
         void setRelais(bool state);
+        bool getRelais() const;
   
 };
 
