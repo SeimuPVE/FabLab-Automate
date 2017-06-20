@@ -24,6 +24,7 @@ class Button
         Button();
         
         void checkButtons();
+        bool checkButtonsUnblocking();
 
         bool buttonUp();
         bool buttonDown();

@@ -47,11 +47,13 @@ void MainMenu::modeMesure()
 {
     while(!button->buttonOk())
     {
-        delay(1000 - sensors->getSettings()->getFrequency());
-
         printer->Clear();
         printer->WriteL1("Current mesure :");
         printer->WriteL2(sensors->getMesure());
+
+        delay(200);
+
+        button->checkButtonsUnblocking();
 
     }
 

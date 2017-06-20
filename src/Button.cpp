@@ -24,37 +24,41 @@ Button::Button()
 
 void Button::checkButtons()
 {
+    while(!checkButtonsUnblocking());
+
+}
+
+bool Button::checkButtonsUnblocking()
+{
     // TODO : verify this function.
     bool pushed = false;
 
-    while(!pushed)
-    {
-        nA = digitalRead(encoder0PinA);
-        nC = digitalRead(encoder0PinC);
-        nC = digitalRead(encoder0PinC);
-    
-        if(encoder0PinCLast == true && nC == false)
-        {
-            buttonOkState = true;
-            pushed = true;
-            
-        }
-        else if((encoder0PinALast == LOW) && (nA == HIGH))
-        {
-            if (digitalRead(encoder0PinB) == LOW)
-                buttonUpState = true;
-            else
-                buttonDownState = true;
+    nA = digitalRead(encoder0PinA);
+    nC = digitalRead(encoder0PinC);
+    nC = digitalRead(encoder0PinC);
 
-            pushed = true;
-    
-        }
-    
-        encoder0PinALast = nA;
-        encoder0PinCLast = nC;
-        
+    if(encoder0PinCLast == true && nC == false)
+    {
+        buttonOkState = true;
+        pushed = true;
+
     }
-    
+    else if((encoder0PinALast == LOW) && (nA == HIGH))
+    {
+        if (digitalRead(encoder0PinB) == LOW)
+            buttonUpState = true;
+        else
+            buttonDownState = true;
+
+        pushed = true;
+
+    }
+
+    encoder0PinALast = nA;
+    encoder0PinCLast = nC;
+
+    return pushed;
+
 }
 
 bool Button::buttonUp()
