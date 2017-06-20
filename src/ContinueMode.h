@@ -11,6 +11,8 @@ class ContinueMode {
         Sensors *sensors;
         Printer *printer;
         Button *button;
+        bool isTest;
+
         int i;
         int j;
         int average;
@@ -22,7 +24,7 @@ class ContinueMode {
         time_t t1, t2;
 
     public:
-        ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *newButton);
+        ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest);
         void continueModeSimpleExec();
         void launch();
 

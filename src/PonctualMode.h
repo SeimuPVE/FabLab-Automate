@@ -11,6 +11,8 @@ private:
     Sensors *sensors;
     Printer *printer;
     Button *button;
+    bool isTest;
+
     int i;
     int average;
     int sample_size;
@@ -21,7 +23,7 @@ private:
 
 
 public:
-    PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *newButton);
+    PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest);
     void ponctualModeSimpleExec();
     void launch();
 

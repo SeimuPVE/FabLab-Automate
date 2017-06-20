@@ -25,6 +25,7 @@ private:
         Settings();
 
         WeekPlanning *getPlanning() const;
+        time_t getDateTime() const;
         bool isContinue() const;
         int getFrequency() const;
         int getInterval() const;

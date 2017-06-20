@@ -7,7 +7,7 @@ Settings::Settings()
     dateTime = now();
 
     setContinue(false);
-    setFrequency(480); // Continue.
+    setFrequency(9999); // Continue.
     setInterval(1); // Ponctual.
     setSample_size(10);
     setBornSup(200.0);
@@ -20,6 +20,12 @@ WeekPlanning *Settings::getPlanning() const
 {
     return planning;
   
+}
+
+time_t Settings::getDateTime() const
+{
+    return dateTime;
+
 }
 
 void Settings::setDateTime(int hour, int minute, int day, int month, int year)

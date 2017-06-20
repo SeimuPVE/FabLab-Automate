@@ -32,17 +32,19 @@ void MainMenu::menuFunctions(int choice)
 
 void MainMenu::modeNormal(void)
 {
-    printer->Clear();
-    printer->WriteL1("Normal mode");
-    printer->WriteL2("(to add)", 8);
-
-    for(int i = 0; i < 3; i++)
+    if(sensors->getSettings()->isContinue())
     {
-        printer->WriteL2(".", i);
-        delay(1000);
-        
+        ContinueMode continueMode(sensors, printer, button, false);
+        continueMode.launch();
+
     }
-    
+    else
+    {
+        PonctualMode ponctualMode(sensors, printer, button, false);
+        ponctualMode.launch();
+
+    }
+
 }
 
 void MainMenu::modeMesure()
@@ -65,13 +67,13 @@ void MainMenu::modeTest()
 {
     if(sensors->getSettings()->isContinue())
     {
-        ContinueMode continueMode(sensors, printer, button);
+        ContinueMode continueMode(sensors, printer, button, true);
         continueMode.launch();
 
     }
     else
     {
-        PonctualMode ponctualMode(sensors, printer, button);
+        PonctualMode ponctualMode(sensors, printer, button, true);
         ponctualMode.launch();
 
     }

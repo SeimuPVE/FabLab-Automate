@@ -1,11 +1,12 @@
 #include "ContinueMode.h"
 
 
-ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *newButton)
+ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest)
 {
     sensors = newSensors;
     printer = newPrinter;
     button = newButton;
+    isTest = newIsTest;
     average = 0;
 
     off = false;
@@ -87,9 +88,44 @@ void ContinueMode::continueModeSimpleExec()
 
 void ContinueMode::launch()
 {
+    int dayTag;
+    int startingHour;
+    int startingMinute;
+    int endingHour;
+    int endingMinute;
+
     while(!button->buttonOk() && !off)
     {
-        continueModeSimpleExec();
+        dayTag = dayOfWeek(now()) - 2;
+        startingHour = sensors->getSettings()->getPlanning()->getDay(dayTag)->getStartingHour();
+        startingMinute = sensors->getSettings()->getPlanning()->getDay(dayTag)->getStartingMinute();
+        endingHour = sensors->getSettings()->getPlanning()->getDay(dayTag)->getEndingHour();
+        endingMinute = sensors->getSettings()->getPlanning()->getDay(dayTag)->getEndingMinute();
+
+        if(isTest)
+            continueModeSimpleExec();
+        else if((hour() > startingHour) || (hour() == startingHour) && (minute() > startingMinute))
+        {
+            if((hour() < endingHour) || ((hour() == endingHour) && (minute() < endingMinute)))
+                continueModeSimpleExec();
+            else
+            {
+                button->checkButtonsUnblocking();
+
+                if(button->buttonOk())
+                    break;
+
+            }
+
+        }
+        else
+        {
+            button->checkButtonsUnblocking();
+
+            if(button->buttonOk())
+                break;
+
+        }
 
     }
 

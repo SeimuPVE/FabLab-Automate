@@ -1,11 +1,12 @@
 #include "PonctualMode.h"
 
 
-PonctualMode::PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *newButton)
+PonctualMode::PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest)
 {
     sensors = newSensors;
     printer = newPrinter;
     button = newButton;
+    isTest = newIsTest;
 
     off = false;
     sample_size = sensors->getSettings()->getSample_size();
@@ -57,9 +58,44 @@ void PonctualMode::ponctualModeSimpleExec()
 
 void PonctualMode::launch()
 {
+    int dayTag;
+    int startingHour;
+    int startingMinute;
+    int endingHour;
+    int endingMinute;
+
     while(!button->buttonOk() && !off)
     {
-        ponctualModeSimpleExec();
+        dayTag = dayOfWeek(now()) - 2;
+        startingHour = sensors->getSettings()->getPlanning()->getDay(dayTag)->getStartingHour();
+        startingMinute = sensors->getSettings()->getPlanning()->getDay(dayTag)->getStartingMinute();
+        endingHour = sensors->getSettings()->getPlanning()->getDay(dayTag)->getEndingHour();
+        endingMinute = sensors->getSettings()->getPlanning()->getDay(dayTag)->getEndingMinute();
+
+        if(isTest)
+            ponctualModeSimpleExec();
+        else if((hour() > startingHour) || (hour() == startingHour) && (minute() > startingMinute))
+        {
+            if((hour() < endingHour) || ((hour() == endingHour) && (minute() < endingMinute)))
+                ponctualModeSimpleExec();
+            else
+            {
+                button->checkButtonsUnblocking();
+
+                if(button->buttonOk())
+                    break;
+
+            }
+
+        }
+        else
+        {
+            button->checkButtonsUnblocking();
+
+            if(button->buttonOk())
+                break;
+
+        }
 
     }
 
