@@ -5,8 +5,8 @@ Settings::Settings()
     if(timeStatus() == timeNotSet)
         setTime(0, 0, 0, 0, 0, 0);
     dateTime = now();
-    
-    setContinue(true);
+
+    setContinue(false);
     setFrequency(480); // Continue.
     setInterval(1); // Ponctual.
     setSample_size(10);

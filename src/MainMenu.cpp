@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "ContinueMode.h"
+#include "PonctualMode.h"
 
 
 MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, newButton)
@@ -68,46 +69,13 @@ void MainMenu::modeTest()
         continueMode.launch();
 
     }
-/*    else
+    else
     {
-        t1 = now();
-        t2 = t1;
-
-        printer->Clear();
-        printer->WriteL1("Testing...");
-        printer->WriteL2(sensors->getMesure());
-
-        while(!button->buttonOk() && !off)
-        {
-            if(second(t2 - t1) + 1 > sensors->getSettings()->getInterval())
-            {
-                average = 0;
-                for(i = 0; i < sample_size; i++)
-                    average += sensors->getMesure();
-                average /= sample_size;
-
-                if(average < born_inf || average > born_sup)
-                {
-                    sensors->setRelais(!sensors->getRelais());
-                    off = true;
-
-                }
-
-                printer->Clear();
-                printer->WriteL1("Testing...");
-                printer->WriteL2(average);
-
-                t1 = t2;
-
-            }
-
-            t2 = now();
-            button->checkButtonsUnblocking();
-
-        }
+        PonctualMode ponctualMode(sensors, printer, button);
+        ponctualMode.launch();
 
     }
-*/
+
 }
 
 void MainMenu::modeSettings()

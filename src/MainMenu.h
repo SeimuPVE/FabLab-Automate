@@ -26,9 +26,6 @@ class MainMenu : public MenuCreator
 
         void printLabel();
 
-        void preparePonctualMode();
-        void ponctualMode();
-  
 };
 
 #endif
