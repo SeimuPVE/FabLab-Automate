@@ -1,4 +1,5 @@
 #include "MainMenu.h"
+#include "ContinueMode.h"
 
 
 MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, newButton)
@@ -61,89 +62,13 @@ void MainMenu::modeMesure()
 
 void MainMenu::modeTest()
 {
-    int i = 0, j, average, sample_size, born_inf, born_sup;
-    bool off = false;
-    time_t t1, t2;
-
-    sample_size = sensors->getSettings()->getSample_size();
-    born_inf = sensors->getSettings()->getBornInf();
-    born_sup = sensors->getSettings()->getBornSup();
-
-    if(sensors->getSettings()->isNO())
-        sensors->setRelais(true);
-    else
-        sensors->setRelais(false);
-
-
     if(sensors->getSettings()->isContinue())
     {
-        int sample[sample_size];
-        average = 0;
-
-        printer->Clear();
-        printer->WriteL1("Testing...");
-        printer->WriteL2(sensors->getMesure());
-
-        for(i = 0; i < sample_size; i++)
-        {
-            sample[i] = sensors->getMesure();
-            average += sample[i];
-            delay(60 * 60 / sensors->getSettings()->getFrequency());
-
-        }
-        average /= sample_size;
-
-        printer->Clear();
-        printer->WriteL1("Testing...");
-        printer->WriteL2(average);
-
-        if(average < born_inf || average > born_sup)
-        {
-            sensors->setRelais(!sensors->getRelais());
-            off = true;
-
-        }
-
-        t1 = now();
-        t2 = t1;
-
-        while(!button->buttonOk() && !off)
-        {
-            if(second(t2 - t1) + 1 > (60 * 60 / sensors->getSettings()->getFrequency()))
-            {
-                sample[i] = sensors->getMesure();
-
-                i++;
-                if(i > sample_size)
-                    i = 0;
-
-                average = 0;
-                for(j = 0; j < sample_size; j++)
-                    average += sample[j];
-                average /= sample_size;
-
-                printer->Clear();
-                printer->WriteL1("Testing...");
-                printer->WriteL2(average);
-
-                if(average < born_inf || average > born_sup)
-                {
-                    sensors->setRelais(!sensors->getRelais());
-                    off = true;
-
-                }
-
-                t1 = t2;
-
-            }
-
-            t2 = now();
-            button->checkButtonsUnblocking();
-
-        }
+        ContinueMode continueMode(sensors, printer, button);
+        continueMode.launch();
 
     }
-    else
+/*    else
     {
         t1 = now();
         t2 = t1;
@@ -182,7 +107,7 @@ void MainMenu::modeTest()
         }
 
     }
-
+*/
 }
 
 void MainMenu::modeSettings()
@@ -197,4 +122,3 @@ void MainMenu::printLabel()
     printer->WriteL2(titleList[(currentChoice + 1) % titleSize], 3);
   
 }
-

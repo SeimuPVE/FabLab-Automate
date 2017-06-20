@@ -5,15 +5,7 @@ Settings::Settings()
     if(timeStatus() == timeNotSet)
         setTime(0, 0, 0, 0, 0, 0);
     dateTime = now();
-
-/*    setContinue(true);
-    setFrequency(10);
-    setInterval(60);
-    setSample_size(10);
-    setBornSup(500.0);
-    setBornInf(400.0);
-    setNO(false);*/
-
+    
     setContinue(true);
     setFrequency(480); // Continue.
     setInterval(1); // Ponctual.
