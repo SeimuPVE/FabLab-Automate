@@ -113,42 +113,6 @@ void Settings::setNO(bool newNO)
 
 }
 
-/*void Settings::setDayStartingTime(int dayTag, String startingTime)
-{
-    planning->setDayStartingTime(dayTag, startingTime);
-  
-}
-
-void Settings::setDayEndingTime(int dayTag, String endingTime)
-{
-    planning->setDayEndingTime(dayTag, endingTime);
-  
-}
-
-void Settings::setAllStartingTime(String startingTime)
-{
-    planning->setAllStartingTime(startingTime);
-
-}
-
-void Settings::setAllEndingTime(String endingTime)
-{
-    planning->setAllEndingTime(endingTime);
-  
-}
-
-void Settings::setDay(int dayTag, String startingHour, String endingHour)
-{
-    planning->setDay(dayTag, startingHour, endingHour);
-  
-}
-
-void Settings::setAll(String startingHour, String endingHour)
-{
-    planning->setAll(startingHour, endingHour);
-  
-}*/
-
 void Settings::setDay(int dayTag, int startingHour, int startingMinute, int endingHour, int endingMinute)
 {
     planning->getDay(dayTag)->setStartingHour(startingHour);
@@ -203,17 +167,6 @@ String Settings::getStrIsContinue()
     if(iContinue)
         return "        Continue";
     return "        Ponctual";
-
-}
-
-String Settings::getStrFrequency()
-{
-    String result = "";
-
-    result += frequency;
-    result += " calculs by H";
-
-    return result;
 
 }
 

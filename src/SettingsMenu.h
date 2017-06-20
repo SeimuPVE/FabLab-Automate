@@ -8,6 +8,7 @@
 
 //#define DAY_NAME[7] = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
 
+
 class SettingsMenu : public MenuCreator
 {
     private:
@@ -30,7 +31,6 @@ class SettingsMenu : public MenuCreator
 
         void setDate();
         void setContinue();
-//        void setFrequency();
         void setBorns();
         void setNO();
 
@@ -44,4 +44,3 @@ class SettingsMenu : public MenuCreator
 };
 
 #endif
-

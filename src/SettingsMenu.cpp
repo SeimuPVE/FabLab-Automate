@@ -5,8 +5,6 @@ SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSet
 {
     setSettings(newSettings);
 
-//    int listSize = 13;
-//    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO/NC", "Exit"};
     int listSize = 12;
     String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Borns", "NO/NC", "Exit"};
 
@@ -27,7 +25,6 @@ void SettingsMenu::menuFunctions(int choice)
         case 6 : setSunday(); break;
         case 7 : setDate(); break;
         case 8 : setContinue(); break;
-//        case 9 : setFrequency(); break;
         case 9 : setBorns(); break;
         case 10 : setNO(); break;
         case 11 : setExitFlag(true); break;
@@ -39,7 +36,7 @@ void SettingsMenu::menuFunctions(int choice)
 
 void SettingsMenu::setDay(int dayTag)
 {
-    //DAY_NAME[dayTag]
+    // TODO : use DAY_NAME[dayTag].
     int startingHour, startingMinute, endingHour, endingMinute;
 
     startingHour = selectBetweenInterval("Starting hour", 8, 0, 23);
@@ -127,11 +124,6 @@ void SettingsMenu::setContinue()
 
 }
 
-/*void SettingsMenu::setFrequency()
-{
-
-}*/
-
 void SettingsMenu::setBorns()
 {
     settings->setBornInf(selectBetweenInterval("Set born inf", settings->getBornInf()));
@@ -160,7 +152,6 @@ void SettingsMenu::printLabel()
         {
             case 7 :printer->WriteL2(settings->getStrCurrentDate()); break;
             case 8 : printer->WriteL2(settings->getStrIsContinue()); break;
-//            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
             case 9 : printer->WriteL2(settings->getStrBorns()); break;
             case 10 : printer->WriteL2(settings->getStrNormalyOpen()); break;
             case 11 : printer->WriteL2("Go on main menu"); break;
