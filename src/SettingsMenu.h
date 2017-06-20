@@ -30,7 +30,7 @@ class SettingsMenu : public MenuCreator
 
         void setDate();
         void setContinue();
-        void setFrequency();
+//        void setFrequency();
         void setBorns();
         void setNO();
 

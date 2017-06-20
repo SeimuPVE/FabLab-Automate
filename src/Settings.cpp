@@ -8,13 +8,15 @@ Settings::Settings()
 
     setContinue(true);
     setFrequency(10);
+    setInterval(60);
+    setSample_size(10);
     setBornSup(500.0);
     setBornInf(400.0);
     setNO(false);
 
 }
 
-WeekPlanning *Settings::getPlanning()
+WeekPlanning *Settings::getPlanning() const
 {
     return planning;
   
@@ -27,31 +29,43 @@ void Settings::setDateTime(int hour, int minute, int day, int month, int year)
 
 }
 
-bool Settings::isContinue()
+bool Settings::isContinue() const
 {
     return iContinue;
   
 }
 
-int Settings::getFrequency()
+int Settings::getFrequency() const
 {
     return frequency;
   
 }
 
-int Settings::getBornSup()
+int Settings::getInterval() const
+{
+    return interval;
+
+}
+
+int Settings::getSample_size() const
+{
+    return sample_size;
+
+}
+
+int Settings::getBornSup() const
 {
     return bornSup;
   
 }
 
-int Settings::getBornInf()
+int Settings::getBornInf() const
 {
     return bornInf;
   
 }
 
-bool Settings::isNO()
+bool Settings::isNO() const
 {
     return normalyOpen;
   
@@ -67,6 +81,18 @@ void Settings::setFrequency(int newNumberCounts)
 {
     frequency = newNumberCounts;
   
+}
+
+void Settings::setInterval(int interval)
+{
+    Settings::interval = interval;
+
+}
+
+void Settings::setSample_size(int sample_size)
+{
+    Settings::sample_size = sample_size;
+
 }
 
 void Settings::setBornSup(double newBornSup)

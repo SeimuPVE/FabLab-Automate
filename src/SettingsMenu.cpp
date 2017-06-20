@@ -4,10 +4,12 @@
 SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSettings) : MenuCreator(printer, newButton)
 {
     setSettings(newSettings);
-    
-    int listSize = 13;
-    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO/NC", "Exit"};
-            
+
+//    int listSize = 13;
+//    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Frequency", "Borns", "NO/NC", "Exit"};
+    int listSize = 12;
+    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Borns", "NO/NC", "Exit"};
+
     setTitles(titleList, listSize);
 
 }
@@ -25,10 +27,10 @@ void SettingsMenu::menuFunctions(int choice)
         case 6 : setSunday(); break;
         case 7 : setDate(); break;
         case 8 : setContinue(); break;
-        case 9 : setFrequency(); break;
-        case 10 : setBorns(); break;
-        case 11 : setNO(); break;
-        case 12 : setExitFlag(true); break;
+//        case 9 : setFrequency(); break;
+        case 9 : setBorns(); break;
+        case 10 : setNO(); break;
+        case 11 : setExitFlag(true); break;
         default : Serial.println("Error : menu functions error."); break;
         
     }
@@ -116,13 +118,19 @@ void SettingsMenu::setContinue()
 {
     settings->setContinue(selectBoolean("Set continue", "Continue", "Ponctual", settings->isContinue()));
 
+    if(settings->isContinue())
+        settings->setFrequency(selectBetweenInterval("Calculs by H", settings->getFrequency()));
+    else
+        settings->setInterval(selectBetweenInterval("Delay in seconde", settings->getInterval()));
+
+    settings->setSample_size(selectBetweenInterval("Sample size", settings->getSample_size()));
+
 }
 
-void SettingsMenu::setFrequency()
+/*void SettingsMenu::setFrequency()
 {
-    settings->setFrequency(selectBetweenInterval("Select frequency", settings->getFrequency()));
 
-}
+}*/
 
 void SettingsMenu::setBorns()
 {
@@ -152,10 +160,10 @@ void SettingsMenu::printLabel()
         {
             case 7 :printer->WriteL2(settings->getStrCurrentDate()); break;
             case 8 : printer->WriteL2(settings->getStrIsContinue()); break;
-            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
-            case 10 : printer->WriteL2(settings->getStrBorns()); break;
-            case 11 : printer->WriteL2(settings->getStrNormalyOpen()); break;
-            case 12 : printer->WriteL2("Go on main menu"); break;
+//            case 9 : printer->WriteL2(settings->getStrFrequency()); break;
+            case 9 : printer->WriteL2(settings->getStrBorns()); break;
+            case 10 : printer->WriteL2(settings->getStrNormalyOpen()); break;
+            case 11 : printer->WriteL2("Go on main menu"); break;
             default : Serial.println("Error : menu functions error."); break;
             
         }
