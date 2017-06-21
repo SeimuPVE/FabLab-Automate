@@ -3,6 +3,7 @@
 
 #include "Arduino.h"
 
+#define BUZZER_PORT 9
 #define encoder0PinA 2
 #define encoder0PinB 4
 #define encoder0PinC 3

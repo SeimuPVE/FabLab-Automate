@@ -91,6 +91,10 @@ bool Button::buttonOk()
 {
     if(buttonOkState)
     {
+        tone(BUZZER_PORT, 1000);
+        delay(100);
+        noTone(BUZZER_PORT);
+
         buttonOkState = false;
         return true;
         
@@ -99,4 +103,3 @@ bool Button::buttonOk()
     return false;
         
 }
-

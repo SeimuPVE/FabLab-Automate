@@ -41,6 +41,17 @@ void PonctualMode::ponctualModeSimpleExec()
             sensors->setRelais(!sensors->getRelais());
             off = true;
 
+            while(!button->buttonOk())
+            {
+                tone(BUZZER_PORT, 1000);
+                delay(100);
+                noTone(BUZZER_PORT);
+                delay(100);
+
+                button->checkButtonsUnblocking();
+
+            }
+
         }
 
         printer->Clear();
