@@ -163,7 +163,7 @@ void SettingsMenu::printLabel()
 
 int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf, int sup)
 {
-    int result = initialValue;
+    int result = initialValue, positif_incrementer = 0, negatif_incrementer = 0;
 
     printer->Clear();
     printer->WriteL1(label);
@@ -175,7 +175,11 @@ int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf,
 
         if(button->buttonUp())
         {
-            result++;
+            negatif_incrementer = 0;
+            if(positif_incrementer < 10)
+                positif_incrementer++;
+
+            result += positif_incrementer;
             if(result > sup)
                 result = inf;
 
@@ -186,7 +190,11 @@ int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf,
         }
         else if(button->buttonDown())
         {
-            result--;
+            positif_incrementer = 0;
+            if(negatif_incrementer < 10)
+                negatif_incrementer++;
+
+            result -= negatif_incrementer;
             if(result < inf)
                 result = sup;
 
