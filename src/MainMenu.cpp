@@ -49,13 +49,22 @@ void MainMenu::modeNormal(void)
 
 void MainMenu::modeMesure()
 {
+    int last_value, current_value = sensors->getMesure();
+
+    printer->Clear();
+
     while(!button->buttonOk())
     {
-        printer->Clear();
-        printer->WriteL1("Current mesure :");
-        printer->WriteL2(sensors->getMesure());
+        last_value = current_value;
+        current_value = sensors->getMesure();
 
-        delay(200);
+        if(last_value > current_value)
+            printer->Clear();
+
+        printer->WriteL1("Current mesure :");
+        printer->WriteL2(current_value);
+
+        delay(100);
 
         button->checkButtonsUnblocking();
 

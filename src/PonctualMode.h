@@ -19,7 +19,7 @@ class PonctualMode
         int born_inf;
         int born_sup;
         bool off;
-        time_t t1, t2;
+        time_t t1, t1_printer, t2;
 
 
     public:

@@ -47,6 +47,7 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
     }
 
     t1 = now();
+    t1_printer = t1;
     t2 = t1;
 
 }
@@ -66,25 +67,20 @@ void ContinueMode::continueModeSimpleExec()
             average += samples[j];
         average /= sample_size;
 
-        printer->Clear();
-        printer->WriteL1("Testing...");
-        printer->WriteL2(average);
-
         if(average < born_inf || average > born_sup)
         {
             sensors->setRelais(!sensors->getRelais());
             off = true;
 
-            while(!button->buttonOk())
-            {
-                tone(BUZZER_PORT, 1000);
-                delay(100);
-                noTone(BUZZER_PORT);
-                delay(100);
+        }
 
-                button->checkButtonsUnblocking();
+        if(second(t2 - t1_printer) > 1)
+        {
+            printer->Clear();
+            printer->WriteL1("Testing...");
+            printer->WriteL2(sensors->getMesure());
 
-            }
+            t1_printer = t2;
 
         }
 
@@ -115,7 +111,7 @@ void ContinueMode::launch()
 
         if(isTest)
             continueModeSimpleExec();
-        else if((hour() > startingHour) || (hour() == startingHour) && (minute() > startingMinute))
+        else if((hour() > startingHour) || ((hour() == startingHour) && (minute() > startingMinute)))
         {
             if((hour() < endingHour) || ((hour() == endingHour) && (minute() < endingMinute)))
                 continueModeSimpleExec();
@@ -131,12 +127,35 @@ void ContinueMode::launch()
         }
         else
         {
+            if(second(t2 - t1_printer) > 1)
+            {
+                printer->Clear();
+                printer->WriteL1("Testing...");
+                printer->WriteL2(sensors->getMesure());
+
+                t1_printer = t2;
+
+            }
+
             button->checkButtonsUnblocking();
 
             if(button->buttonOk())
                 break;
 
         }
+
+        t2 = now();
+
+    }
+
+    while(!button->buttonOk() && off)
+    {
+        tone(BUZZER_PORT, 1000);
+        delay(100);
+        noTone(BUZZER_PORT);
+        delay(100);
+
+        button->checkButtonsUnblocking();
 
     }
 

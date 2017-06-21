@@ -6,7 +6,7 @@ Settings::Settings()
         setTime(0, 0, 0, 0, 0, 0);
     dateTime = now();
 
-    setContinue(false);
+    setContinue(true);
     setFrequency(9999); // Continue.
     setInterval(1); // Ponctual.
     setSample_size(10);
@@ -160,8 +160,15 @@ String Settings::getStrCurrentDate()
     }
 
     result += " ";
+
+    if(hour(dateTime) < 10)
+        result += '0';
     result += hour(dateTime);
+
     result += ":";
+
+    if(minute(dateTime) < 10)
+        result += '0';
     result += minute(dateTime);
 
     return result;

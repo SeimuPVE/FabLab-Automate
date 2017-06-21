@@ -21,7 +21,7 @@ class ContinueMode {
         int born_inf;
         int born_sup;
         bool off;
-        time_t t1, t2;
+        time_t t1, t1_printer, t2;
 
     public:
         ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest);
@@ -29,6 +29,5 @@ class ContinueMode {
         void launch();
 
 };
-
 
 #endif

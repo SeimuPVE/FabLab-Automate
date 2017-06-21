@@ -39,10 +39,10 @@ void SettingsMenu::setDay(int dayTag)
     // TODO : use DAY_NAME[dayTag].
     int startingHour, startingMinute, endingHour, endingMinute;
 
-    startingHour = selectBetweenInterval("Starting hour", 8, 0, 23);
-    startingMinute = selectBetweenInterval("Starting minute", 0, 0, 59);
-    endingHour = selectBetweenInterval("Ending hour", 18, 0, 23);
-    endingMinute = selectBetweenInterval("Ending minute", 0, 0, 59);
+    startingHour = selectBetweenInterval("Starting hour", settings->getPlanning()->getDay(dayTag)->getStartingHour(), 0, 23);
+    startingMinute = selectBetweenInterval("Starting minute", settings->getPlanning()->getDay(dayTag)->getStartingMinute(), 0, 59);
+    endingHour = selectBetweenInterval("Ending hour", settings->getPlanning()->getDay(dayTag)->getEndingHour(), 0, 23);
+    endingMinute = selectBetweenInterval("Ending minute", settings->getPlanning()->getDay(dayTag)->getEndingMinute(), 0, 59);
 
     settings->setDay(dayTag, startingHour, startingMinute, endingHour, endingMinute);
 
@@ -94,9 +94,9 @@ void SettingsMenu::setDate()
 {
     int hour, minute, day, month, year;
 
-    hour = 15;
-    minute = 5;
-    day = 18;
+    hour = 13;
+    minute = 0;
+    day = 21;
     month = 6;
     year = 2017;
 
