@@ -1,5 +1,11 @@
 #include "SettingsMenu.h"
 
+#define SELECTOR_HOUR "Select hour"
+#define SELECTOR_STARTING_HOUR "Start hour"
+#define SELECTOR_STARTING_MINUTE "Start minute"
+#define SELECTOR_ENDING_HOUR "End hour"
+#define SELECTOR_ENDING_MINUTE "End minute"
+
 
 SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSettings) : MenuCreator(printer, newButton)
 {
@@ -36,13 +42,15 @@ void SettingsMenu::menuFunctions(int choice)
 
 void SettingsMenu::setDay(int dayTag)
 {
-    // TODO : use DAY_NAME[dayTag].
-    int startingHour, startingMinute, endingHour, endingMinute;
+    int startingHour = settings->getPlanning()->getDay(dayTag)->getStartingHour();
+    int startingMinute = settings->getPlanning()->getDay(dayTag)->getStartingMinute();
+    int endingHour = settings->getPlanning()->getDay(dayTag)->getEndingHour();
+    int endingMinute = settings->getPlanning()->getDay(dayTag)->getEndingMinute();
 
-    startingHour = selectBetweenInterval("Starting hour", settings->getPlanning()->getDay(dayTag)->getStartingHour(), 0, 23);
-    startingMinute = selectBetweenInterval("Starting minute", settings->getPlanning()->getDay(dayTag)->getStartingMinute(), 0, 59);
-    endingHour = selectBetweenInterval("Ending hour", settings->getPlanning()->getDay(dayTag)->getEndingHour(), 0, 23);
-    endingMinute = selectBetweenInterval("Ending minute", settings->getPlanning()->getDay(dayTag)->getEndingMinute(), 0, 59);
+    startingHour = selectBetweenInterval(SELECTOR_STARTING_HOUR, false, startingHour, 0, 23);
+    startingMinute = selectBetweenInterval(SELECTOR_STARTING_MINUTE, false, startingMinute, 0, 59);
+    endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, endingHour, 0, 23);
+    endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, 0, 59);
 
     settings->setDay(dayTag, startingHour, startingMinute, endingHour, endingMinute);
 
@@ -101,11 +109,11 @@ void SettingsMenu::setDate()
     year = 2017;
 
     // TODO : change initial values.
-    hour = selectBetweenInterval("Select hour", hour, 0, 23);
-    minute = selectBetweenInterval("Select minute", minute, 0, 59);
-    day = selectBetweenInterval("Select day", day, 0, 31);
-    month = selectBetweenInterval("Select month", month , 0, 11); // TODO : select label.
-    year = selectBetweenInterval("Select year", year, 2000, 3000);
+    hour = selectBetweenInterval(SELECTOR_HOUR, false, hour, 0, 23);
+    minute = selectBetweenInterval("Select minute", false, minute, 0, 59);
+    day = selectBetweenInterval("Select day", false, day, 0, 31);
+    month = selectBetweenInterval("Select month", false, month , 0, 11);
+    year = selectBetweenInterval("Select year", false, year, 2000, 3000);
 
     settings->setDateTime(hour, minute, day, month, year);
 
@@ -118,16 +126,16 @@ void SettingsMenu::setContinue()
     if(settings->isContinue())
         settings->setFrequency(selectBetweenInterval("Calculs by H", settings->getFrequency(), 0, 9999));
     else
-        settings->setInterval(selectBetweenInterval("Delay in seconde", settings->getInterval()));
+        settings->setInterval(selectBetweenInterval("Delay in seconde", true, settings->getInterval()));
 
-    settings->setSample_size(selectBetweenInterval("Sample size", settings->getSample_size()));
+    settings->setSample_size(selectBetweenInterval("Sample size", true, settings->getSample_size()));
 
 }
 
 void SettingsMenu::setBorns()
 {
-    settings->setBornInf(selectBetweenInterval("Set born inf", settings->getBornInf()));
-    settings->setBornSup(selectBetweenInterval("Set born sup", settings->getBornSup()));
+    settings->setBornInf(selectBetweenInterval("Set born inf", true, settings->getBornInf()));
+    settings->setBornSup(selectBetweenInterval("Set born sup", true, settings->getBornSup()));
 
 }
 
@@ -161,7 +169,7 @@ void SettingsMenu::printLabel()
 
 }
 
-int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf, int sup)
+int SettingsMenu::selectBetweenInterval(String label, bool super_incrementor, int initialValue, int inf, int sup)
 {
     int result = initialValue, positif_incrementer = 0, negatif_incrementer = 0;
 
@@ -179,7 +187,11 @@ int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf,
             if(positif_incrementer < 10)
                 positif_incrementer++;
 
-            result += positif_incrementer;
+            if(super_incrementor)
+                result += positif_incrementer;
+            else
+                result++;
+
             if(result > sup)
                 result = inf;
 
@@ -194,7 +206,11 @@ int SettingsMenu::selectBetweenInterval(String label, int initialValue, int inf,
             if(negatif_incrementer < 10)
                 negatif_incrementer++;
 
-            result -= negatif_incrementer;
+            if(super_incrementor)
+                result -= negatif_incrementer;
+            else
+                result--;
+
             if(result < inf)
                 result = sup;
 
