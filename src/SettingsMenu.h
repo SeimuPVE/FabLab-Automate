@@ -2,6 +2,7 @@
 #define SETTINGSMENU
 
 #include "Arduino.h"
+#include "Time.h"
 #include "MenuCreator.h"
 #include "Settings.h"
 #include "WeekPlanning.h" // For defines. TODO : find a solution.

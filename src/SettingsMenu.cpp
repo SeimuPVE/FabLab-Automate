@@ -102,17 +102,16 @@ void SettingsMenu::setDate()
 {
     int hour, minute, day, month, year;
 
-    hour = 13;
+    hour = 0;
     minute = 0;
-    day = 21;
-    month = 6;
-    year = 2017;
+    day = 1;
+    month = 1;
+    year = 2001;
 
-    // TODO : change initial values.
     hour = selectBetweenInterval(SELECTOR_HOUR, false, hour, 0, 23);
     minute = selectBetweenInterval("Select minute", false, minute, 0, 59);
-    day = selectBetweenInterval("Select day", false, day, 0, 31);
-    month = selectBetweenInterval("Select month", false, month , 0, 11);
+    day = selectBetweenInterval("Select day", false, day, 1, 31);
+    month = selectBetweenInterval("Select month", false, month , 1, 12);
     year = selectBetweenInterval("Select year", false, year, 2000, 3000);
 
     settings->setDateTime(hour, minute, day, month, year);

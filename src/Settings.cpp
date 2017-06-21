@@ -126,6 +126,8 @@ void Settings::setDay(int dayTag, int startingHour, int startingMinute, int endi
     planning->getDay(dayTag)->setEndingHour(endingHour);
     planning->getDay(dayTag)->setEndingMinute(endingMinute);
 
+    dateTime = now();
+
 }
 
 String Settings::getStrDay(int dayTag)
