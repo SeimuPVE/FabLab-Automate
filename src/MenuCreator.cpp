@@ -45,17 +45,14 @@ void MenuCreator::execute()
 
     while(!exitFlag)
     {
-        currentChoice = 0;
         button->checkButtons();
       
         if(button->buttonUp())
         {
             currentChoice++;
 
-            currentChoice = currentChoice%titleSize;
-
-/*            if(currentChoice >= titleSize - 1)
-                currentChoice = titleSize - 1;*/
+            if(currentChoice >= titleSize - 1)
+                currentChoice = titleSize - 1;
 
         }
         else if(button->buttonDown())
@@ -110,4 +107,3 @@ void MenuCreator::printChoice()
     }
 
 }
-
