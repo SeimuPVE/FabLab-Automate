@@ -33,7 +33,8 @@ void SettingsMenu::menuFunctions(int choice)
         case 8 : setContinue(); break;
         case 9 : setBorns(); break;
         case 10 : setNO(); break;
-        case 11 : settings->saveSettings(); setExitFlag(true); break;
+        case 11 :
+            settings->save(); setExitFlag(true); break;
         default : Serial.println("Error : menu functions error."); break;
         
     }

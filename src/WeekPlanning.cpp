@@ -13,68 +13,6 @@ WeekPlanning::WeekPlanning()
 
 }
 
-/*void WeekPlanning::setDayStartingTime(int dayTag, String startingTime)
-{
-    switch(dayTag)
-    {
-        case MONDAY     : monday->setStartingTime(startingTime); break;
-        case TUESDAY    : tuesday->setStartingTime(startingTime); break;
-        case WEDNESDAY  : wednesday->setStartingTime(startingTime); break;
-        case THURSDAY   : thursday->setStartingTime(startingTime); break;
-        case FRIDAY     : friday->setStartingTime(startingTime); break;
-        case SATURDAY   : saturday->setStartingTime(startingTime); break;
-        case SUNDAY     : sunday->setStartingTime(startingTime); break;
-        default         : Serial.println("Error : day not found."); break;
-      
-    }
-  
-}
-
-void WeekPlanning::setDayEndingTime(int dayTag, String endingTime)
-{
-    switch(dayTag)
-    {
-        case MONDAY     : monday->setEndingTime(endingTime); break;
-        case TUESDAY    : tuesday->setEndingTime(endingTime); break;
-        case WEDNESDAY  : wednesday->setEndingTime(endingTime); break;
-        case THURSDAY   : thursday->setEndingTime(endingTime); break;
-        case FRIDAY     : friday->setEndingTime(endingTime); break;
-        case SATURDAY   : saturday->setEndingTime(endingTime); break;
-        case SUNDAY     : sunday->setEndingTime(endingTime); break;
-        default         : Serial.println("Error : day not found."); break;
-      
-    }
-  
-}
-
-void WeekPlanning::setAllStartingTime(String startingTime)
-{
-    for(int i = MONDAY; i <= SUNDAY; i++)
-        setDayStartingTime(i, startingTime);
-  
-}
-
-void WeekPlanning::setAllEndingTime(String endingTime)
-{
-    for(int i = MONDAY; i <= SUNDAY; i++)
-        setDayEndingTime(i, endingTime);
-  
-}
-
-void WeekPlanning::setDay(int dayTag, String startingHour, String endingHour)
-{
-    setDayStartingTime(dayTag, startingHour);
-    setDayEndingTime(dayTag, endingHour);
-  
-}
-
-void WeekPlanning::setAll(String startingHour, String endingHour)
-{
-    for(int i = MONDAY; i <= SUNDAY; i++)
-        setDay(i, startingHour, endingHour);
-  
-}*/
-
 DayPlanning *WeekPlanning::getDay(int dayTag)
 {
     switch(dayTag)
@@ -90,4 +28,36 @@ DayPlanning *WeekPlanning::getDay(int dayTag)
       
     }    
   
+}
+
+void WeekPlanning::save(int addr)
+{
+    int planning_size = 7;
+    DayPlanning *days[] = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
+
+    for(int i = 0; i < planning_size; i++)
+    {
+        SaverLoader::saveInt((addr + i) * sizeof(int) * 1, days[i]->getStartingHour());
+        SaverLoader::saveInt((addr + i) * sizeof(int) * 2, days[i]->getStartingMinute());
+        SaverLoader::saveInt((addr + i) * sizeof(int) * 3, days[i]->getEndingHour());
+        SaverLoader::saveInt((addr + i) * sizeof(int) * 4, days[i]->getEndingMinute());
+
+    }
+
+}
+
+void WeekPlanning::load(int addr)
+{
+    int planning_size = 7;
+    DayPlanning *days[] = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
+
+    for(int i = 0; i < planning_size; i++)
+    {
+        days[i]->setStartingHour(SaverLoader::loadInt((addr + i) * sizeof(int)));
+        days[i]->setStartingMinute(SaverLoader::loadInt((addr + i) * sizeof(int) * 2));
+        days[i]->setEndingHour(SaverLoader::loadInt((addr + i) * sizeof(int)) * 3);
+        days[i]->setEndingMinute(SaverLoader::loadInt((addr + i) * sizeof(int)) * 4);
+
+    }
+
 }

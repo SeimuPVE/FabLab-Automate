@@ -50,8 +50,8 @@ class Settings
         String getStrBorns();
         String getStrNormalyOpen();
 
-        void saveSettings();
-        void loadSettings();
+        void save();
+        void load();
 
 };
 

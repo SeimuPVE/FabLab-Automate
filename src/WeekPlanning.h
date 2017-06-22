@@ -1,6 +1,7 @@
 #ifndef WEEKPLANNING
 #define WEEKPLANNING
 
+#include "SaverLoader.h"
 #include "DayPlanning.h"
 
 #define MONDAY 0
@@ -26,17 +27,10 @@ class WeekPlanning
     public:
         WeekPlanning();
 
-    // TODO : check that.
-/*        void setDayStartingTime(int dayTag, String startingTime);
-        void setDayEndingTime(int dayTag, String endingTime);
-        void setAllStartingTime(String startingTime);
-        void setAllEndingTime(String endingTime);
-
-        void setDay(int dayTag, String startingHour, String endingHour);
-        void setAll(String startingHour, String endingHour);*/
-
         DayPlanning *getDay(int dayTag);
-  
+        void save(int addr);
+        void load(int addr);
+
 };
 
 #endif

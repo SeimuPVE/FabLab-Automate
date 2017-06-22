@@ -207,7 +207,7 @@ String Settings::getStrNormalyOpen()
 
 }
 
-void Settings::saveSettings()
+void Settings::save()
 {
     unsigned int starting_addr = 0;
 
@@ -218,10 +218,11 @@ void Settings::saveSettings()
     SaverLoader::saveInt(starting_addr + 7, bornSup);
     SaverLoader::saveInt(starting_addr + 9, bornInf);
     SaverLoader::saveBool(starting_addr + 11, normalyOpen);
+    planning->save(12);
 
 }
 
-void Settings::loadSettings()
+void Settings::load()
 {
     unsigned int starting_addr = 0;
 
@@ -232,5 +233,6 @@ void Settings::loadSettings()
     bornSup = SaverLoader::loadInt(starting_addr + 7);
     bornInf = SaverLoader::loadInt(starting_addr + 9);
     normalyOpen = SaverLoader::loadBool(starting_addr + 11);
+    planning->load(12);
 
 }

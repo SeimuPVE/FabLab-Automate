@@ -4,7 +4,7 @@
 Sensors::Sensors()
 {
     settings = new Settings;
-    settings->loadSettings();
+    settings->load();
 
 }
 
