@@ -14,7 +14,7 @@ Settings *Sensors::getSettings()
   
 }
 
-int Sensors::getMesure()
+unsigned int Sensors::getMesure()
 {
     return analogRead(PORT_SENSOR);
   

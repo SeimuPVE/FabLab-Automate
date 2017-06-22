@@ -13,13 +13,13 @@ class ContinueMode {
         Button *button;
         bool isTest;
 
-        int i;
-        int j;
-        int average;
-        int sample_size;
-        int *samples;
-        int born_inf;
-        int born_sup;
+        unsigned int i;
+        unsigned int j;
+        unsigned int average;
+        unsigned int sample_size;
+        unsigned int *samples;
+        unsigned int born_inf;
+        unsigned int born_sup;
         bool off;
         time_t t1, t1_printer, t2;
 

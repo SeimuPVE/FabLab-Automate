@@ -16,12 +16,12 @@ void MenuCreator::setExitFlag(bool newExitFlag)
   
 }
 
-void MenuCreator::setTitles(String newTitleList[], int newTitleSize)
+void MenuCreator::setTitles(String newTitleList[], unsigned int newTitleSize)
 {
     if((titleList = (char **) malloc(newTitleSize * sizeof(char *))) == NULL)
         Serial.println("Malloc error : can't create title list in the menu creator.");
     
-    for(int i = 0; i < newTitleSize; i++)
+    for(unsigned int i = 0; i < newTitleSize; i++)
     {
         if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1) * sizeof(char))) == NULL)
             Serial.println("Malloc error : can't add title to the list in the menu creator.");
@@ -57,11 +57,9 @@ void MenuCreator::execute()
         }
         else if(button->buttonDown())
         {
-            currentChoice--;
+            if(currentChoice != 0)
+                currentChoice--;
 
-            if(currentChoice < 0)
-                currentChoice = 0;
-          
         }
         else if(button->buttonOk())
             menuFunctions(currentChoice);

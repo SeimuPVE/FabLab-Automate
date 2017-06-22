@@ -18,8 +18,8 @@ class Sensors
         Sensors();
 
         Settings *getSettings();
-        
-        int getMesure();
+
+        unsigned int getMesure();
         void setRelais(bool state);
         bool getRelais() const;
   

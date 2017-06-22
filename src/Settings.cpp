@@ -28,7 +28,7 @@ time_t Settings::getDateTime() const
 
 }
 
-void Settings::setDateTime(int hour, int minute, int day, int month, int year)
+void Settings::setDateTime(unsigned int hour, unsigned int minute, unsigned int day, unsigned int month, unsigned int year)
 {
     setTime(hour, minute, 0, day, month, year);
     dateTime = now();
@@ -41,31 +41,31 @@ bool Settings::isContinue() const
   
 }
 
-int Settings::getFrequency() const
+unsigned int Settings::getFrequency() const
 {
     return frequency;
   
 }
 
-int Settings::getInterval() const
+unsigned int Settings::getInterval() const
 {
     return interval;
 
 }
 
-int Settings::getSample_size() const
+unsigned int Settings::getSample_size() const
 {
     return sample_size;
 
 }
 
-int Settings::getBornSup() const
+unsigned int Settings::getBornSup() const
 {
     return bornSup;
   
 }
 
-int Settings::getBornInf() const
+unsigned int Settings::getBornInf() const
 {
     return bornInf;
   
@@ -83,31 +83,31 @@ void Settings::setContinue(bool newContinue)
   
 }
 
-void Settings::setFrequency(int newNumberCounts)
+void Settings::setFrequency(unsigned int newNumberCounts)
 {
     frequency = newNumberCounts;
   
 }
 
-void Settings::setInterval(int interval)
+void Settings::setInterval(unsigned int interval)
 {
     Settings::interval = interval;
 
 }
 
-void Settings::setSample_size(int sample_size)
+void Settings::setSample_size(unsigned int sample_size)
 {
     Settings::sample_size = sample_size;
 
 }
 
-void Settings::setBornSup(double newBornSup)
+void Settings::setBornSup(unsigned int newBornSup)
 {
     bornSup = newBornSup;
   
 }
 
-void Settings::setBornInf(double newBornInf)
+void Settings::setBornInf(unsigned int newBornInf)
 {
     bornInf = newBornInf;
   
@@ -119,7 +119,7 @@ void Settings::setNO(bool newNO)
 
 }
 
-void Settings::setDay(int dayTag, int startingHour, int startingMinute, int endingHour, int endingMinute)
+void Settings::setDay(unsigned int dayTag, unsigned int startingHour, unsigned int startingMinute, unsigned int endingHour, unsigned int endingMinute)
 {
     planning->getDay(dayTag)->setStartingHour(startingHour);
     planning->getDay(dayTag)->setStartingMinute(startingMinute);
@@ -130,7 +130,7 @@ void Settings::setDay(int dayTag, int startingHour, int startingMinute, int endi
 
 }
 
-String Settings::getStrDay(int dayTag)
+String Settings::getStrDay(unsigned int dayTag)
 {
     String str;
     
@@ -212,11 +212,11 @@ void Settings::save()
     unsigned int starting_addr = 0;
 
     SaverLoader::saveBool(starting_addr, iContinue);
-    SaverLoader::saveInt(starting_addr + 1, frequency);
-    SaverLoader::saveInt(starting_addr + 3, interval);
-    SaverLoader::saveInt(starting_addr + 5, sample_size);
-    SaverLoader::saveInt(starting_addr + 7, bornSup);
-    SaverLoader::saveInt(starting_addr + 9, bornInf);
+    SaverLoader::saveUnsignedInt(starting_addr + 1, frequency);
+    SaverLoader::saveUnsignedInt(starting_addr + 3, interval);
+    SaverLoader::saveUnsignedInt(starting_addr + 5, sample_size);
+    SaverLoader::saveUnsignedInt(starting_addr + 7, bornSup);
+    SaverLoader::saveUnsignedInt(starting_addr + 9, bornInf);
     SaverLoader::saveBool(starting_addr + 11, normalyOpen);
     planning->save(12);
 
@@ -227,11 +227,11 @@ void Settings::load()
     unsigned int starting_addr = 0;
 
     iContinue = SaverLoader::loadBool(starting_addr);
-    frequency = SaverLoader::loadInt(starting_addr + 1);
-    interval = SaverLoader::loadInt(starting_addr + 3);
-    sample_size = SaverLoader::loadInt(starting_addr + 5);
-    bornSup = SaverLoader::loadInt(starting_addr + 7);
-    bornInf = SaverLoader::loadInt(starting_addr + 9);
+    frequency = SaverLoader::loadUnsignedInt(starting_addr + 1);
+    interval = SaverLoader::loadUnsignedInt(starting_addr + 3);
+    sample_size = SaverLoader::loadUnsignedInt(starting_addr + 5);
+    bornSup = SaverLoader::loadUnsignedInt(starting_addr + 7);
+    bornInf = SaverLoader::loadUnsignedInt(starting_addr + 9);
     normalyOpen = SaverLoader::loadBool(starting_addr + 11);
     planning->load(12);
 

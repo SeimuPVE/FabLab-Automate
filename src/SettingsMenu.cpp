@@ -18,7 +18,7 @@ SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSet
 
 }
 
-void SettingsMenu::menuFunctions(int choice)
+void SettingsMenu::menuFunctions(unsigned int choice)
 {
     switch(choice)
     {
@@ -33,15 +33,14 @@ void SettingsMenu::menuFunctions(int choice)
         case 8 : setContinue(); break;
         case 9 : setBorns(); break;
         case 10 : setNO(); break;
-        case 11 :
-            settings->save(); setExitFlag(true); break;
+        case 11 : settings->save(); setExitFlag(true); break;
         default : Serial.println("Error : menu functions error."); break;
         
     }
   
 }
 
-void SettingsMenu::setDay(int dayTag)
+void SettingsMenu::setDay(unsigned int dayTag)
 {
     int startingHour = settings->getPlanning()->getDay(dayTag)->getStartingHour();
     int startingMinute = settings->getPlanning()->getDay(dayTag)->getStartingMinute();
@@ -101,7 +100,7 @@ void SettingsMenu::setSunday()
 
 void SettingsMenu::setDate()
 {
-    int hour, minute, day, month, year;
+    unsigned int hour, minute, day, month, year;
 
     hour = 0;
     minute = 0;
@@ -169,9 +168,9 @@ void SettingsMenu::printLabel()
 
 }
 
-int SettingsMenu::selectBetweenInterval(String label, bool super_incrementor, int initialValue, int inf, int sup)
+unsigned int SettingsMenu::selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
 {
-    int result = initialValue, positif_incrementer = 0, negatif_incrementer = 0;
+    unsigned int result = initialValue, positif_incrementer = 0, negatif_incrementer = 0;
 
     printer->Clear();
     printer->WriteL1(label);

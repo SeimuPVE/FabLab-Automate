@@ -27,9 +27,9 @@ class WeekPlanning
     public:
         WeekPlanning();
 
-        DayPlanning *getDay(int dayTag);
-        void save(int addr);
-        void load(int addr);
+        DayPlanning *getDay(unsigned int dayTag);
+        void save(unsigned int addr);
+        void load(unsigned int addr);
 
 };
 

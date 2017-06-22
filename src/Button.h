@@ -16,10 +16,10 @@ class Button
         bool buttonDownState;
         bool buttonOkState;
 
-        int encoder0PinALast;
-        int encoder0PinCLast;
-        int nA;
-        int nC;
+        unsigned int encoder0PinALast;
+        unsigned int encoder0PinCLast;
+        unsigned int nA;
+        unsigned int nC;
 
     public:
         Button();

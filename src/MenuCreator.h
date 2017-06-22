@@ -13,8 +13,8 @@ class MenuCreator
         Button *button;
         
         char **titleList;
-        int titleSize;
-        int currentChoice;
+        unsigned int titleSize;
+        unsigned int currentChoice;
 
         bool exitFlag;
 
@@ -23,10 +23,10 @@ class MenuCreator
 
         void setExitFlag(bool newExitFlag);
         
-        void setTitles(String newTitleList[], int newTitleSize);
+        void setTitles(String newTitleList[], unsigned int newTitleSize);
         void execute();
 
-        virtual void menuFunctions(int choice) = 0;
+        virtual void menuFunctions(unsigned int choice) = 0;
         
         void printChoice();
         virtual void printLabel() = 0;

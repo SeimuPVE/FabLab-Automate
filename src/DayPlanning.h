@@ -8,34 +8,33 @@ class DayPlanning
 {
     private:
         String dayName;
-        int startingHour;
-        int startingMinute;
-        int endingHour;
-        int endingMinute;
+        unsigned int startingHour;
+        unsigned int startingMinute;
+        unsigned int endingHour;
+        unsigned int endingMinute;
 
     public:
         DayPlanning();
         DayPlanning(String newDayName, String newStartingTime, String newEndingTime);
 
-        // TODO : Check that.
-//        String getDayName();
-        int getStartingHour();
-        int getStartingMinute();
-        int getEndingHour();
-        int getEndingMinute();
+        String getDayName();
+        unsigned int getStartingHour() const;
+        unsigned int getStartingMinute() const;
+        unsigned int getEndingHour() const;
+        unsigned int getEndingMinute() const;
 
         void setDayName(String newDayName);
-        void setStartingHour(int newStartingHour);
-        void setStartingMinute(int newStartingMinute);
-        void setEndingHour(int newEndingHour);
-        void setEndingMinute(int newEndingMinute);
+        void setStartingHour(unsigned int newStartingHour);
+        void setStartingMinute(unsigned int newStartingMinute);
+        void setEndingHour(unsigned int newEndingHour);
+        void setEndingMinute(unsigned int newEndingMinute);
 
         String getStartingTime();
         String getEndingTime();
 
         bool isValidTimer(String timer);
-        int getHours(String timer);
-        int getMinutes(String timer);
+        unsigned int getHours(String timer);
+        unsigned int getMinutes(String timer);
 
         void setStartingTime(String timer);
         void setEndingTime(String timer);

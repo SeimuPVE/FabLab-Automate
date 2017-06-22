@@ -17,7 +17,7 @@ class MainMenu : public MenuCreator
     public:
         MainMenu(Printer *printer, Button *newButton);
         
-        void menuFunctions(int choice);
+        void menuFunctions(unsigned int choice);
 
         void modeNormal();
         void modeMesure();

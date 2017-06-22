@@ -7,8 +7,6 @@
 #include "Settings.h"
 #include "WeekPlanning.h" // For defines. TODO : find a solution.
 
-//#define DAY_NAME[7] = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"}
-
 
 class SettingsMenu : public MenuCreator
 {
@@ -18,9 +16,9 @@ class SettingsMenu : public MenuCreator
     public:
         SettingsMenu(Printer *printer, Button *newButton, Settings *settings);
 
-        void menuFunctions(int choice);
+        void menuFunctions(unsigned int choice);
 
-        void setDay(int dayTag);
+        void setDay(unsigned int dayTag);
 
         void setMonday();
         void setTuesday();
@@ -37,7 +35,7 @@ class SettingsMenu : public MenuCreator
 
         void setSettings(Settings *newSettings);
 
-        int selectBetweenInterval(String label, bool super_incrementor, int initialValue, int inf = 0, int sup = 999);
+        unsigned int selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf = 0, unsigned int sup = 999);
         bool selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue);
 
         void printLabel();

@@ -14,7 +14,7 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
     born_inf = sensors->getSettings()->getBornInf();
     born_sup = sensors->getSettings()->getBornSup();
 
-    if((samples = (int *) malloc(sample_size * sizeof(int))) == NULL)
+    if((samples = (unsigned int *) malloc(sample_size * sizeof(unsigned int))) == NULL)
         Serial.println("Can't malloc samples.");
 
     if(sensors->getSettings()->isNO())
@@ -95,11 +95,11 @@ void ContinueMode::continueModeSimpleExec()
 
 void ContinueMode::launch()
 {
-    int dayTag;
-    int startingHour;
-    int startingMinute;
-    int endingHour;
-    int endingMinute;
+    unsigned int dayTag;
+    unsigned int startingHour;
+    unsigned int startingMinute;
+    unsigned int endingHour;
+    unsigned int endingMinute;
 
     while(!button->buttonOk() && !off)
     {

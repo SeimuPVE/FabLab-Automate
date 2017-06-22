@@ -65,11 +65,11 @@ void PonctualMode::ponctualModeSimpleExec()
 
 void PonctualMode::launch()
 {
-    int dayTag;
-    int startingHour;
-    int startingMinute;
-    int endingHour;
-    int endingMinute;
+    unsigned int dayTag;
+    unsigned int startingHour;
+    unsigned int startingMinute;
+    unsigned int endingHour;
+    unsigned int endingMinute;
 
     while(!button->buttonOk() && !off)
     {

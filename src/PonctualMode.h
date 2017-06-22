@@ -13,11 +13,11 @@ class PonctualMode
         Button *button;
         bool isTest;
 
-        int i;
-        int average;
-        int sample_size;
-        int born_inf;
-        int born_sup;
+        unsigned int i;
+        unsigned int average;
+        unsigned int sample_size;
+        unsigned int born_inf;
+        unsigned int born_sup;
         bool off;
         time_t t1, t1_printer, t2;
 

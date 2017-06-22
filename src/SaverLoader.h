@@ -7,11 +7,11 @@
 class SaverLoader
 {
     public:
-        static void saveInt(int addr, int val);
-        static void saveBool(int addr, bool val);
+        static void saveUnsignedInt(unsigned int addr, unsigned int val);
+        static void saveBool(unsigned int addr, bool val);
 
-        static int loadInt(int addr);
-        static bool loadBool(int addr);
+        static unsigned int loadUnsignedInt(unsigned int addr);
+        static bool loadBool(unsigned int addr);
 
 };
 

@@ -30,7 +30,6 @@ void Button::checkButtons()
 
 bool Button::checkButtonsUnblocking()
 {
-    // TODO : verify this function.
     bool pushed = false;
 
     nA = digitalRead(encoder0PinA);

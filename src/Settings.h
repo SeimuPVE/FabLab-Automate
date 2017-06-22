@@ -13,11 +13,11 @@ class Settings
         WeekPlanning *planning = new WeekPlanning;
         time_t dateTime;
         bool iContinue; // TODO : rename it.
-        int frequency;
-        int interval;
-        int sample_size;
-        int bornSup;
-        int bornInf;
+        unsigned int frequency;
+        unsigned int interval;
+        unsigned int sample_size;
+        unsigned int bornSup;
+        unsigned int bornInf;
         bool normalyOpen;
 
     public:
@@ -26,25 +26,25 @@ class Settings
         WeekPlanning *getPlanning() const;
         time_t getDateTime() const;
         bool isContinue() const;
-        int getFrequency() const;
-        int getInterval() const;
-        int getSample_size() const;
-        int getBornSup() const;
-        int getBornInf() const;
+        unsigned int getFrequency() const;
+        unsigned int getInterval() const;
+        unsigned int getSample_size() const;
+        unsigned int getBornSup() const;
+        unsigned int getBornInf() const;
         bool isNO() const;
 
-        void setDateTime(int hour, int minute, int day, int month, int year);
+        void setDateTime(unsigned int hour, unsigned int minute, unsigned int day, unsigned int month, unsigned int year);
         void setContinue(bool newContinue);
-        void setFrequency(int newNumberCounts);
-        void setInterval(int interval);
-        void setSample_size(int sample_size);
-        void setBornSup(double newBornSup);
-        void setBornInf(double newBornInf);
+        void setFrequency(unsigned int newNumberCounts);
+        void setInterval(unsigned int interval);
+        void setSample_size(unsigned int sample_size);
+        void setBornSup(unsigned int newBornSup);
+        void setBornInf(unsigned int newBornInf);
         void setNO(bool newNO);
 
-        void setDay(int dayTag, int startingHour, int startingMinute, int endingHour, int endingMinute);
+        void setDay(unsigned int dayTag, unsigned int startingHour, unsigned int startingMinute, unsigned int endingHour, unsigned int endingMinute);
 
-        String getStrDay(int dayTag);
+        String getStrDay(unsigned int dayTag);
         String getStrCurrentDate();
         String getStrIsContinue();
         String getStrBorns();

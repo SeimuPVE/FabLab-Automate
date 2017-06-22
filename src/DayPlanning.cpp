@@ -25,31 +25,31 @@ DayPlanning::DayPlanning(String newDayName, String newStartingTime, String newEn
 
 }
 
-/*String DayPlanning::getDayName()
+String DayPlanning::getDayName()
 {
     return dayName;
-    
-}*/
 
-int DayPlanning::getStartingHour()
+}
+
+unsigned int DayPlanning::getStartingHour() const
 {
     return startingHour;
     
 }
 
-int DayPlanning::getStartingMinute()
+unsigned int DayPlanning::getStartingMinute() const
 {
     return startingMinute;
     
 }
 
-int DayPlanning::getEndingHour()
+unsigned int DayPlanning::getEndingHour() const
 {
     return endingHour;
     
 }
 
-int DayPlanning::getEndingMinute()
+unsigned int DayPlanning::getEndingMinute() const
 {
     return endingMinute;
 
@@ -62,25 +62,25 @@ void DayPlanning::setDayName(String newDayName)
   
 }
 
-void DayPlanning::setStartingHour(int newStartingHour)
+void DayPlanning::setStartingHour(unsigned int newStartingHour)
 {
     startingHour = newStartingHour;
     
 }
 
-void DayPlanning::setStartingMinute(int newStartingMinute)
+void DayPlanning::setStartingMinute(unsigned int newStartingMinute)
 {
     startingMinute = newStartingMinute;
   
 }
 
-void DayPlanning::setEndingHour(int newEndingHour)
+void DayPlanning::setEndingHour(unsigned int newEndingHour)
 {
     endingHour = newEndingHour;
   
 }
 
-void DayPlanning::setEndingMinute(int newEndingMinute)
+void DayPlanning::setEndingMinute(unsigned int newEndingMinute)
 {
     endingMinute = newEndingMinute;
   
@@ -174,9 +174,9 @@ bool DayPlanning::isValidTimer(String timer)
   
 }
 
-int DayPlanning::getHours(String timer)
+unsigned int DayPlanning::getHours(String timer)
 {
-    int hours = 0;
+    unsigned int hours = 0;
 
     hours += (timer.charAt(0) - '0') * 10;
     hours += (timer.charAt(1) - '0') + 0;
@@ -185,9 +185,9 @@ int DayPlanning::getHours(String timer)
   
 }
 
-int DayPlanning::getMinutes(String timer)
+unsigned int DayPlanning::getMinutes(String timer)
 {
-    int minutes = 0;
+    unsigned int minutes = 0;
 
     minutes += (timer.charAt(3) - '0') * 10;
     minutes += (timer.charAt(4) - '0') + 0;
@@ -209,4 +209,3 @@ void DayPlanning::setEndingTime(String timer)
     setEndingMinute(getMinutes(timer));
 
 }
-

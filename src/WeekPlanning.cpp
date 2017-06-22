@@ -13,7 +13,7 @@ WeekPlanning::WeekPlanning()
 
 }
 
-DayPlanning *WeekPlanning::getDay(int dayTag)
+DayPlanning *WeekPlanning::getDay(unsigned int dayTag)
 {
     switch(dayTag)
     {
@@ -30,33 +30,33 @@ DayPlanning *WeekPlanning::getDay(int dayTag)
   
 }
 
-void WeekPlanning::save(int addr)
+void WeekPlanning::save(unsigned int addr)
 {
     int planning_size = 7;
     DayPlanning *days[] = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
 
     for(int i = 0; i < planning_size; i++)
     {
-        SaverLoader::saveInt((addr + i) * sizeof(int) * 1, days[i]->getStartingHour());
-        SaverLoader::saveInt((addr + i) * sizeof(int) * 2, days[i]->getStartingMinute());
-        SaverLoader::saveInt((addr + i) * sizeof(int) * 3, days[i]->getEndingHour());
-        SaverLoader::saveInt((addr + i) * sizeof(int) * 4, days[i]->getEndingMinute());
+        SaverLoader::saveUnsignedInt((addr + i) * sizeof(unsigned int) * 1, days[i]->getStartingHour());
+        SaverLoader::saveUnsignedInt((addr + i) * sizeof(unsigned int) * 2, days[i]->getStartingMinute());
+        SaverLoader::saveUnsignedInt((addr + i) * sizeof(unsigned int) * 3, days[i]->getEndingHour());
+        SaverLoader::saveUnsignedInt((addr + i) * sizeof(unsigned int) * 4, days[i]->getEndingMinute());
 
     }
 
 }
 
-void WeekPlanning::load(int addr)
+void WeekPlanning::load(unsigned int addr)
 {
-    int planning_size = 7;
+    unsigned int planning_size = 7;
     DayPlanning *days[] = {monday, tuesday, wednesday, thursday, friday, saturday, sunday};
 
-    for(int i = 0; i < planning_size; i++)
+    for(unsigned int i = 0; i < planning_size; i++)
     {
-        days[i]->setStartingHour(SaverLoader::loadInt((addr + i) * sizeof(int)));
-        days[i]->setStartingMinute(SaverLoader::loadInt((addr + i) * sizeof(int) * 2));
-        days[i]->setEndingHour(SaverLoader::loadInt((addr + i) * sizeof(int)) * 3);
-        days[i]->setEndingMinute(SaverLoader::loadInt((addr + i) * sizeof(int)) * 4);
+        days[i]->setStartingHour(SaverLoader::loadUnsignedInt((addr + i) * sizeof(unsigned int)));
+        days[i]->setStartingMinute(SaverLoader::loadUnsignedInt((addr + i) * sizeof(unsigned int) * 2));
+        days[i]->setEndingHour(SaverLoader::loadUnsignedInt((addr + i) * sizeof(unsigned int)) * 3);
+        days[i]->setEndingMinute(SaverLoader::loadUnsignedInt((addr + i) * sizeof(unsigned int)) * 4);
 
     }
 
