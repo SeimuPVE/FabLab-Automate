@@ -7,6 +7,7 @@
 
 #define LABEL_CONTINUE_TESTING "Testing..."
 #define LABEL_CONTINUE_WORKING "Working..."
+#define LABEL_CONTINUE_SLEEPING "Sleeping..."
 
 
 class ContinueMode {

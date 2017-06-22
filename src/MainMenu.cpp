@@ -15,6 +15,13 @@ MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, n
 
 }
 
+MainMenu::~MainMenu()
+{
+    delete sensors;
+    delete settingsMenu;
+
+}
+
 void MainMenu::menuFunctions(unsigned int choice)
 {
     if(choice == 0)

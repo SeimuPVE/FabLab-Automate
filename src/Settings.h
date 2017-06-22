@@ -17,7 +17,7 @@
 class Settings
 {
     private:
-        WeekPlanning *planning = new WeekPlanning;
+        WeekPlanning *planning;
         time_t dateTime;
         bool iContinue; // TODO : rename it.
         unsigned int frequency;
@@ -29,6 +29,7 @@ class Settings
 
     public:
         Settings();
+        ~Settings();
 
         WeekPlanning *getPlanning() const;
         time_t getDateTime() const;

@@ -8,6 +8,12 @@ Sensors::Sensors()
 
 }
 
+Sensors::~Sensors()
+{
+    free(settings);
+
+}
+
 Settings *Sensors::getSettings()
 {
     return settings;

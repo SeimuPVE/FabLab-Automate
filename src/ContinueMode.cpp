@@ -139,10 +139,7 @@ void ContinueMode::launch()
             if(second(t2 - t1_printer) > 1)
             {
                 printer->Clear();
-                if(isTest)
-                    printer->WriteL1(LABEL_CONTINUE_TESTING);
-                else
-                    printer->WriteL1(LABEL_CONTINUE_WORKING);
+                printer->WriteL1(LABEL_CONTINUE_SLEEPING);
                 printer->WriteL2(sensors->getMesure());
 
                 t1_printer = t2;

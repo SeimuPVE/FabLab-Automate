@@ -42,6 +42,7 @@ class WeekPlanning
 
     public:
         WeekPlanning();
+        ~WeekPlanning();
 
         DayPlanning *getDay(unsigned int dayTag);
         void save(unsigned int addr);

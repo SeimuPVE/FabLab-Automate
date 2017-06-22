@@ -16,6 +16,7 @@ class Sensors
         
     public:
         Sensors();
+        ~Sensors();
 
         Settings *getSettings();
 

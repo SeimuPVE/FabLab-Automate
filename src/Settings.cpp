@@ -3,6 +3,8 @@
 
 Settings::Settings()
 {
+    planning = new WeekPlanning;
+
     if(timeStatus() == timeNotSet)
         setTime(0, 0, 0, 0, 0, 0);
     dateTime = now();
@@ -14,6 +16,12 @@ Settings::Settings()
     setBornSup(200);
     setBornInf(0);
     setNO(false);
+
+}
+
+Settings::~Settings()
+{
+    delete planning;
 
 }
 

@@ -6,6 +6,7 @@
 
 #define LABEL_PONCTUAL_TESTING "Testing..."
 #define LABEL_PONCTUAL_WORKING "Working..."
+#define LABEL_PONCTUAL_SLEEPING "Sleeping..."
 
 
 class PonctualMode

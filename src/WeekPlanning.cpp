@@ -13,6 +13,18 @@ WeekPlanning::WeekPlanning()
 
 }
 
+WeekPlanning::~WeekPlanning()
+{
+    delete monday;
+    delete tuesday;
+    delete wednesday;
+    delete thursday;
+    delete friday;
+    delete saturday;
+    delete sunday;
+
+}
+
 DayPlanning *WeekPlanning::getDay(unsigned int dayTag)
 {
     switch(dayTag)

@@ -23,6 +23,7 @@ class MainMenu : public MenuCreator
 
     public:
         MainMenu(Printer *printer, Button *newButton);
+        ~MainMenu();
         
         void menuFunctions(unsigned int choice);
 

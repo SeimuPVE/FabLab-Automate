@@ -99,7 +99,7 @@ void MenuCreator::printChoice()
     }
     else
     {
-        printer->WriteL1(SELECTOR_CLASSIC);
+        printer->WriteL1(SEL);
         printer->WriteL1(titleList[currentChoice], 3);
 
     }
