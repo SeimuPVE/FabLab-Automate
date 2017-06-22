@@ -12,7 +12,7 @@
 #define TITLE_TEST "Test"
 #define TITLE_SETTINGS "Settings"
 
-#define LABEL_CURRENT_MESURE "Current mesure :"
+#define LABEL_CURRENT_MESURE "Current mesure"
 
 
 class MainMenu : public MenuCreator
