@@ -44,8 +44,12 @@ void SettingsMenu::setDay(unsigned int dayTag)
 
     startingHour = selectBetweenInterval(SELECTOR_STARTING_HOUR, false, startingHour, 0, 23);
     startingMinute = selectBetweenInterval(SELECTOR_STARTING_MINUTE, false, startingMinute, 0, 59);
-    endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, endingHour, 0, 23);
-    endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, 0, 59);
+    endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, endingHour, startingHour, 23);
+
+    if(startingHour ==endingHour)
+        endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, startingMinute + 1, 59);
+    else
+        endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, 0, 59);
 
     settings->setDay(dayTag, startingHour, startingMinute, endingHour, endingMinute);
 
