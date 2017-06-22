@@ -1,10 +1,13 @@
 #ifndef CONTINUEMODE_H
 #define CONTINUEMODE_H
 
-
 #include <Time.h>
 #include "Sensors.h"
 #include "Button.h"
+
+#define LABEL_CONTINUE_TESTING "Testing..."
+#define LABEL_CONTINUE_WORKING "Working..."
+
 
 class ContinueMode {
     private:

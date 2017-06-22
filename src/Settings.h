@@ -6,6 +6,13 @@
 #include "SaverLoader.h"
 #include "WeekPlanning.h"
 
+#define SEPARATOR ":"
+
+#define LABEL_IS_CONTINUE "        Continue"
+#define LABEL_IS_PONCTUAL "        Ponctual"
+#define LABEL_IS_NO "    Normaly open"
+#define LABEL_IS_NC "   Normaly close"
+
 
 class Settings
 {

@@ -1,18 +1,13 @@
 #include "SettingsMenu.h"
 
-#define SELECTOR_HOUR "Select hour"
-#define SELECTOR_STARTING_HOUR "Start hour"
-#define SELECTOR_STARTING_MINUTE "Start minute"
-#define SELECTOR_ENDING_HOUR "End hour"
-#define SELECTOR_ENDING_MINUTE "End minute"
-
 
 SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSettings) : MenuCreator(printer, newButton)
 {
     setSettings(newSettings);
 
     int listSize = 12;
-    String titleList[] = {"MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "Date", "Continue", "Borns", "NO/NC", "Exit"};
+    String titleList[] = {LABEL_SHORT_MONDAY, LABEL_SHORT_TUESDAY, LABEL_SHORT_WEDNESDAY, LABEL_SHORT_THURSDAY, LABEL_SHORT_FRIDAY, LABEL_SHORT_SATURDAY, LABEL_SHORT_SUNDAY,
+                          TITLE_DATE, TITLE_CONTINUE, TITLE_BORNS, TITLE_NO, TITLE_EXIT};
 
     setTitles(titleList, listSize);
 
@@ -109,10 +104,10 @@ void SettingsMenu::setDate()
     year = 2001;
 
     hour = selectBetweenInterval(SELECTOR_HOUR, false, hour, 0, 23);
-    minute = selectBetweenInterval("Select minute", false, minute, 0, 59);
-    day = selectBetweenInterval("Select day", false, day, 1, 31);
-    month = selectBetweenInterval("Select month", false, month , 1, 12);
-    year = selectBetweenInterval("Select year", false, year, 2000, 3000);
+    minute = selectBetweenInterval(SELECTOR_MINUTE, false, minute, 0, 59);
+    day = selectBetweenInterval(SELECTOR_DAY, false, day, 1, 31);
+    month = selectBetweenInterval(SELECTOR_MONTH, false, month , 1, 12);
+    year = selectBetweenInterval(SELECTOR_YEAR, false, year, 2000, 3000);
 
     settings->setDateTime(hour, minute, day, month, year);
 
@@ -120,27 +115,27 @@ void SettingsMenu::setDate()
 
 void SettingsMenu::setContinue()
 {
-    settings->setContinue(selectBoolean("Set continue", "Continue", "Ponctual", settings->isContinue()));
+    settings->setContinue(selectBoolean(SELECTOR_CONTINUE, SELECTOR_IS_CONTINUE, SELECTOR_IS_PONCTUAL, settings->isContinue()));
 
     if(settings->isContinue())
-        settings->setFrequency(selectBetweenInterval("Calculs by H", true, settings->getFrequency(), 0, 9999));
+        settings->setFrequency(selectBetweenInterval(SELECTOR_FREQUENCY, true, settings->getFrequency(), 0, 9999));
     else
-        settings->setInterval(selectBetweenInterval("Delay in seconde", true, settings->getInterval()));
+        settings->setInterval(selectBetweenInterval(SELECTOR_INTERVAL, true, settings->getInterval()));
 
-    settings->setSample_size(selectBetweenInterval("Sample size", true, settings->getSample_size()));
+    settings->setSample_size(selectBetweenInterval(SELECTOR_SAMPLE_SIZE, true, settings->getSample_size()));
 
 }
 
 void SettingsMenu::setBorns()
 {
-    settings->setBornInf(selectBetweenInterval("Set born inf", true, settings->getBornInf()));
-    settings->setBornSup(selectBetweenInterval("Set born sup", true, settings->getBornSup()));
+    settings->setBornInf(selectBetweenInterval(SELECTOR_BORN_INF, true, settings->getBornInf()));
+    settings->setBornSup(selectBetweenInterval(SELECTOR_BORN_SUP, true, settings->getBornSup()));
 
 }
 
 void SettingsMenu::setNO()
 {
-    settings->setNO(selectBoolean("Set NO/NC", "Normaly open", "Normaly close", settings->isNO()));
+    settings->setNO(selectBoolean(SELECTOR_NO, SELECTOR_IS_NO, SELECTOR_IS_NC, settings->isNO()));
 
 }
 
@@ -161,7 +156,7 @@ void SettingsMenu::printLabel()
             case 8 : printer->WriteL2(settings->getStrIsContinue()); break;
             case 9 : printer->WriteL2(settings->getStrBorns()); break;
             case 10 : printer->WriteL2(settings->getStrNormalyOpen()); break;
-            case 11 : printer->WriteL2("Go on main menu"); break;
+            case 11 : printer->WriteL2(LABEL_GO_BACK); break;
             default : Serial.println("Error : menu functions error."); break;
             
         }

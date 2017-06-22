@@ -3,13 +3,13 @@
 
 WeekPlanning::WeekPlanning()
 {
-    monday = new DayPlanning("Monday", "08h00", "18h00");
-    tuesday = new DayPlanning("Tuesday", "08h00", "18h00");
-    wednesday = new DayPlanning("Wednesday", "08h00", "18h00");
-    thursday = new DayPlanning("Thursday", "08h00", "18h00");
-    friday = new DayPlanning("Friday", "08h00", "18h00");
-    saturday = new DayPlanning("Saturday", "08h00", "18h00");
-    sunday = new DayPlanning("Sunday", "08h00", "18h00");
+    monday = new DayPlanning(LABEL_MONDAY, "08h00", "18h00");
+    tuesday = new DayPlanning(LABEL_TUESDAY, "08h00", "18h00");
+    wednesday = new DayPlanning(LABEL_WEDNESDAY, "08h00", "18h00");
+    thursday = new DayPlanning(LABEL_THURSDAY, "08h00", "18h00");
+    friday = new DayPlanning(LABEL_FRIDAY, "08h00", "18h00");
+    saturday = new DayPlanning(LABEL_SATURDAY, "08h00", "18h00");
+    sunday = new DayPlanning(LABEL_SUNDAY, "08h00", "18h00");
 
 }
 
@@ -17,13 +17,13 @@ DayPlanning *WeekPlanning::getDay(unsigned int dayTag)
 {
     switch(dayTag)
     {
-        case MONDAY     : return monday; break;
-        case TUESDAY    : return tuesday; break;
-        case WEDNESDAY  : return wednesday; break;
-        case THURSDAY   : return thursday; break;
-        case FRIDAY     : return friday; break;
-        case SATURDAY   : return saturday; break;
-        case SUNDAY     : return sunday; break;
+        case MONDAY     : return monday;
+        case TUESDAY    : return tuesday;
+        case WEDNESDAY  : return wednesday;
+        case THURSDAY   : return thursday;
+        case FRIDAY     : return friday;
+        case SATURDAY   : return saturday;
+        case SUNDAY     : return sunday;
         default         : Serial.println("Error : day not found."); break;
       
     }    

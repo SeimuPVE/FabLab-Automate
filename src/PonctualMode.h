@@ -4,6 +4,9 @@
 #include "Sensors.h"
 #include "Button.h"
 
+#define LABEL_PONCTUAL_TESTING "Testing..."
+#define LABEL_PONCTUAL_WORKING "Working..."
+
 
 class PonctualMode
 {

@@ -81,25 +81,25 @@ void MenuCreator::printChoice()
     if(titleSize == 4)
     {
         if(currentChoice == 0)
-            printer->WriteL1(">", 0);
+            printer->WriteL1(SELECTOR_SIMPLE, 0);
         printer->WriteL1(titleList[0], 1);
 
         if(currentChoice == 1)
-            printer->WriteL1(">", 7);
+            printer->WriteL1(SELECTOR_SIMPLE, 7);
         printer->WriteL1(titleList[1], 8);
 
         if(currentChoice == 2)
-            printer->WriteL2(">", 0);
+            printer->WriteL2(SELECTOR_SIMPLE, 0);
         printer->WriteL2(titleList[2], 1);
 
         if(currentChoice == 3)
-            printer->WriteL2(">", 7);
+            printer->WriteL2(SELECTOR_SIMPLE, 7);
         printer->WriteL2(titleList[3], 8);
 
     }
     else
     {
-        printer->WriteL1("-> ");
+        printer->WriteL1(SELECTOR_CLASSIC);
         printer->WriteL1(titleList[currentChoice], 3);
 
     }

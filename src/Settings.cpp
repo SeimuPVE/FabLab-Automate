@@ -1,5 +1,6 @@
 #include "Settings.h"
 
+
 Settings::Settings()
 {
     if(timeStatus() == timeNotSet)
@@ -7,11 +8,11 @@ Settings::Settings()
     dateTime = now();
 
     setContinue(true);
-    setFrequency(9999); // Continue.
-    setInterval(1); // Ponctual.
+    setFrequency(9999);
+    setInterval(1);
     setSample_size(10);
-    setBornSup(200.0);
-    setBornInf(0.0);
+    setBornSup(200);
+    setBornInf(0);
     setNO(false);
 
 }
@@ -151,13 +152,13 @@ String Settings::getStrCurrentDate()
 
     switch(dayOfWeek(dateTime) - 1)
     {
-        case 0 : result += "Sunday"; break;
-        case 1 : result += "Monday"; break;
-        case 2 : result += "Tuesday"; break;
-        case 3 : result += "Wednesday"; break;
-        case 4 : result += "Thursday"; break;
-        case 5 : result += "Friday"; break;
-        case 6 : result += "Saturday"; break;
+        case 0 : result += LABEL_SUNDAY; break;
+        case 1 : result += LABEL_MONDAY; break;
+        case 2 : result += LABEL_TUESDAY; break;
+        case 3 : result += LABEL_WEDNESDAY; break;
+        case 4 : result += LABEL_THURSDAY; break;
+        case 5 : result += LABEL_FRIDAY; break;
+        case 6 : result += LABEL_SATURDAY; break;
 
     }
 
@@ -167,7 +168,7 @@ String Settings::getStrCurrentDate()
         result += '0';
     result += hour(dateTime);
 
-    result += ":";
+    result += SEPARATOR;
 
     if(minute(dateTime) < 10)
         result += '0';
@@ -180,8 +181,8 @@ String Settings::getStrCurrentDate()
 String Settings::getStrIsContinue()
 {
     if(iContinue)
-        return "        Continue";
-    return "        Ponctual";
+        return LABEL_IS_CONTINUE;
+    return LABEL_IS_PONCTUAL;
 
 }
 
@@ -202,8 +203,8 @@ String Settings::getStrBorns()
 String Settings::getStrNormalyOpen()
 {
     if(isNO())
-        return "    Normaly open";
-    return "   Normaly close";
+        return LABEL_IS_NO;
+    return LABEL_IS_NC;
 
 }
 

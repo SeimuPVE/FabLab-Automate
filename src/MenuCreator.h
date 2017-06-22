@@ -5,6 +5,9 @@
 #include "Printer.h"
 #include "Button.h"
 
+#define SELECTOR_CLASSIC "-> "
+#define SELECTOR_SIMPLE ">"
+
 
 class MenuCreator
 {

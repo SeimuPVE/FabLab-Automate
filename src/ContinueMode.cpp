@@ -23,7 +23,10 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
         sensors->setRelais(false);
 
     printer->Clear();
-    printer->WriteL1("Testing...");
+    if(isTest)
+        printer->WriteL1(LABEL_CONTINUE_TESTING);
+    else
+        printer->WriteL1(LABEL_CONTINUE_WORKING);
     printer->WriteL2(sensors->getMesure());
 
     for(i = 0; i < sample_size; i++)
@@ -36,7 +39,10 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
     average /= sample_size;
 
     printer->Clear();
-    printer->WriteL1("Testing...");
+    if(isTest)
+        printer->WriteL1(LABEL_CONTINUE_TESTING);
+    else
+        printer->WriteL1(LABEL_CONTINUE_WORKING);
     printer->WriteL2(average);
 
     if(average < born_inf || average > born_sup)
@@ -77,7 +83,10 @@ void ContinueMode::continueModeSimpleExec()
         if(second(t2 - t1_printer) > 1)
         {
             printer->Clear();
-            printer->WriteL1("Testing...");
+            if(isTest)
+                printer->WriteL1(LABEL_CONTINUE_TESTING);
+            else
+                printer->WriteL1(LABEL_CONTINUE_WORKING);
             printer->WriteL2(sensors->getMesure());
 
             t1_printer = t2;
@@ -130,7 +139,10 @@ void ContinueMode::launch()
             if(second(t2 - t1_printer) > 1)
             {
                 printer->Clear();
-                printer->WriteL1("Testing...");
+                if(isTest)
+                    printer->WriteL1(LABEL_CONTINUE_TESTING);
+                else
+                    printer->WriteL1(LABEL_CONTINUE_WORKING);
                 printer->WriteL2(sensors->getMesure());
 
                 t1_printer = t2;
