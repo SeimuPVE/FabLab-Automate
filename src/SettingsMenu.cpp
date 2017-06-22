@@ -123,7 +123,7 @@ void SettingsMenu::setContinue()
     settings->setContinue(selectBoolean("Set continue", "Continue", "Ponctual", settings->isContinue()));
 
     if(settings->isContinue())
-        settings->setFrequency(selectBetweenInterval("Calculs by H", settings->getFrequency(), 0, 9999));
+        settings->setFrequency(selectBetweenInterval("Calculs by H", true, settings->getFrequency(), 0, 9999));
     else
         settings->setInterval(selectBetweenInterval("Delay in seconde", true, settings->getInterval()));
 
