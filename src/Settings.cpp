@@ -206,3 +206,31 @@ String Settings::getStrNormalyOpen()
     return "   Normaly close";
 
 }
+
+void Settings::saveSettings()
+{
+    unsigned int starting_addr = 0;
+
+    SaverLoader::saveBool(starting_addr, iContinue);
+    SaverLoader::saveInt(starting_addr + 1, frequency);
+    SaverLoader::saveInt(starting_addr + 3, interval);
+    SaverLoader::saveInt(starting_addr + 5, sample_size);
+    SaverLoader::saveInt(starting_addr + 7, bornSup);
+    SaverLoader::saveInt(starting_addr + 9, bornInf);
+    SaverLoader::saveBool(starting_addr + 11, normalyOpen);
+
+}
+
+void Settings::loadSettings()
+{
+    unsigned int starting_addr = 0;
+
+    iContinue = SaverLoader::loadBool(starting_addr);
+    frequency = SaverLoader::loadInt(starting_addr + 1);
+    interval = SaverLoader::loadInt(starting_addr + 3);
+    sample_size = SaverLoader::loadInt(starting_addr + 5);
+    bornSup = SaverLoader::loadInt(starting_addr + 7);
+    bornInf = SaverLoader::loadInt(starting_addr + 9);
+    normalyOpen = SaverLoader::loadBool(starting_addr + 11);
+
+}

@@ -3,6 +3,7 @@
 
 #include <Time.h>
 
+#include "SaverLoader.h"
 #include "WeekPlanning.h"
 
 
@@ -15,9 +16,7 @@ class Settings
         int frequency;
         int interval;
         int sample_size;
-
-private:
-    int bornSup;
+        int bornSup;
         int bornInf;
         bool normalyOpen;
 
@@ -50,6 +49,9 @@ private:
         String getStrIsContinue();
         String getStrBorns();
         String getStrNormalyOpen();
+
+        void saveSettings();
+        void loadSettings();
 
 };
 
