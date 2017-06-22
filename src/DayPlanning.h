@@ -33,8 +33,8 @@ class DayPlanning
         String getEndingTime();
 
         bool isValidTimer(String timer);
-        unsigned int getHours(String timer);
-        unsigned int getMinutes(String timer);
+        unsigned int getHours(String timer) const;
+        unsigned int getMinutes(String timer) const;
 
         void setStartingTime(String timer);
         void setEndingTime(String timer);

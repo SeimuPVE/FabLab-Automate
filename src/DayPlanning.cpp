@@ -174,7 +174,7 @@ bool DayPlanning::isValidTimer(String timer)
   
 }
 
-unsigned int DayPlanning::getHours(String timer)
+unsigned int DayPlanning::getHours(String timer) const
 {
     unsigned int hours = 0;
 
@@ -185,7 +185,7 @@ unsigned int DayPlanning::getHours(String timer)
   
 }
 
-unsigned int DayPlanning::getMinutes(String timer)
+unsigned int DayPlanning::getMinutes(String timer) const
 {
     unsigned int minutes = 0;
 
