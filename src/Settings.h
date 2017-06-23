@@ -23,6 +23,7 @@ private:
 
     public:
         Settings();
+        ~Settings();
 
         WeekPlanning *getPlanning() const;
         time_t getDateTime() const;
