@@ -16,6 +16,12 @@ Settings::Settings()
 
 }
 
+Settings::~Settings()
+{
+    delete planning;
+   
+}
+
 WeekPlanning *Settings::getPlanning() const
 {
     return planning;
