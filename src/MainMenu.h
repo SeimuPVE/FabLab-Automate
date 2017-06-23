@@ -49,7 +49,7 @@ class MainMenu : public MenuCreator
         /**
          * Use the measure mode. Simply print the current measure on the screen.
          */
-        void modeMesure();
+        void modeMeasure();
         /**
          * Use the test mode in function of the settings.
          */

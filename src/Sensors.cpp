@@ -28,7 +28,7 @@ unsigned int Sensors::getMeasure()
 
 void Sensors::setRelay(bool state)
 {
-    relais = state;
+    relay = state;
 
     if(state == false)
         digitalWrite(PORT_RELAIS, LOW);
@@ -39,6 +39,6 @@ void Sensors::setRelay(bool state)
 
 bool Sensors::getRelay() const
 {
-    return relais;
+    return relay;
 
 }

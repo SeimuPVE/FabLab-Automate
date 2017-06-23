@@ -27,7 +27,7 @@ void MainMenu::menuFunctions(unsigned int choice)
     if(choice == 0)
         modeNormal();
     else if(choice == 1)
-        modeMesure();
+        modeMeasure();
     else if(choice == 2)
         modeTest();
     else if(choice == 3)
@@ -54,7 +54,7 @@ void MainMenu::modeNormal(void)
 
 }
 
-void MainMenu::modeMesure()
+void MainMenu::modeMeasure()
 {
     int last_value, current_value = sensors->getMeasure();
 

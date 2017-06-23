@@ -17,7 +17,7 @@ class MenuCreator
     protected:
         Printer *printer;
         Button *button;
-        
+
         char **titleList;
         unsigned int titleSize;
         unsigned int currentChoice;

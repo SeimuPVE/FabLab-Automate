@@ -15,7 +15,7 @@ class Sensors
 {
     private:
         Settings *settings;
-        bool relais;
+        bool relay;
         
     public:
         /**

@@ -42,7 +42,7 @@ class Printer
          */
         void WriteL1(int i, int pos = 0);
         /**
-         * Write an int on the second line of the screen.
+         * Write an int on the  line of the screen.
          * @param i : int to write.
          * @param pos : column to start writing.
          */
