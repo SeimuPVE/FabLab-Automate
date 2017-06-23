@@ -56,14 +56,14 @@ void MainMenu::modeNormal(void)
 
 void MainMenu::modeMesure()
 {
-    int last_value, current_value = sensors->getMesure();
+    int last_value, current_value = sensors->getMeasure();
 
     printer->Clear();
 
     while(!button->buttonOk())
     {
         last_value = current_value;
-        current_value = sensors->getMesure();
+        current_value = sensors->getMeasure();
 
         if(last_value > current_value)
             printer->Clear();

@@ -20,13 +20,13 @@ Settings *Sensors::getSettings()
   
 }
 
-unsigned int Sensors::getMesure()
+unsigned int Sensors::getMeasure()
 {
     return analogRead(PORT_SENSOR);
   
 }
 
-void Sensors::setRelais(bool state)
+void Sensors::setRelay(bool state)
 {
     relais = state;
 
@@ -37,7 +37,7 @@ void Sensors::setRelais(bool state)
   
 }
 
-bool Sensors::getRelais() const
+bool Sensors::getRelay() const
 {
     return relais;
 

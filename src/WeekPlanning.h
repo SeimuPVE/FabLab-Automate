@@ -29,6 +29,9 @@
 #define LABEL_SHORT_SUNDAY "SUN"
 
 
+/**
+ * Planning of an entire week.
+ */
 class WeekPlanning
 {
     private:
@@ -41,11 +44,30 @@ class WeekPlanning
         DayPlanning *sunday;
 
     public:
+        /**
+         * Constructor.
+         */
         WeekPlanning();
+        /**
+         * Destructor.
+         */
         ~WeekPlanning();
 
+        /**
+         * Get selected day.
+         * @param dayTag : tag of the day you want.
+         * @return : selected day.
+         */
         DayPlanning *getDay(unsigned int dayTag);
+        /**
+         * Save the planning on the memory (EEPROM).
+         * @param addr : starting address on the EEPROM.
+         */
         void save(unsigned int addr);
+        /**
+         * Load the planning on the memory (EEPROM).
+         * @param addr : ending address on the EEPROM.
+         */
         void load(unsigned int addr);
 
 };

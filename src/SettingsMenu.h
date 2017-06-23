@@ -38,36 +38,110 @@
 #define LABEL_GO_BACK "Go back"
 
 
+/**
+ * Settings menu.
+ */
 class SettingsMenu : public MenuCreator
 {
     private:
         Settings *settings;
 
     public:
+        /**
+         * Constructor.
+         * @param printer : way to print information.
+         * @param newButton : button to navigate in the menu.
+         * @param settings : settings to change.
+         */
         SettingsMenu(Printer *printer, Button *newButton, Settings *settings);
 
+        /**
+         * Connect all functions to the menu.
+         * @param choice : your choice of function to launch.
+         */
         void menuFunctions(unsigned int choice);
 
+        /**
+         * Function to set a day on the menu.
+         * @param dayTag : tag of the selected day.
+         */
         void setDay(unsigned int dayTag);
 
+        /**
+         * Function to set the monday on the menu.
+         */
         void setMonday();
+        /**
+         * Function to set the tuesday on the menu.
+         */
         void setTuesday();
+        /**
+         * Function to set the wednesday on the menu.
+         */
         void setWednesday();
+        /**
+         * Function to set the thursday on the menu.
+         */
         void setThursday();
+        /**
+         * Function to set the friday on the menu.
+         */
         void setFriday();
+        /**
+         * Function to set the saturday on the menu.
+         */
         void setSaturday();
+        /**
+         * Function to set the sunday on the menu.
+         */
         void setSunday();
 
+        /**
+         * Function to set the current date on the menu.
+         */
         void setDate();
+        /**
+         * Function to set the setting continue or ponctual on the menu.
+         */
         void setContinue();
+        /**
+         * Function to set the borns on the menu.
+         */
         void setBorns();
+        /**
+         * Function to set if the relay is normaly open or normaly close in the menu.
+         */
         void setNO();
 
+        /**
+         * Change the settings to work with.
+         * @param newSettings : new settings.
+         */
         void setSettings(Settings *newSettings);
 
+        /**
+         * Select a value in a given interval.
+         * @param label : label to print on the first line of the screen.
+         * @param super_incrementor : true if you want a progressive incrementor, false if you want it fixe.
+         * @param initialValue : initiale value printed.
+         * @param inf : minimal value in the interval.
+         * @param sup : maximal value in the interval.
+         * @return : value selected.
+         */
         unsigned int selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf = 0, unsigned int sup = 999);
+        /**
+         * Select a boolean in the menu.
+         * @param label : label to print on the first line of the screen.
+         * @param trueLabel : label to print if the value is true.
+         * @param falseLabel : label to print if the value is false.
+         * @param initialValue : initiale value to print.
+         * @return : value selected.
+         */
         bool selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue);
 
+        /**
+         * Print the label of the current choice.
+         */
         void printLabel();
 
 };

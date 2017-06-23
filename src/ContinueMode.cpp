@@ -18,20 +18,20 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
         Serial.println("Can't malloc samples.");
 
     if(sensors->getSettings()->isNO())
-        sensors->setRelais(true);
+        sensors->setRelay(true);
     else
-        sensors->setRelais(false);
+        sensors->setRelay(false);
 
     printer->Clear();
     if(isTest)
         printer->WriteL1(LABEL_CONTINUE_TESTING);
     else
         printer->WriteL1(LABEL_CONTINUE_WORKING);
-    printer->WriteL2(sensors->getMesure());
+    printer->WriteL2(sensors->getMeasure());
 
     for(i = 0; i < sample_size; i++)
     {
-        samples[i] = sensors->getMesure();
+        samples[i] = sensors->getMeasure();
         average += samples[i];
         delay(60 * 60 / sensors->getSettings()->getFrequency());
 
@@ -47,7 +47,7 @@ ContinueMode::ContinueMode(Sensors *newSensors, Printer *newPrinter, Button *new
 
     if(average < born_inf || average > born_sup)
     {
-        sensors->setRelais(!sensors->getRelais());
+        sensors->setRelay(!sensors->getRelay());
         off = true;
 
     }
@@ -62,7 +62,7 @@ void ContinueMode::continueModeSimpleExec()
 {
     if(second(t2 - t1) + 1 > (60 * 60 / sensors->getSettings()->getFrequency()))
     {
-        samples[i] = sensors->getMesure();
+        samples[i] = sensors->getMeasure();
 
         i++;
         if(i > sample_size)
@@ -75,7 +75,7 @@ void ContinueMode::continueModeSimpleExec()
 
         if(average < born_inf || average > born_sup)
         {
-            sensors->setRelais(!sensors->getRelais());
+            sensors->setRelay(!sensors->getRelay());
             off = true;
 
         }
@@ -87,7 +87,7 @@ void ContinueMode::continueModeSimpleExec()
                 printer->WriteL1(LABEL_CONTINUE_TESTING);
             else
                 printer->WriteL1(LABEL_CONTINUE_WORKING);
-            printer->WriteL2(sensors->getMesure());
+            printer->WriteL2(sensors->getMeasure());
 
             t1_printer = t2;
 
@@ -140,7 +140,7 @@ void ContinueMode::launch()
             {
                 printer->Clear();
                 printer->WriteL1(LABEL_CONTINUE_SLEEPING);
-                printer->WriteL2(sensors->getMesure());
+                printer->WriteL2(sensors->getMeasure());
 
                 t1_printer = t2;
 
