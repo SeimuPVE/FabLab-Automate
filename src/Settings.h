@@ -4,6 +4,7 @@
 #include <Time.h>
 #include "SaverLoader.h"
 #include "WeekPlanning.h"
+#include "DS1302RTC.h"
 
 #define SEPARATOR ":"
 
@@ -20,7 +21,8 @@ class Settings
 {
     private:
         WeekPlanning *planning;
-        time_t dateTime;
+        DS1302RTC *rtc = new DS1302RTC(10, 11, 12);
+//        time_t dateTime;
         bool iContinue; // TODO : rename it.
         unsigned int frequency;
         unsigned int interval;

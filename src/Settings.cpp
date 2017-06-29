@@ -4,10 +4,14 @@
 Settings::Settings()
 {
     planning = new WeekPlanning;
+    setSyncProvider(rtc->get);
 
     if(timeStatus() == timeNotSet)
-        setTime(0, 0, 0, 0, 0, 0);
-    dateTime = now();
+    {
+        setTime(0, 0, 0, 1, 1, 2017);
+        rtc->set(now());
+
+    }
 
     setContinue(true);
     setFrequency(9999);
@@ -22,6 +26,7 @@ Settings::Settings()
 Settings::~Settings()
 {
     delete planning;
+    delete rtc;
 
 }
 
@@ -33,14 +38,14 @@ WeekPlanning *Settings::getPlanning() const
 
 time_t Settings::getDateTime() const
 {
-    return dateTime;
+    return now();
 
 }
 
 void Settings::setDateTime(unsigned int hour, unsigned int minute, unsigned int day, unsigned int month, unsigned int year)
 {
     setTime(hour, minute, 0, day, month, year);
-    dateTime = now();
+    rtc->set(now());
 
 }
 
@@ -135,8 +140,6 @@ void Settings::setDay(unsigned int dayTag, unsigned int startingHour, unsigned i
     planning->getDay(dayTag)->setEndingHour(endingHour);
     planning->getDay(dayTag)->setEndingMinute(endingMinute);
 
-    dateTime = now();
-
 }
 
 String Settings::getStrDay(unsigned int dayTag)
@@ -156,9 +159,8 @@ String Settings::getStrDay(unsigned int dayTag)
 String Settings::getStrCurrentDate()
 {
     String result;
-    dateTime = now();
 
-    switch(dayOfWeek(dateTime) - 1)
+    switch(dayOfWeek(now()) - 1)
     {
         case 0 : result += LABEL_SUNDAY; break;
         case 1 : result += LABEL_MONDAY; break;
@@ -172,15 +174,15 @@ String Settings::getStrCurrentDate()
 
     result += " ";
 
-    if(hour(dateTime) < 10)
+    if(hour(now()) < 10)
         result += '0';
-    result += hour(dateTime);
+    result += hour(now());
 
     result += SEPARATOR;
 
-    if(minute(dateTime) < 10)
+    if(minute(now()) < 10)
         result += '0';
-    result += minute(dateTime);
+    result += minute(now());
 
     return result;
 
