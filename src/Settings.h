@@ -6,6 +6,10 @@
 #include "WeekPlanning.h"
 #include "DS1302RTC.h"
 
+#define PORT_CLK 12
+#define PORT_DAT 11
+#define PORT_RST 10
+
 #define SEPARATOR ":"
 
 #define LABEL_IS_CONTINUE "Continue"
@@ -21,8 +25,7 @@ class Settings
 {
     private:
         WeekPlanning *planning;
-        DS1302RTC *rtc = new DS1302RTC(10, 11, 12);
-//        time_t dateTime;
+        DS1302RTC *rtc = new DS1302RTC(PORT_RST, PORT_DAT, PORT_CLK);
         bool iContinue; // TODO : rename it.
         unsigned int frequency;
         unsigned int interval;

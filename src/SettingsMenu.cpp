@@ -44,10 +44,17 @@ void SettingsMenu::setDay(unsigned int dayTag)
 
     startingHour = selectBetweenInterval(SELECTOR_STARTING_HOUR, false, startingHour, 0, 23);
     startingMinute = selectBetweenInterval(SELECTOR_STARTING_MINUTE, false, startingMinute, 0, 59);
-    endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, endingHour, startingHour, 23);
 
-    if(startingHour ==endingHour)
-        endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, startingMinute + 1, 59);
+    if(endingHour > startingHour)
+        endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, endingHour, startingHour, 23);
+    else
+        endingHour = selectBetweenInterval(SELECTOR_ENDING_HOUR, false, startingHour, startingHour, 23);
+
+    if(startingHour == endingHour)
+        if(endingMinute > startingMinute)
+            endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, startingMinute + 1, 59);
+        else
+            endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, startingMinute + 1, startingMinute + 1, 59);
     else
         endingMinute = selectBetweenInterval(SELECTOR_ENDING_MINUTE, false, endingMinute, 0, 59);
 
@@ -169,7 +176,8 @@ void SettingsMenu::printLabel()
 
 unsigned int SettingsMenu::selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
 {
-    unsigned int result = initialValue, positif_incrementer = 0, negatif_incrementer = 0;
+    unsigned int positif_incrementer = 0, negatif_incrementer = 0;
+    int result = initialValue;
 
     printer->Clear();
     printer->WriteL1(label);
@@ -209,7 +217,7 @@ unsigned int SettingsMenu::selectBetweenInterval(String label, bool super_increm
             else
                 result--;
 
-            if(result < inf)
+            if(result < inf || result < 0)
                 result = sup;
 
             printer->Clear();
