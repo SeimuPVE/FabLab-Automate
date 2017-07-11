@@ -105,3 +105,95 @@ void MenuCreator::printChoice()
     }
 
 }
+
+unsigned int MenuCreator::selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
+{
+    unsigned int positif_incrementer = 0, negatif_incrementer = 0;
+    int result = initialValue;
+
+    printer->Clear();
+    printer->WriteL1(label);
+    printer->WriteL2(result);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp())
+        {
+            negatif_incrementer = 0;
+            if(positif_incrementer < 10)
+                positif_incrementer++;
+
+            if(super_incrementor)
+                result += positif_incrementer;
+            else
+                result++;
+
+            if(result > sup)
+                result = inf;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            printer->WriteL2(result);
+
+        }
+        else if(button->buttonDown())
+        {
+            positif_incrementer = 0;
+            if(negatif_incrementer < 10)
+                negatif_incrementer++;
+
+            if(super_incrementor)
+                result -= negatif_incrementer;
+            else
+                result--;
+
+            if(result < inf || result < 0)
+                result = sup;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            printer->WriteL2(result);
+
+        }
+
+    }
+
+    return result;
+
+}
+
+bool MenuCreator::selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue)
+{
+    bool result = initialValue;
+
+    printer->Clear();
+    printer->WriteL1(label);
+    if(result)
+        printer->WriteL2(trueLabel);
+    else
+        printer->WriteL2(falseLabel);
+
+    while(!button->buttonOk())
+    {
+        button->checkButtons();
+
+        if(button->buttonUp() || button->buttonDown())
+        {
+            result = !result;
+
+            printer->Clear();
+            printer->WriteL1(label);
+            if(result)
+                printer->WriteL2(trueLabel);
+            else
+                printer->WriteL2(falseLabel);
+
+        }
+
+    }
+
+    return result;
+
+}
