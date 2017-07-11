@@ -3,13 +3,13 @@
 
 WeekPlanning::WeekPlanning()
 {
-    monday = new DayPlanning(LABEL_MONDAY, "08h00", "18h00");
-    tuesday = new DayPlanning(LABEL_TUESDAY, "08h00", "18h00");
-    wednesday = new DayPlanning(LABEL_WEDNESDAY, "08h00", "18h00");
-    thursday = new DayPlanning(LABEL_THURSDAY, "08h00", "18h00");
-    friday = new DayPlanning(LABEL_FRIDAY, "08h00", "18h00");
-    saturday = new DayPlanning(LABEL_SATURDAY, "08h00", "18h00");
-    sunday = new DayPlanning(LABEL_SUNDAY, "08h00", "18h00");
+    monday = new DayPlanning(F(LABEL_MONDAY), "08h00", "18h00");
+    tuesday = new DayPlanning(F(LABEL_TUESDAY), "08h00", "18h00");
+    wednesday = new DayPlanning(F(LABEL_WEDNESDAY), "08h00", "18h00");
+    thursday = new DayPlanning(F(LABEL_THURSDAY), "08h00", "18h00");
+    friday = new DayPlanning(F(LABEL_FRIDAY), "08h00", "18h00");
+    saturday = new DayPlanning(F(LABEL_SATURDAY), "08h00", "18h00");
+    sunday = new DayPlanning(F(LABEL_SUNDAY), "08h00", "18h00");
 
 }
 

@@ -20,9 +20,9 @@ PonctualMode::PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *new
 
     printer->Clear();
     if(isTest)
-        printer->WriteL1(LABEL_PONCTUAL_TESTING);
+        printer->WriteL1(F(LABEL_PONCTUAL_TESTING));
     else
-        printer->WriteL1(LABEL_PONCTUAL_WORKING);
+        printer->WriteL1(F(LABEL_PONCTUAL_WORKING));
     printer->WriteL1("Testing...");
     printer->WriteL2(sensors->getMeasure());
 
@@ -52,9 +52,9 @@ void PonctualMode::ponctualModeSimpleExec()
         {
             printer->Clear();
             if(isTest)
-                printer->WriteL1(LABEL_PONCTUAL_TESTING);
+                printer->WriteL1(F(LABEL_PONCTUAL_TESTING));
             else
-                printer->WriteL1(LABEL_PONCTUAL_WORKING);
+                printer->WriteL1(F(LABEL_PONCTUAL_WORKING));
             printer->WriteL2(sensors->getMeasure());
 
             t1_printer = t2;
@@ -107,7 +107,7 @@ void PonctualMode::launch()
             if(second(t2 - t1_printer) > 1)
             {
                 printer->Clear();
-                printer->WriteL1(LABEL_PONCTUAL_SLEEPING);
+                printer->WriteL1(F(LABEL_PONCTUAL_SLEEPING));
                 printer->WriteL2(sensors->getMeasure());
 
                 t1_printer = t2;

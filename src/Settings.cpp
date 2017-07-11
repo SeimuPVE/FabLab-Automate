@@ -162,13 +162,13 @@ String Settings::getStrCurrentDate()
 
     switch(dayOfWeek(now()) - 1)
     {
-        case 0 : result += LABEL_SUNDAY; break;
-        case 1 : result += LABEL_MONDAY; break;
-        case 2 : result += LABEL_TUESDAY; break;
-        case 3 : result += LABEL_WEDNESDAY; break;
-        case 4 : result += LABEL_THURSDAY; break;
-        case 5 : result += LABEL_FRIDAY; break;
-        case 6 : result += LABEL_SATURDAY; break;
+        case 0 : result += F(LABEL_SUNDAY); break;
+        case 1 : result += F(LABEL_MONDAY); break;
+        case 2 : result += F(LABEL_TUESDAY); break;
+        case 3 : result += F(LABEL_WEDNESDAY); break;
+        case 4 : result += F(LABEL_THURSDAY); break;
+        case 5 : result += F(LABEL_FRIDAY); break;
+        case 6 : result += F(LABEL_SATURDAY); break;
 
     }
 
@@ -178,7 +178,7 @@ String Settings::getStrCurrentDate()
         result += '0';
     result += hour(now());
 
-    result += SEPARATOR;
+    result += F(SEPARATOR);
 
     if(minute(now()) < 10)
         result += '0';
@@ -191,8 +191,8 @@ String Settings::getStrCurrentDate()
 String Settings::getStrIsContinue()
 {
     if(iContinue)
-        return LABEL_IS_CONTINUE;
-    return LABEL_IS_PONCTUAL;
+        return F(LABEL_IS_CONTINUE);
+    return F(LABEL_IS_PONCTUAL);
 
 }
 
@@ -213,8 +213,8 @@ String Settings::getStrBorns()
 String Settings::getStrNormalyOpen()
 {
     if(isNO())
-        return LABEL_IS_NO;
-    return LABEL_IS_NC;
+        return F(LABEL_IS_NO);
+    return F(LABEL_IS_NC);
 
 }
 
