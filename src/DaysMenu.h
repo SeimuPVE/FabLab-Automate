@@ -7,17 +7,17 @@
 #include "Settings.h"
 #include "WeekPlanning.h"
 
-#define TITLE_DATE "Date"
+#define TITLE_DATE "Set date"
 
-#define SELECTOR_STARTING_HOUR "Start H"
-#define SELECTOR_STARTING_MINUTE "Start min"
-#define SELECTOR_ENDING_HOUR "End H"
-#define SELECTOR_ENDING_MINUTE "End min"
-#define SELECTOR_HOUR "Select H"
-#define SELECTOR_MINUTE "Select min"
-#define SELECTOR_DAY "Select day"
-#define SELECTOR_MONTH "Select month"
-#define SELECTOR_YEAR "Select year"
+#define SELECTOR_STARTING_HOUR "Starting hour"
+#define SELECTOR_STARTING_MINUTE "Starting minute"
+#define SELECTOR_ENDING_HOUR "Ending hour"
+#define SELECTOR_ENDING_MINUTE "Ending minute"
+#define SELECTOR_HOUR "Hour"
+#define SELECTOR_MINUTE "Minute"
+#define SELECTOR_DAY "Day"
+#define SELECTOR_MONTH "Month"
+#define SELECTOR_YEAR "Year"
 
 
 /**

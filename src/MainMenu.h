@@ -8,11 +8,11 @@
 #include "Printer.h"
 
 #define TITLE_START "Start"
-#define TITLE_MESURE "Mesure"
+#define TITLE_MESURE "Measure"
 #define TITLE_TEST "Test"
 #define TITLE_SETTINGS "Settings"
 
-#define LABEL_CURRENT_MESURE "Current mesure"
+#define LABEL_CURRENT_MESURE "Current measure"
 
 
 /**

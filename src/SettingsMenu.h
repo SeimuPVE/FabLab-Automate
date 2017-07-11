@@ -9,23 +9,23 @@
 #include "DaysMenu.h"
 
 #define TITLE_DAYS_MENU "Planning"
-#define TITLE_CONTINUE "Continue"
-#define TITLE_BORNS "Borns"
-#define TITLE_NO "NO/NC"
+#define TITLE_CONTINUE "Control mode"
+#define TITLE_BORNS "Conditions"
+#define TITLE_NO "Output state"
 
-#define LABEL_SET_DAYS "Configure days"
+#define LABEL_SET_DAYS "Days and times"
 
-#define SELECTOR_CONTINUE "Set continue"
+#define SELECTOR_CONTINUE "Set control mode"
 #define SELECTOR_IS_CONTINUE "Continue"
-#define SELECTOR_IS_PONCTUAL "Ponctual"
-#define SELECTOR_FREQUENCY "Calculs by H"
-#define SELECTOR_INTERVAL "Delay in seconds"
-#define SELECTOR_SAMPLE_SIZE "Sample size"
+#define SELECTOR_IS_PONCTUAL "Recurent" // TODO
+#define SELECTOR_FREQUENCY "Frequency on 1h"
+#define SELECTOR_INTERVAL "Period (second)"
+#define SELECTOR_SAMPLE_SIZE "Qty (sampling)"
 #define SELECTOR_BORN_SUP "Born sup"
 #define SELECTOR_BORN_INF "Born inf"
-#define SELECTOR_NO "Set NO/NC"
-#define SELECTOR_IS_NO "Normaly open"
-#define SELECTOR_IS_NC "Normaly close"
+#define SELECTOR_NO "Set output state"
+#define SELECTOR_IS_NO "ON"
+#define SELECTOR_IS_NC "OFF"
 
 
 /**

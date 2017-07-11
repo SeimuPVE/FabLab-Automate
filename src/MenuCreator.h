@@ -8,8 +8,8 @@
 #define SELECTOR_CLASSIC "-> "
 #define SELECTOR_SIMPLE ">"
 
-#define TITLE_EXIT "Exit"
-#define LABEL_GO_BACK "Go back"
+#define TITLE_EXIT "Back"
+#define LABEL_GO_BACK ""
 
 
 /**
