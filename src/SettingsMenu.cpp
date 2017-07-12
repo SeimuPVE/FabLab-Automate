@@ -6,10 +6,11 @@ SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSet
     setSettings(newSettings);
     daysMenu = new DaysMenu(printer, newButton, newSettings);
 
-    int listSize = 5;
+    int listSize = 6;
     String titleList[] =    {
                                 F(TITLE_DAYS_MENU),
                                 F(TITLE_CONTINUE),
+                                F(TITLE_CRASH_MODE),
                                 F(TITLE_BORNS),
                                 F(TITLE_NO),
                                 F(TITLE_EXIT)
@@ -25,9 +26,10 @@ void SettingsMenu::menuFunctions(unsigned int choice)
     {
         case 0 : setDays(); break;
         case 1 : setContinue(); break;
-        case 2 : setBorns(); break;
-        case 3 : setNO(); break;
-        case 4 : settings->save(); setExitFlag(true); break;
+        case 2 : setCrashMode(); break;
+        case 3 : setBorns(); break;
+        case 4 : setNO(); break;
+        case 5 : settings->save(); setExitFlag(true); break;
         default : Serial.println("Error : menu functions error."); break;
         
     }
@@ -51,6 +53,12 @@ void SettingsMenu::setContinue()
         settings->setInterval(selectBetweenInterval(F(SELECTOR_INTERVAL), true, settings->getInterval()));
 
     settings->setSample_size(selectBetweenInterval(F(SELECTOR_SAMPLE_SIZE), true, settings->getSample_size()));
+
+}
+
+void SettingsMenu::setCrashMode()
+{
+    settings->setCrashMode(selectBoolean(F(SELECTOR_CRASH_MODE), F(SELECTOR_IS_CRASH_MODE), F(SELECTOR_IS_NOT_CRASH_MODE), settings->isCrashMode()));
 
 }
 
@@ -79,9 +87,10 @@ void SettingsMenu::printLabel()
     {
         case 0 : printer->WriteL2(F(LABEL_SET_DAYS)); break;
         case 1 : printer->WriteL2(settings->getStrIsContinue()); break;
-        case 2 : printer->WriteL2(settings->getStrBorns()); break;
-        case 3 : printer->WriteL2(settings->getStrNormalyOpen()); break;
-        case 4 : printer->WriteL2(F(LABEL_GO_BACK)); break;
+        case 2 : printer->WriteL2(settings->getStrIsCrashMode()); break;
+        case 3 : printer->WriteL2(settings->getStrBorns()); break;
+        case 4 : printer->WriteL2(settings->getStrNormalyOpen()); break;
+        case 5 : printer->WriteL2(F(LABEL_GO_BACK)); break;
         default : Serial.println("Error : menu functions error."); break;
 
     }

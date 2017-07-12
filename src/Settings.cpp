@@ -55,6 +55,12 @@ bool Settings::isContinue() const
   
 }
 
+bool Settings::isCrashMode() const
+{
+    return crashMode;
+
+}
+
 unsigned int Settings::getFrequency() const
 {
     return frequency;
@@ -95,6 +101,12 @@ void Settings::setContinue(bool newContinue)
 {
     iContinue = newContinue;
   
+}
+
+void Settings::setCrashMode(bool newCrashMode)
+{
+    crashMode = newCrashMode;
+
 }
 
 void Settings::setFrequency(unsigned int newNumberCounts)
@@ -193,6 +205,14 @@ String Settings::getStrIsContinue()
     if(iContinue)
         return F(LABEL_IS_CONTINUE);
     return F(LABEL_IS_PONCTUAL);
+
+}
+
+String Settings::getStrIsCrashMode()
+{
+    if(crashMode)
+        return F(LABEL_IS_CRASH_MODE);
+    return F(LABEL_IS_NOT_CRASH_MODE);
 
 }
 

@@ -12,12 +12,16 @@
 #define TITLE_CONTINUE "Control mode"
 #define TITLE_BORNS "Conditions"
 #define TITLE_NO "Output state"
+#define TITLE_CRASH_MODE "Error manager"
 
 #define LABEL_SET_DAYS "Days and times"
 
 #define SELECTOR_CONTINUE "Set control mode"
 #define SELECTOR_IS_CONTINUE "Continue"
-#define SELECTOR_IS_PONCTUAL "Recurent" // TODO
+#define SELECTOR_IS_PONCTUAL "Recurent"
+#define SELECTOR_CRASH_MODE "If error"
+#define SELECTOR_IS_CRASH_MODE "Stop when error"
+#define SELECTOR_IS_NOT_CRASH_MODE "Manage errors"
 #define SELECTOR_FREQUENCY "Frequency on 1h"
 #define SELECTOR_INTERVAL "Period (second)"
 #define SELECTOR_SAMPLE_SIZE "Qty (sampling)"
@@ -46,11 +50,13 @@ class SettingsMenu : public MenuCreator
          */
         SettingsMenu(Printer *printer, Button *newButton, Settings *settings);
 
+
         /**
          * Connect all functions to the menu.
          * @param choice : your choice of function to launch.
          */
         void menuFunctions(unsigned int choice);
+
 
         void setDays();
 
@@ -58,20 +64,26 @@ class SettingsMenu : public MenuCreator
          * Function to set the setting continue or ponctual on the menu.
          */
         void setContinue();
+
+        void setCrashMode();
+
         /**
          * Function to set the borns on the menu.
          */
         void setBorns();
+
         /**
          * Function to set if the relay is normaly open or normaly close in the menu.
          */
         void setNO();
+
 
         /**
          * Change the settings to work with.
          * @param newSettings : new settings.
          */
         void setSettings(Settings *newSettings);
+
 
         /**
          * Print the label of the current choice.
