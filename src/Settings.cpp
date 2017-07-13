@@ -37,12 +37,6 @@ WeekPlanning *Settings::getPlanning() const
   
 }
 
-time_t Settings::getDateTime() const
-{
-    return now();
-
-}
-
 void Settings::setDateTime(unsigned int hour, unsigned int minute, unsigned int day, unsigned int month, unsigned int year)
 {
     setTime(hour, minute, 0, day, month, year);
@@ -182,6 +176,7 @@ String Settings::getStrCurrentDate()
         case 4 : result += F(LABEL_THURSDAY); break;
         case 5 : result += F(LABEL_FRIDAY); break;
         case 6 : result += F(LABEL_SATURDAY); break;
+        default: Serial.println("Error on current day."); break;
 
     }
 

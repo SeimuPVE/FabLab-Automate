@@ -55,12 +55,6 @@ class Settings
         WeekPlanning *getPlanning() const;
 
         /**
-         * Get the current time.
-         * @return : current time.
-         */
-        time_t getDateTime() const;
-
-        /**
          * Get if the mode is continue or ponctual.
          * @return : true if it's continue, false else.
          */
