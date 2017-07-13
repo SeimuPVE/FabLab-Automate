@@ -47,7 +47,7 @@ bool ModeCreator::isInPlanning()
 
 void ModeCreator::printLabel(String label)
 {
-    if(second(t2 - t1_printer) > 1)
+    if(second(t2 - t1_printer) > 0.1)
     {
         printer->Clear();
         printer->WriteL1(label);
@@ -57,6 +57,8 @@ void ModeCreator::printLabel(String label)
 
     }
 
+    t2 = now();
+
 }
 
 void ModeCreator::waitAndBipError()
@@ -65,6 +67,8 @@ void ModeCreator::waitAndBipError()
 
     while(!button->buttonOk())
     {
+        printLabel(F(LABEL_ERROR));
+
         tone(BUZZER_PORT, 1000);
         delay(100);
         noTone(BUZZER_PORT);
@@ -80,16 +84,15 @@ bool ModeCreator::waitErrorStop()
 {
     sensors->setRelay(!sensors->getSettings()->isNO());
 
-    while(simpleExec())
+    while(!simpleExec())
     {
+        printLabel(F(LABEL_ERROR));
         button->checkButtonsUnblocking();
 
         if(button->buttonOk())
             return true;
 
     }
-
-    sensors->setRelay(!sensors->getSettings()->isNO());
 
     return false;
 
@@ -102,9 +105,9 @@ void ModeCreator::launch()
     while(!button->buttonOk() && !error)
     {
         if(isTest || isInPlanning())
-            error = simpleExec();
+            error = !simpleExec();
         else
-            printLabel(LABEL_SLEEPING);
+            printLabel(F(LABEL_SLEEPING));
 
         if(error)
         {
@@ -115,7 +118,7 @@ void ModeCreator::launch()
                 if(!waitErrorStop())
                 {
                     error = false;
-                    sensors->setRelay(!sensors->getRelay());
+                    sensors->setRelay(sensors->getSettings()->isNO());
 
                 }
 

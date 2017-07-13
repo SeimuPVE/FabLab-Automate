@@ -15,7 +15,7 @@
 #define LABEL_IS_CONTINUE "Continue"
 #define LABEL_IS_PONCTUAL "Recurent"
 #define LABEL_IS_CRASH_MODE "Stop when error"
-#define LABEL_IS_NOT_CRASH_MODE "Manage error"
+#define LABEL_IS_NOT_CRASH_MODE "Manage errors"
 #define LABEL_IS_NO "ON"
 #define LABEL_IS_NC "OFF"
 

@@ -21,23 +21,22 @@ bool ContinueMode::simpleExec()
             average += samples[j];
         average /= sample_size;
 
-        // Actualize screen.
         if(isTest)
             printLabel(F(LABEL_TESTING));
         else
             printLabel(F(LABEL_WORKING));
 
-        if(average < born_inf || average > born_sup)
-            return true;
-        else
-            return false;
-
         t1 = t2;
+
+        if(average < born_inf || average > born_sup)
+            return false;
+        else
+            return true;
 
     }
 
     t2 = now();
 
-    return false;
+    return true;
 
 }

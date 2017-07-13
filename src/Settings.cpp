@@ -14,6 +14,7 @@ Settings::Settings()
     }
 
     setContinue(true);
+    setCrashMode(true);
     setFrequency(9999);
     setInterval(1);
     setSample_size(10);
@@ -243,13 +244,14 @@ void Settings::save()
     unsigned int starting_addr = 0;
 
     SaverLoader::saveBool(starting_addr, iContinue);
-    SaverLoader::saveUnsignedInt(starting_addr + 1, frequency);
-    SaverLoader::saveUnsignedInt(starting_addr + 3, interval);
-    SaverLoader::saveUnsignedInt(starting_addr + 5, sample_size);
-    SaverLoader::saveUnsignedInt(starting_addr + 7, bornSup);
-    SaverLoader::saveUnsignedInt(starting_addr + 9, bornInf);
-    SaverLoader::saveBool(starting_addr + 11, normalyOpen);
-    planning->save(12);
+    SaverLoader::saveBool(starting_addr + 1, crashMode);
+    SaverLoader::saveUnsignedInt(starting_addr + 2, frequency);
+    SaverLoader::saveUnsignedInt(starting_addr + 4, interval);
+    SaverLoader::saveUnsignedInt(starting_addr + 6, sample_size);
+    SaverLoader::saveUnsignedInt(starting_addr + 8, bornSup);
+    SaverLoader::saveUnsignedInt(starting_addr + 10, bornInf);
+    SaverLoader::saveBool(starting_addr + 12, normalyOpen);
+    planning->save(13);
 
 }
 
@@ -258,12 +260,13 @@ void Settings::load()
     unsigned int starting_addr = 0;
 
     iContinue = SaverLoader::loadBool(starting_addr);
-    frequency = SaverLoader::loadUnsignedInt(starting_addr + 1);
-    interval = SaverLoader::loadUnsignedInt(starting_addr + 3);
-    sample_size = SaverLoader::loadUnsignedInt(starting_addr + 5);
-    bornSup = SaverLoader::loadUnsignedInt(starting_addr + 7);
-    bornInf = SaverLoader::loadUnsignedInt(starting_addr + 9);
-    normalyOpen = SaverLoader::loadBool(starting_addr + 11);
-    planning->load(12);
+    crashMode = SaverLoader::loadBool(starting_addr + 1);
+    frequency = SaverLoader::loadUnsignedInt(starting_addr + 2);
+    interval = SaverLoader::loadUnsignedInt(starting_addr + 4);
+    sample_size = SaverLoader::loadUnsignedInt(starting_addr + 6);
+    bornSup = SaverLoader::loadUnsignedInt(starting_addr + 8);
+    bornInf = SaverLoader::loadUnsignedInt(starting_addr + 10);
+    normalyOpen = SaverLoader::loadBool(starting_addr + 12);
+    planning->load(13);
 
 }
