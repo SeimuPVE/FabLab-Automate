@@ -1,5 +1,7 @@
 #include "MainMenu.h"
 
+#define MAIN_L1 "Please check"
+#define MAIN_L2 "   your settings"
 
 void setup()
 {
@@ -16,8 +18,8 @@ void loop()
     Button *b = new Button;
 
     lcd->Clear();
-    lcd->WriteL1("Please check");
-    lcd->WriteL2("   your settings");
+    lcd->WriteL1(F(MAIN_L1));
+    lcd->WriteL2(F(MAIN_L2));
 
     while(!b->buttonOk())
         b->checkButtons();

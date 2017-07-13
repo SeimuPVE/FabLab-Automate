@@ -34,9 +34,8 @@ bool Button::checkButtonsUnblocking()
 
     nA = digitalRead(encoder0PinA);
     nC = digitalRead(encoder0PinC);
-    nC = digitalRead(encoder0PinC);
 
-    if(encoder0PinCLast == true && nC == false)
+    if(encoder0PinCLast != 0 && nC == 0)
     {
         buttonOkState = true;
         pushed = true;

@@ -46,7 +46,7 @@ void Settings::setDateTime(unsigned int hour, unsigned int minute, unsigned int 
 
 bool Settings::isContinue() const
 {
-    return iContinue;
+    return continueMode;
   
 }
 
@@ -88,13 +88,13 @@ unsigned int Settings::getBornInf() const
 
 bool Settings::isNO() const
 {
-    return normalyOpen;
+    return normallyOpen;
   
 }
 
 void Settings::setContinue(bool newContinue)
 {
-    iContinue = newContinue;
+    continueMode = newContinue;
   
 }
 
@@ -136,7 +136,7 @@ void Settings::setBornInf(unsigned int newBornInf)
 
 void Settings::setNO(bool newNO)
 {
-    normalyOpen = newNO;
+    normallyOpen = newNO;
 
 }
 
@@ -198,9 +198,9 @@ String Settings::getStrCurrentDate()
 
 String Settings::getStrIsContinue()
 {
-    if(iContinue)
+    if(continueMode)
         return F(LABEL_IS_CONTINUE);
-    return F(LABEL_IS_PONCTUAL);
+    return F(LABEL_IS_RECURRENT);
 
 }
 
@@ -236,32 +236,28 @@ String Settings::getStrNormalyOpen()
 
 void Settings::save()
 {
-    unsigned int starting_addr = 0;
-
-    SaverLoader::saveBool(starting_addr, iContinue);
-    SaverLoader::saveBool(starting_addr + 1, crashMode);
-    SaverLoader::saveUnsignedInt(starting_addr + 2, frequency);
-    SaverLoader::saveUnsignedInt(starting_addr + 4, interval);
-    SaverLoader::saveUnsignedInt(starting_addr + 6, sample_size);
-    SaverLoader::saveUnsignedInt(starting_addr + 8, bornSup);
-    SaverLoader::saveUnsignedInt(starting_addr + 10, bornInf);
-    SaverLoader::saveBool(starting_addr + 12, normalyOpen);
+    SaverLoader::saveBool(SAVER_STARTING_ADDRESS, continueMode);
+    SaverLoader::saveBool(SAVER_STARTING_ADDRESS + 1, crashMode);
+    SaverLoader::saveUnsignedInt(SAVER_STARTING_ADDRESS + 2, frequency);
+    SaverLoader::saveUnsignedInt(SAVER_STARTING_ADDRESS + 4, interval);
+    SaverLoader::saveUnsignedInt(SAVER_STARTING_ADDRESS + 6, sample_size);
+    SaverLoader::saveUnsignedInt(SAVER_STARTING_ADDRESS + 8, bornSup);
+    SaverLoader::saveUnsignedInt(SAVER_STARTING_ADDRESS + 10, bornInf);
+    SaverLoader::saveBool(SAVER_STARTING_ADDRESS + 12, normallyOpen);
     planning->save(13);
 
 }
 
 void Settings::load()
 {
-    unsigned int starting_addr = 0;
-
-    iContinue = SaverLoader::loadBool(starting_addr);
-    crashMode = SaverLoader::loadBool(starting_addr + 1);
-    frequency = SaverLoader::loadUnsignedInt(starting_addr + 2);
-    interval = SaverLoader::loadUnsignedInt(starting_addr + 4);
-    sample_size = SaverLoader::loadUnsignedInt(starting_addr + 6);
-    bornSup = SaverLoader::loadUnsignedInt(starting_addr + 8);
-    bornInf = SaverLoader::loadUnsignedInt(starting_addr + 10);
-    normalyOpen = SaverLoader::loadBool(starting_addr + 12);
+    continueMode = SaverLoader::loadBool(SAVER_STARTING_ADDRESS);
+    crashMode = SaverLoader::loadBool(SAVER_STARTING_ADDRESS + 1);
+    frequency = SaverLoader::loadUnsignedInt(SAVER_STARTING_ADDRESS + 2);
+    interval = SaverLoader::loadUnsignedInt(SAVER_STARTING_ADDRESS + 4);
+    sample_size = SaverLoader::loadUnsignedInt(SAVER_STARTING_ADDRESS + 6);
+    bornSup = SaverLoader::loadUnsignedInt(SAVER_STARTING_ADDRESS + 8);
+    bornInf = SaverLoader::loadUnsignedInt(SAVER_STARTING_ADDRESS + 10);
+    normallyOpen = SaverLoader::loadBool(SAVER_STARTING_ADDRESS + 12);
     planning->load(13);
 
 }

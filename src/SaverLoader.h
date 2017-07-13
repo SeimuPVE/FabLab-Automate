@@ -12,29 +12,29 @@ class SaverLoader
     public:
         /**
          * Save an unsigned int.
-         * @param addr : address to save the variable on the EEPROM memory.
+         * @param address : address to save the variable on the EEPROM memory.
          * @param val : value to save.
          */
-        static void saveUnsignedInt(unsigned int addr, unsigned int val);
+        static void saveUnsignedInt(unsigned int address, unsigned int val);
         /**
          * Save a boolean.
-         * @param addr : address to save the variable on the EEPROM memory.
+         * @param address : address to save the variable on the EEPROM memory.
          * @param val : value to save.
          */
-        static void saveBool(unsigned int addr, bool val);
+        static void saveBool(unsigned int address, bool val);
 
         /**
          * Load an unsigned int.
-         * @param addr : address to load the variable on the EEPROM memory.
+         * @param address : address to load the variable on the EEPROM memory.
          * @param val : value to load.
          */
-        static unsigned int loadUnsignedInt(unsigned int addr);
+        static unsigned int loadUnsignedInt(unsigned int address);
         /**
          * Load a boolean.
-         * @param addr : address to load the variable on the EEPROM memory.
+         * @param address : address to load the variable on the EEPROM memory.
          * @param val : value to load.
          */
-        static bool loadBool(unsigned int addr);
+        static bool loadBool(unsigned int address);
 
 };
 

@@ -10,7 +10,7 @@
 
 #define TITLE_DAYS_MENU "Planning"
 #define TITLE_CONTINUE "Control mode"
-#define TITLE_BORNS "Conditions"
+#define TITLE_LIMITS "Conditions"
 #define TITLE_NO "Output state"
 #define TITLE_CRASH_MODE "Error manager"
 
@@ -18,7 +18,7 @@
 
 #define SELECTOR_CONTINUE "Set control mode"
 #define SELECTOR_IS_CONTINUE "Continue"
-#define SELECTOR_IS_PONCTUAL "Recurent"
+#define SELECTOR_IS_RECURRENT "Recurrent"
 #define SELECTOR_CRASH_MODE "If error"
 #define SELECTOR_IS_CRASH_MODE "Stop when error"
 #define SELECTOR_IS_NOT_CRASH_MODE "Manage errors"
@@ -61,19 +61,19 @@ class SettingsMenu : public MenuCreator
         void setDays();
 
         /**
-         * Function to set the setting continue or ponctual on the menu.
+         * Function to set the setting continue or recurrent on the menu.
          */
         void setContinue();
 
         void setCrashMode();
 
         /**
-         * Function to set the borns on the menu.
+         * Function to set the limits on the menu.
          */
         void setBorns();
 
         /**
-         * Function to set if the relay is normaly open or normaly close in the menu.
+         * Function to set if the relay is normally open or normally close in the menu.
          */
         void setNO();
 

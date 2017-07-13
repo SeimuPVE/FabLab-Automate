@@ -1,12 +1,12 @@
-#include "PonctualMode.h"
+#include "RecurrentMode.h"
 
 
-PonctualMode::PonctualMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest) : ModeCreator(newSensors, newPrinter, newButton, newIsTest)
+RecurrentMode::RecurrentMode(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest) : ModeCreator(newSensors, newPrinter, newButton, newIsTest)
 {
 
 }
 
-bool PonctualMode::simpleExec()
+bool RecurrentMode::simpleExec()
 {
     if(second(t2 - t1) + 1 > sensors->getSettings()->getInterval())
     {

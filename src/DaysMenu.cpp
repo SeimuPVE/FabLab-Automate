@@ -5,7 +5,7 @@ DaysMenu::DaysMenu(Printer *printer, Button *newButton, Settings *newSettings) :
 {
     setSettings(newSettings);
 
-    int listSize = 9;
+    unsigned int listSize = 9;
     String titleList[] =    {
             F(LABEL_SHORT_MONDAY),
             F(LABEL_SHORT_TUESDAY),
@@ -43,10 +43,10 @@ void DaysMenu::menuFunctions(unsigned int choice)
 
 void DaysMenu::setDay(unsigned int dayTag)
 {
-    int startingHour = settings->getPlanning()->getDay(dayTag)->getStartingHour();
-    int startingMinute = settings->getPlanning()->getDay(dayTag)->getStartingMinute();
-    int endingHour = settings->getPlanning()->getDay(dayTag)->getEndingHour();
-    int endingMinute = settings->getPlanning()->getDay(dayTag)->getEndingMinute();
+    unsigned int startingHour = settings->getPlanning()->getDay(dayTag)->getStartingHour();
+    unsigned int startingMinute = settings->getPlanning()->getDay(dayTag)->getStartingMinute();
+    unsigned int endingHour = settings->getPlanning()->getDay(dayTag)->getEndingHour();
+    unsigned int endingMinute = settings->getPlanning()->getDay(dayTag)->getEndingMinute();
 
     startingHour = selectBetweenInterval(F(SELECTOR_STARTING_HOUR), false, startingHour, 0, 23);
     startingMinute = selectBetweenInterval(F(SELECTOR_STARTING_MINUTE), false, startingMinute, 0, 59);
@@ -140,7 +140,7 @@ void DaysMenu::printLabel()
 {
     if(currentChoice >= MONDAY && currentChoice <= SUNDAY)
         printer->WriteL2(settings->getStrDay(currentChoice));
-    else if(currentChoice == SUNDAY +1)
+    else if(currentChoice == SUNDAY + 1)
         printer->WriteL2(settings->getStrCurrentDate());
     else
         printer->WriteL2(F(LABEL_GO_BACK));

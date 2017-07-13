@@ -23,7 +23,7 @@ class ModeCreator
         unsigned int j;
         unsigned int average;
         unsigned int sample_size;
-        unsigned int *samples;
+        int *samples;
         unsigned int born_inf;
         unsigned int born_sup;
         time_t t1, t1_printer, t2;
@@ -38,14 +38,40 @@ class ModeCreator
          */
         ModeCreator(Sensors *newSensors, Printer *newPrinter, Button *newButton, bool newIsTest);
 
+        /**
+         * Function to check if currently we are in the planning or not.
+         * @return : true if we are in the planning, false else.
+         */
         bool isInPlanning();
 
+
+        /**
+         * Print a label on the first line of the screen and the measure on the second line.
+         * @param label : label to print.
+         */
         void printLabel(String label);
+
+        /**
+         * Bip continually to warn an error until the user press the button.
+         */
         void waitAndBipError();
+
+        /**
+         * Wait until the error disappear or the user press the button.
+         * @return
+         */
         bool waitErrorStop();
 
+
+        /**
+         * Simple execution of the mode.
+         * @return true if all append well, false if there was a mistake.
+         */
         virtual bool simpleExec() = 0;
 
+        /**
+         * Launch the mode until the user press the button to quit.
+         */
         void launch();
 
 };

@@ -28,6 +28,7 @@ bool ContinueMode::simpleExec()
 
         t1 = t2;
 
+//        if(born_inf < average < born_sup)
         if(average < born_inf || average > born_sup)
             return false;
         else

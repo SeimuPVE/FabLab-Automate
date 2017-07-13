@@ -9,7 +9,7 @@
 
 
 /**
- * Class to use sensors and actionners.
+ * Class to use sensors and actuators.
  */
 class Sensors
 {
@@ -37,7 +37,7 @@ class Sensors
          * Get the measure of the sensor.
          * @return : measure value.
          */
-        unsigned int getMeasure();
+        int getMeasure();
         /**
          * Set the state of the relay.
          * @param state : new state.

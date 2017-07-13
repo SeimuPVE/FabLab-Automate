@@ -1,6 +1,6 @@
 #include "MainMenu.h"
 #include "ContinueMode.h"
-#include "PonctualMode.h"
+#include "RecurrentMode.h"
 
 
 MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, newButton)
@@ -8,8 +8,8 @@ MainMenu::MainMenu(Printer *printer, Button *newButton) : MenuCreator(printer, n
     sensors = new Sensors();
     settingsMenu = new SettingsMenu(printer, newButton, sensors->getSettings());
 
-    int listSize = 4;
-    String titleList[] = {F(TITLE_START), F(TITLE_MESURE), F(TITLE_TEST), F(TITLE_SETTINGS)};
+    unsigned int listSize = 4;
+    String titleList[] = {F(TITLE_START), F(TITLE_MEASURE), F(TITLE_TEST), F(TITLE_SETTINGS)};
             
     setTitles(titleList, listSize);
 
@@ -33,7 +33,7 @@ void MainMenu::menuFunctions(unsigned int choice)
     else if(choice == 3)
         modeSettings();
     else
-        Serial.println("Error");
+        Serial.println("Error : choice doesn't exists.");
 
 }
 
@@ -47,8 +47,8 @@ void MainMenu::modeNormal(void)
     }
     else
     {
-        PonctualMode ponctualMode(sensors, printer, button, false);
-        ponctualMode.launch();
+        RecurrentMode recurrentMode(sensors, printer, button, false);
+        recurrentMode.launch();
 
     }
 
@@ -68,7 +68,7 @@ void MainMenu::modeMeasure()
         if(last_value > current_value)
             printer->Clear();
 
-        printer->WriteL1(F(LABEL_CURRENT_MESURE));
+        printer->WriteL1(F(LABEL_CURRENT_MEASURE));
         printer->WriteL2(current_value);
 
         delay(100);
@@ -89,8 +89,8 @@ void MainMenu::modeTest()
     }
     else
     {
-        PonctualMode ponctualMode(sensors, printer, button, true);
-        ponctualMode.launch();
+        RecurrentMode recurrentMode(sensors, printer, button, true);
+        recurrentMode.launch();
 
     }
 

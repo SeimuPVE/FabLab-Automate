@@ -10,10 +10,12 @@
 #define PORT_DAT 11
 #define PORT_RST 10
 
+#define SAVER_STARTING_ADDRESS 0
+
 #define SEPARATOR ":"
 
 #define LABEL_IS_CONTINUE "Continue"
-#define LABEL_IS_PONCTUAL "Recurent"
+#define LABEL_IS_RECURRENT "Recurrent"
 #define LABEL_IS_CRASH_MODE "Stop when error"
 #define LABEL_IS_NOT_CRASH_MODE "Manage errors"
 #define LABEL_IS_NO "ON"
@@ -28,14 +30,14 @@ class Settings
     private:
         WeekPlanning *planning;
         DS1302RTC *rtc = new DS1302RTC(PORT_RST, PORT_DAT, PORT_CLK);
-        bool iContinue; // TODO : rename it.
+        bool continueMode;
         bool crashMode;
         unsigned int frequency;
         unsigned int interval;
         unsigned int sample_size;
         unsigned int bornSup;
         unsigned int bornInf;
-        bool normalyOpen;
+        bool normallyOpen;
 
     public:
         /**
@@ -55,7 +57,7 @@ class Settings
         WeekPlanning *getPlanning() const;
 
         /**
-         * Get if the mode is continue or ponctual.
+         * Get if the mode is continue or recurrent.
          * @return : true if it's continue, false else.
          */
         bool isContinue() const;
@@ -73,8 +75,8 @@ class Settings
         unsigned int getFrequency() const;
 
         /**
-         * Get the interval between two ponctuals captures.
-         * @return : interval between two ponctuals captures.
+         * Get the interval between two recurrent captures.
+         * @return : interval between two recurrent captures.
          */
         unsigned int getInterval() const;
 
@@ -97,8 +99,8 @@ class Settings
         unsigned int getBornInf() const;
 
         /**
-         * Check if the relay is normaly open or normaly closed.
-         * @return : true if the relay is normaly open, false else.
+         * Check if the relay is normally open or normally closed.
+         * @return : true if the relay is normally open, false else.
          */
         bool isNO() const;
 
@@ -132,7 +134,7 @@ class Settings
         void setFrequency(unsigned int newNumberCounts);
 
         /**
-         * change the interval between twe captures for the ponctual mode.
+         * Change the interval between twe captures for the recurrent mode.
          * @param interval : new interval.
          */
         void setInterval(unsigned int interval);
@@ -156,7 +158,7 @@ class Settings
         void setBornInf(unsigned int newBornInf);
 
         /**
-         * Set if the relay is normaly open or normaly closed.
+         * Set if the relay is normally open or normally closed.
          * @param newNO : new relay state.
          */
         void setNO(bool newNO);
@@ -195,8 +197,8 @@ class Settings
         String getStrIsCrashMode();
 
         /**
-         * Get a String to print the borns on the LCD screen.
-         * @return : String to print the borns.
+         * Get a String to print the intervals on the LCD screen.
+         * @return : String to print the intervals.
          */
         String getStrBorns();
 

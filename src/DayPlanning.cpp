@@ -25,12 +25,6 @@ DayPlanning::DayPlanning(String newDayName, String newStartingTime, String newEn
 
 }
 
-String DayPlanning::getDayName()
-{
-    return dayName;
-
-}
-
 unsigned int DayPlanning::getStartingHour() const
 {
     return startingHour;

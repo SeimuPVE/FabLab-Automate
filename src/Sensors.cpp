@@ -20,7 +20,7 @@ Settings *Sensors::getSettings()
   
 }
 
-unsigned int Sensors::getMeasure()
+int Sensors::getMeasure()
 {
     return analogRead(PORT_SENSOR);
   
@@ -30,7 +30,7 @@ void Sensors::setRelay(bool state)
 {
     relay = state;
 
-    if(state == false)
+    if(!state)
         digitalWrite(PORT_RELAIS, LOW);
     else
         digitalWrite(PORT_RELAIS, HIGH);

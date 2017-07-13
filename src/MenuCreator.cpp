@@ -19,12 +19,12 @@ void MenuCreator::setExitFlag(bool newExitFlag)
 void MenuCreator::setTitles(String newTitleList[], unsigned int newTitleSize)
 {
     if((titleList = (char **) malloc(newTitleSize * sizeof(char *))) == NULL)
-        Serial.println("Malloc error : can't create title list in the menu creator.");
+        Serial.println("Memory error : can't create title list in the menu creator.");
     
     for(unsigned int i = 0; i < newTitleSize; i++)
     {
         if((titleList[i] = (char *) malloc((newTitleList[i].length() + 1) * sizeof(char))) == NULL)
-            Serial.println("Malloc error : can't add title to the list in the menu creator.");
+            Serial.println("Memory error : can't add title to the list in the menu creator.");
         
         newTitleList[i].toCharArray(titleList[i], newTitleList[i].length() + 1);
 
@@ -108,8 +108,7 @@ void MenuCreator::printChoice()
 
 unsigned int MenuCreator::selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
 {
-    unsigned int positif_incrementer = 0, negatif_incrementer = 0;
-    int result = initialValue;
+    unsigned int positif_incrementer = 0, negatif_incrementer = 0, result = initialValue;
 
     printer->Clear();
     printer->WriteL1(label);

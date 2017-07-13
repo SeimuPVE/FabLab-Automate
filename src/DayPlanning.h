@@ -31,11 +31,6 @@ class DayPlanning
         DayPlanning(String newDayName, String newStartingTime, String newEndingTime);
 
         /**
-         * Get the name of the day.
-         * @return : name of the day.
-         */
-        String getDayName();
-        /**
          * Get the starting hour.
          * @return : starting hour.
          */

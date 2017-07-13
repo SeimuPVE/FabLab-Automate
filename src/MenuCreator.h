@@ -70,8 +70,8 @@ class MenuCreator
         /**
          * Select a value in a given interval.
          * @param label : label to print on the first line of the screen.
-         * @param super_incrementor : true if you want a progressive incrementor, false if you want it fixe.
-         * @param initialValue : initiale value printed.
+         * @param super_incrementer : true if you want a progressive incrementer, false if you want it fixed.
+         * @param initialValue : initial value printed.
          * @param inf : minimal value in the interval.
          * @param sup : maximal value in the interval.
          * @return : value selected.
@@ -83,7 +83,7 @@ class MenuCreator
         * @param label : label to print on the first line of the screen.
         * @param trueLabel : label to print if the value is true.
         * @param falseLabel : label to print if the value is false.
-        * @param initialValue : initiale value to print.
+        * @param initialValue : initial value to print.
         * @return : value selected.
         */
         bool selectBoolean(String label, String trueLabel, String falseLabel, bool initialValue);
@@ -91,4 +91,3 @@ class MenuCreator
 };
 
 #endif
-

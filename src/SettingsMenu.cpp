@@ -6,12 +6,12 @@ SettingsMenu::SettingsMenu(Printer *printer, Button *newButton, Settings *newSet
     setSettings(newSettings);
     daysMenu = new DaysMenu(printer, newButton, newSettings);
 
-    int listSize = 6;
+    unsigned int listSize = 6;
     String titleList[] =    {
                                 F(TITLE_DAYS_MENU),
                                 F(TITLE_CONTINUE),
                                 F(TITLE_CRASH_MODE),
-                                F(TITLE_BORNS),
+                                F(TITLE_LIMITS),
                                 F(TITLE_NO),
                                 F(TITLE_EXIT)
                             };
@@ -45,7 +45,7 @@ void SettingsMenu::setDays()
 
 void SettingsMenu::setContinue()
 {
-    settings->setContinue(selectBoolean(F(SELECTOR_CONTINUE), F(SELECTOR_IS_CONTINUE), F(SELECTOR_IS_PONCTUAL), settings->isContinue()));
+    settings->setContinue(selectBoolean(F(SELECTOR_CONTINUE), F(SELECTOR_IS_CONTINUE), F(SELECTOR_IS_RECURRENT), settings->isContinue()));
 
     if(settings->isContinue())
         settings->setFrequency(selectBetweenInterval(F(SELECTOR_FREQUENCY), true, settings->getFrequency(), 0, 9999));

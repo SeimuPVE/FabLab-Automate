@@ -1,34 +1,34 @@
 #include "SaverLoader.h"
 
-static void SaverLoader::saveUnsignedInt(unsigned int addr, unsigned int val)
+static void SaverLoader::saveUnsignedInt(unsigned int address, unsigned int val)
 {
-    EEPROM.write(addr, (uint8_t )(val >> 8) & 0x00FF);
-    EEPROM.write(addr + 1, (uint8_t )val & 0x00FF);
+    EEPROM.write(address, (uint8_t )(val >> 8) & 0x00FF);
+    EEPROM.write(address + 1, (uint8_t )val & 0x00FF);
 
 }
 
-static void SaverLoader::saveBool(unsigned int addr, bool val)
+static void SaverLoader::saveBool(unsigned int address, bool val)
 {
-    EEPROM.write(addr, (uint8_t )val);
+    EEPROM.write(address, (uint8_t )val);
 
 }
 
-static unsigned int SaverLoader::loadUnsignedInt(unsigned int addr)
+static unsigned int SaverLoader::loadUnsignedInt(unsigned int address)
 {
     unsigned int val = 0;
-    uint8_t fort = EEPROM.read(addr);
-    uint8_t faible = EEPROM.read(addr + 1);
+    uint8_t byte_one = EEPROM.read(address);
+    uint8_t byte_two = EEPROM.read(address + 1);
 
-    val = fort;
+    val = byte_one;
     val = val << 8;
-    val = val | faible;
+    val = val | byte_two;
 
     return val;
 
 }
 
-static bool SaverLoader::loadBool(unsigned int addr)
+static bool SaverLoader::loadBool(unsigned int address)
 {
-    return (bool) EEPROM.read(addr);
+    return (bool) EEPROM.read(address);
 
 }

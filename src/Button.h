@@ -22,7 +22,7 @@
 
 
 /**
- * Class to use a rotatif button.
+ * Class to use a rotary button.
  */
 class Button
 {
@@ -31,10 +31,10 @@ class Button
         bool buttonDownState;
         bool buttonOkState;
 
-        unsigned int encoder0PinALast;
-        unsigned int encoder0PinCLast;
-        unsigned int nA;
-        unsigned int nC;
+        int encoder0PinALast;
+        int encoder0PinCLast;
+        int nA;
+        int nC;
 
     public:
         /**
