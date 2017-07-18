@@ -70,13 +70,13 @@ class MenuCreator
         /**
          * Select a value in a given interval.
          * @param label : label to print on the first line of the screen.
-         * @param super_incrementer : true if you want a progressive incrementer, false if you want it fixed.
+         * @param super_incrementer : maximum value for progressive incrementer.
          * @param initialValue : initial value printed.
          * @param inf : minimal value in the interval.
          * @param sup : maximal value in the interval.
          * @return : value selected.
          */
-        unsigned int selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf = 0, unsigned int sup = 999);
+        unsigned int selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, unsigned int inf = 0, unsigned int sup = 999);
 
         /**
         * Select a boolean in the menu.

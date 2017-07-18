@@ -48,11 +48,11 @@ void SettingsMenu::setContinue()
     settings->setContinue(selectBoolean(F(SELECTOR_CONTINUE), F(SELECTOR_IS_CONTINUE), F(SELECTOR_IS_RECURRENT), settings->isContinue()));
 
     if(settings->isContinue())
-        settings->setFrequency(selectBetweenInterval(F(SELECTOR_FREQUENCY), true, settings->getFrequency(), 0, 9999));
+        settings->setFrequency(selectBetweenInterval(F(SELECTOR_FREQUENCY), 500, settings->getFrequency(), 0, 9999));
     else
-        settings->setInterval(selectBetweenInterval(F(SELECTOR_INTERVAL), true, settings->getInterval()));
+        settings->setInterval(selectBetweenInterval(F(SELECTOR_INTERVAL), 20, settings->getInterval()));
 
-    settings->setSample_size(selectBetweenInterval(F(SELECTOR_SAMPLE_SIZE), true, settings->getSample_size()));
+    settings->setSample_size(selectBetweenInterval(F(SELECTOR_SAMPLE_SIZE), 10, settings->getSample_size()));
 
 }
 
@@ -64,8 +64,8 @@ void SettingsMenu::setCrashMode()
 
 void SettingsMenu::setBorns()
 {
-    settings->setBornInf(selectBetweenInterval(F(SELECTOR_BORN_INF), true, settings->getBornInf()));
-    settings->setBornSup(selectBetweenInterval(F(SELECTOR_BORN_SUP), true, settings->getBornSup()));
+    settings->setBornInf(selectBetweenInterval(F(SELECTOR_BORN_INF), 20, settings->getBornInf()));
+    settings->setBornSup(selectBetweenInterval(F(SELECTOR_BORN_SUP), 20, settings->getBornSup()));
 
 }
 

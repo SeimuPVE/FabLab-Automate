@@ -106,7 +106,7 @@ void MenuCreator::printChoice()
 
 }
 
-unsigned int MenuCreator::selectBetweenInterval(String label, bool super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
+unsigned int MenuCreator::selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
 {
     unsigned int positif_incrementer = 0, negatif_incrementer = 0, result = initialValue;
 
@@ -121,13 +121,10 @@ unsigned int MenuCreator::selectBetweenInterval(String label, bool super_increme
         if(button->buttonUp())
         {
             negatif_incrementer = 0;
-            if(positif_incrementer < 10)
-                positif_incrementer++;
+            if(positif_incrementer < super_incrementor)
+                positif_incrementer += positif_incrementer + 1;
 
-            if(super_incrementor)
-                result += positif_incrementer;
-            else
-                result++;
+            result += positif_incrementer;
 
             if(result > sup)
                 result = inf;
@@ -140,13 +137,10 @@ unsigned int MenuCreator::selectBetweenInterval(String label, bool super_increme
         else if(button->buttonDown())
         {
             positif_incrementer = 0;
-            if(negatif_incrementer < 10)
-                negatif_incrementer++;
+            if(negatif_incrementer < super_incrementor)
+                negatif_incrementer += negatif_incrementer + 1;
 
-            if(super_incrementor)
-                result -= negatif_incrementer;
-            else
-                result--;
+            result -= negatif_incrementer;
 
             if(result < inf || result < 0)
                 result = sup;
