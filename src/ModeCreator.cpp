@@ -13,7 +13,7 @@ ModeCreator::ModeCreator(Sensors *newSensors, Printer *newPrinter, Button *newBu
     born_inf = sensors->getSettings()->getBornInf();
     born_sup = sensors->getSettings()->getBornSup();
 
-    if((samples = (unsigned int *) malloc(sample_size * sizeof(unsigned int))) == NULL)
+    if((samples = (int *) malloc(sample_size * sizeof(unsigned int))) == NULL)
         Serial.println("Can't get memory for samples.");
 
     if(sensors->getSettings()->isNO())

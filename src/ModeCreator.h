@@ -28,6 +28,8 @@ class ModeCreator
         unsigned int born_sup;
         time_t t1, t1_printer, t2;
 
+        bool last_state;
+
     public:
         /**
          * Constructor.

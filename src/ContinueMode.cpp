@@ -30,14 +30,14 @@ bool ContinueMode::simpleExec()
 
 //        if(born_inf < average < born_sup)
         if(average < born_inf || average > born_sup)
-            return false;
+            last_state = false;
         else
-            return true;
+            last_state = true;
 
     }
 
     t2 = now();
 
-    return true;
+    return last_state;
 
 }
