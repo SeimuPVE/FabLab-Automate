@@ -112,21 +112,21 @@ void DaysMenu::setSunday()
 
 void DaysMenu::setDate()
 {
-    unsigned int hour, minute, day, month, year;
+    unsigned int new_hour, new_minute, new_day, new_month, new_year, max_day;
 
-    hour = 0;
-    minute = 0;
-    day = 1;
-    month = 1;
-    year = 2001;
+    max_day = 30;
 
-    hour = selectBetweenInterval(F(SELECTOR_HOUR), 1, hour, 0, 23);
-    minute = selectBetweenInterval(F(SELECTOR_MINUTE), 1, minute, 0, 59);
-    day = selectBetweenInterval(F(SELECTOR_DAY), 1, day, 1, 31);
-    month = selectBetweenInterval(F(SELECTOR_MONTH), 1, month , 1, 12);
-    year = selectBetweenInterval(F(SELECTOR_YEAR), 1, year, 2000, 3000);
+    new_hour = selectBetweenInterval(F(SELECTOR_HOUR), 1, (unsigned int) hour(), 0, 23);
+    new_minute = selectBetweenInterval(F(SELECTOR_MINUTE), 1, (unsigned int) minute(), 0, 59);
+    new_month = selectBetweenInterval(F(SELECTOR_MONTH), 1, (unsigned int) month() , 1, 12);
 
-    settings->setDateTime(hour, minute, day, month, year);
+    if(new_month == 1 || new_month == 3 || new_month == 5 || new_month == 7 || new_month == 8 || new_month == 10 || new_month == 12)
+        max_day = 31;
+    new_day = selectBetweenInterval(F(SELECTOR_DAY), 1, (unsigned int) day(), 1, max_day);
+
+    new_year = selectBetweenInterval(F(SELECTOR_YEAR), 1, (unsigned int) year(), 2000, 3000);
+
+    settings->setDateTime(new_hour, new_minute, new_day, new_month, new_year);
 
 }
 
