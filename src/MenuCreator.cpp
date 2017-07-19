@@ -106,9 +106,10 @@ void MenuCreator::printChoice()
 
 }
 
-unsigned int MenuCreator::selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, unsigned int inf, unsigned int sup)
+int MenuCreator::selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, int inf, int sup)
 {
-    unsigned int positif_incrementer = 0, negatif_incrementer = 0, result = initialValue;
+    unsigned int positif_incrementer = 0, negatif_incrementer = 0;
+    int result = initialValue;
 
     printer->Clear();
     printer->WriteL1(label);
@@ -142,7 +143,7 @@ unsigned int MenuCreator::selectBetweenInterval(String label, int super_incremen
 
             result -= negatif_incrementer;
 
-            if(result < inf || result < 0)
+            if(result < inf)
                 result = sup;
 
             printer->Clear();

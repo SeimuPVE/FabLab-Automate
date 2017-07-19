@@ -76,7 +76,7 @@ class MenuCreator
          * @param sup : maximal value in the interval.
          * @return : value selected.
          */
-        unsigned int selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, unsigned int inf = 0, unsigned int sup = 999);
+        int selectBetweenInterval(String label, int super_incrementor, unsigned int initialValue, int inf = 0, int sup = 999);
 
         /**
         * Select a boolean in the menu.

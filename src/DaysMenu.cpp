@@ -48,21 +48,21 @@ void DaysMenu::setDay(unsigned int dayTag)
     unsigned int endingHour = settings->getPlanning()->getDay(dayTag)->getEndingHour();
     unsigned int endingMinute = settings->getPlanning()->getDay(dayTag)->getEndingMinute();
 
-    startingHour = selectBetweenInterval(F(SELECTOR_STARTING_HOUR), 1, startingHour, 0, 23);
-    startingMinute = selectBetweenInterval(F(SELECTOR_STARTING_MINUTE), 1, startingMinute, 0, 59);
+    startingHour = (unsigned int) selectBetweenInterval(F(SELECTOR_STARTING_HOUR), 1, startingHour, 0, 23);
+    startingMinute = (unsigned int) selectBetweenInterval(F(SELECTOR_STARTING_MINUTE), 1, startingMinute, 0, 59);
 
     if(endingHour > startingHour)
-        endingHour = selectBetweenInterval(F(SELECTOR_ENDING_HOUR), 1, endingHour, startingHour, 23);
+        endingHour = (unsigned int) selectBetweenInterval(F(SELECTOR_ENDING_HOUR), 1, endingHour, startingHour, 23);
     else
-        endingHour = selectBetweenInterval(F(SELECTOR_ENDING_HOUR), 1, startingHour, startingHour, 23);
+        endingHour = (unsigned int) selectBetweenInterval(F(SELECTOR_ENDING_HOUR), 1, startingHour, startingHour, 23);
 
     if(startingHour == endingHour)
         if(endingMinute > startingMinute)
-            endingMinute = selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, endingMinute, startingMinute + 1, 59);
+            endingMinute = (unsigned int) selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, endingMinute, startingMinute + 1, 59);
         else
-            endingMinute = selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, startingMinute + 1, startingMinute + 1, 59);
+            endingMinute = (unsigned int) selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, startingMinute + 1, startingMinute + 1, 59);
     else
-        endingMinute = selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, endingMinute, 0, 59);
+        endingMinute = (unsigned int) selectBetweenInterval(F(SELECTOR_ENDING_MINUTE), 1, endingMinute, 0, 59);
 
     settings->setDay(dayTag, startingHour, startingMinute, endingHour, endingMinute);
 
@@ -116,15 +116,15 @@ void DaysMenu::setDate()
 
     max_day = 30;
 
-    new_hour = selectBetweenInterval(F(SELECTOR_HOUR), 1, (unsigned int) hour(), 0, 23);
-    new_minute = selectBetweenInterval(F(SELECTOR_MINUTE), 1, (unsigned int) minute(), 0, 59);
-    new_month = selectBetweenInterval(F(SELECTOR_MONTH), 1, (unsigned int) month() , 1, 12);
+    new_hour = (unsigned int) selectBetweenInterval(F(SELECTOR_HOUR), 1, (unsigned int) hour(), 0, 23);
+    new_minute = (unsigned int) selectBetweenInterval(F(SELECTOR_MINUTE), 1, (unsigned int) minute(), 0, 59);
+    new_month = (unsigned int) selectBetweenInterval(F(SELECTOR_MONTH), 1, (unsigned int) month() , 1, 12);
 
     if(new_month == 1 || new_month == 3 || new_month == 5 || new_month == 7 || new_month == 8 || new_month == 10 || new_month == 12)
         max_day = 31;
-    new_day = selectBetweenInterval(F(SELECTOR_DAY), 1, (unsigned int) day(), 1, max_day);
+    new_day = (unsigned int) selectBetweenInterval(F(SELECTOR_DAY), 1, (unsigned int) day(), 1, max_day);
 
-    new_year = selectBetweenInterval(F(SELECTOR_YEAR), 1, (unsigned int) year(), 2000, 3000);
+    new_year = (unsigned int) selectBetweenInterval(F(SELECTOR_YEAR), 1, (unsigned int) year(), 2000, 3000);
 
     settings->setDateTime(new_hour, new_minute, new_day, new_month, new_year);
 
