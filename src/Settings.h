@@ -194,6 +194,10 @@ class Settings
          */
         String getStrIsContinue();
 
+        /**
+         * Get a String to print if the mode manage errors or not on the LCD screen.
+         * @return : String to print if manage errors or not.
+         */
         String getStrIsCrashMode();
 
         /**

@@ -57,7 +57,9 @@ class SettingsMenu : public MenuCreator
          */
         void menuFunctions(unsigned int choice);
 
-
+        /**
+         * Function to set go in the days menu.
+         */
         void setDays();
 
         /**
@@ -65,6 +67,9 @@ class SettingsMenu : public MenuCreator
          */
         void setContinue();
 
+        /**
+         * Function to set the setting crash mode on the menu.
+         */
         void setCrashMode();
 
         /**
