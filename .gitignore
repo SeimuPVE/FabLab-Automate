@@ -6,6 +6,5 @@ CMakeListsPrivate.txt
 .travis.yml
 CMakeLists.txt
 cmake-build-debug/
-lib/
 platformio.ini
 
