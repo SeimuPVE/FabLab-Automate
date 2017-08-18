@@ -8,17 +8,25 @@
  */
 #define BUZZER_PORT 9
 /**
- * Por for the pin A of the button.
+ * Port for the pin A of the button.
  */
 #define encoder0PinA 2
 /**
- * Por for the pin B of the button.
+ * Port for the pin B of the button.
  */
 #define encoder0PinB 4
 /**
- * Por for the pin C of the button.
+ * Port for the pin C of the button.
  */
 #define encoder0PinC 3
+/**
+ * Port for the button ON.
+ */
+#define BUTTON_ON 5
+/**
+ * Port for the button OFF.
+ */
+#define BUTTON_OFF 7
 
 
 /**

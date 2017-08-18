@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Sensors.h"
 
 
 Button::Button()
@@ -15,6 +16,9 @@ Button::Button()
     pinMode(encoder0PinA, INPUT);
     pinMode(encoder0PinB, INPUT);
     pinMode(encoder0PinC, INPUT);
+
+    pinMode(BUTTON_ON, 0);
+    pinMode(BUTTON_OFF, 1);
 
     digitalWrite(encoder0PinA, HIGH);
     digitalWrite(encoder0PinB, HIGH);
@@ -54,6 +58,15 @@ bool Button::checkButtonsUnblocking()
 
     encoder0PinALast = nA;
     encoder0PinCLast = nC;
+
+    if(digitalRead(BUTTON_ON) == LOW) {
+        digitalWrite(PORT_RELAIS, true);
+        Serial.println("ON");
+    }
+    else if(digitalRead(BUTTON_OFF) == LOW) {
+        digitalWrite(PORT_RELAIS, false);
+        Serial.println("OFF");
+    }
 
     return pushed;
 
