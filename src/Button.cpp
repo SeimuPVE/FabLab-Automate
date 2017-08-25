@@ -17,8 +17,8 @@ Button::Button()
     pinMode(encoder0PinB, INPUT);
     pinMode(encoder0PinC, INPUT);
 
-    pinMode(BUTTON_ON, 0);
-    pinMode(BUTTON_OFF, 1);
+    pinMode(BUTTON_ON, INPUT);
+    pinMode(BUTTON_OFF, INPUT);
 
     digitalWrite(encoder0PinA, HIGH);
     digitalWrite(encoder0PinB, HIGH);
