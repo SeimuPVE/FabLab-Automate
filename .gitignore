@@ -7,4 +7,5 @@ CMakeListsPrivate.txt
 CMakeLists.txt
 cmake-build-debug/
 platformio.ini
+src/lib
 
